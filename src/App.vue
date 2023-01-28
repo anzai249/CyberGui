@@ -1,85 +1,171 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <NLayout class="layout" :position="fixedMenu">
+    <NLayout>
+      <NLayoutHeader :inverted="getHeaderInverted" :position="fixedHeader" bordered>
+        <n-tabs :bar-width="35" type="line" animated size="large">
+          <template #prefix>
+            <n-divider vertical />
+            <img width="150" src="@/assets/logo.png" />
+            <n-divider vertical />
+          </template>
+          <n-tab-pane name="archive" :tab="$t('header.archive')">
+          </n-tab-pane>
+          <n-tab-pane name="about" :tab="$t('header.about')">
+          </n-tab-pane>
+          <template #suffix>
+            <n-space vertical style="width:175px">
+              <n-select v-model:value="value" :options="options" :render-label="renderLabel"
+                :render-tag="renderSingleSelectTag" placeholder="Language" @update:value="changeLangEvent" />
+            </n-space>
+            <n-divider vertical />
+          </template>
+        </n-tabs>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+        <PageHeader v-model:collapsed="collapsed" :inverted="inverted" />
+      </NLayoutHeader>
+      <!-- 页面内容区域-->
+      <NLayoutContent>
+        <!-- 多标签组件-->
+        <TabsView v-if="isMultiTabs" v-model:collapsed="collapsed" />
+        <RouterView />
+      </NLayoutContent>
+    </NLayout>
+  </NLayout>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.n-layout-footer {
+  padding: 24px;
 }
 </style>
+
+<script>
+import { defineComponent, h } from "vue";
+import {
+  NImage
+} from "naive-ui";
+import { useI18n } from 'vue-i18n'
+
+export default defineComponent({
+  setup() {
+    const { t } = useI18n()
+    const renderSingleSelectTag = ({ option }) => {
+      return h(
+        "div",
+        {
+          style: {
+            display: "flex",
+            alignItems: "center"
+          }
+        },
+        [
+          h(NImage, {
+            src: option.img,
+            width: 25,
+            previewDisabled: true
+
+          }),
+          h(
+            "div",
+            {
+              style: {
+                marginLeft: "12px"
+              }
+            },
+            [
+              h("div", null, option.label)
+            ]
+          )
+        ]
+      );
+    };
+    const renderLabel = (option) => {
+      return h(
+        "div",
+        {
+          style: {
+            display: "flex",
+            alignItems: "center"
+          }
+        },
+        [
+          h(NImage, {
+            src: option.img,
+            width: 25,
+            previewDisabled: true
+          }),
+          h(
+            "div",
+            {
+              style: {
+                marginLeft: "12px"
+              }
+            },
+            [
+              h("div", null, option.label)
+            ]
+          )
+        ]
+      );
+    };
+    return {
+      value: 'zhcn',
+      t,
+      options: [
+        {
+          label: "简体中文",
+          value: "zhcn",
+          img: "https://flagcdn.com/40x30/cn.png"
+        },
+        {
+          label: "繁體中文",
+          value: "zhtw",
+          img: "https://flagcdn.com/40x30/tw.png"
+        },
+        {
+          label: "English",
+          value: "enus",
+          img: "https://flagcdn.com/40x30/gb.png"
+        },
+        {
+          label: "日本語",
+          value: "jajp",
+          img: "https://flagcdn.com/40x30/jp.png"
+        }
+      ],
+      renderSingleSelectTag,
+      renderLabel
+    };
+  },
+  methods: {
+    handleClick() { },
+    changeLangEvent(value) {
+      console.log(value)
+      switch (value) {
+        case 'zhcn':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'zhtw':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'enus':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'jajp':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        default:
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+      }
+    }
+  }
+});
+
+</script>
+

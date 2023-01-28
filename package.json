@@ -12,10 +12,13 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "naive-ui": "^2.34.3",
     "pinia": "^2.0.28",
+    "unplugin-auto-import": "^0.12.2",
     "vue": "^3.2.45",
-    "vue-cli-plugin-vuetify": "^2.5.8",
-    "vue-router": "^4.1.6"
+    "vue-i18n": "next",
+    "vue-router": "^4.1.6",
+    "xicons": "^1.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
@@ -25,8 +28,10 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.3",
+    "naive-ui": "^2.34.3",
     "start-server-and-test": "^1.15.2",
     "vite": "^4.0.0",
-    "vitest": "^0.25.6"
+    "vitest": "^0.25.6",
+    "xicons": "^1.0.0"
   }
 }
