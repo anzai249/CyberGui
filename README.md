@@ -1,14 +1,44 @@
-# Cyber-Gui
 
-This template should help get you started developing with Vue 3 in Vite.
+<h1 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="./public/favicon.png" alt="CyberGui" width="200"></a>
+  <br>
+  Cyber Gui
+  <br>
+</h1>
 
-## Recommended IDE Setup
+<h4 align="center">A lightweight anonymous question box.</h4>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<p align="center">
 
-## Customize configuration
+![NPM](https://img.shields.io/npm/l/naive-ui)
+[![Donate](https://img.shields.io/badge/%24-Donate-ff69b4)](https://www.paypal.me/MoriTokugawa)
+![AppVeyor tests](https://img.shields.io/appveyor/tests/anzai249/CyberGui)
+![GitHub Repo stars](https://img.shields.io/github/stars/anzai249/CyberGui?style=social)
+</p>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#project-setup">Project Setup</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p>
+
+![screenshot](./img/screenshot.png)
+
+The word "匭" is a box that the emperor accepts submissions from his people in order to correcting his mistakes.
+
+## Key Features
+
+* Lightweight - No redundancy features
+* Full anonymous
+  - No need to leave a email or other things involve your privacy.
+  - Random avatar color.
+* Multi language
+* Out of the box and ready to use
+  - SQLite
+  - No need to create an account
 
 ## Project Setup
 
@@ -55,3 +85,41 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+
+## Credits
+
+Thanks to:
+
+- [anzai249](http://electron.atom.io/)
+(It's me.)
+- [anzai249](http://electron.atom.io/)
+(Japanese translation.)
+
+This software uses the following open source packages:
+
+- [Node.js](https://nodejs.org/)
+- [Naive UI](https://www.naiveui.com)
+
+## Support
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B0668ZJ)
+
+![WeChat](./img/wechat.png)
+
+## Future Plan
+
+* Translation
+  - &#9745; Simplified Chinese
+  - &#9745; Traditional Chinese
+  - &#9745; English
+  - &#9744; Japanese
+
+- [ ] BackEnd Manager
+- [ ] Blur sensitive posts
+
+## License
+
+MIT
+
+---
