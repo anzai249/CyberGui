@@ -27,7 +27,7 @@
 
 ![screenshot](./img/screenshot.png)
 
-The word 匭(Gui) is a box that the emperor accepts submissions from his people in order to correcting his mistakes.
+The word 匭(Gui) is a box that the emperor accepts submissions from his people in order to correct his mistakes.
 
 ## Key Features
 
