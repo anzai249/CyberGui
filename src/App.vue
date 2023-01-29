@@ -2,7 +2,7 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <NLayout class="layout" :position="fixedMenu">
       <NLayout>
-        <NLayoutHeader :inverted="getHeaderInverted" :position="fixedHeader" bordered>
+        <NLayoutHeader :inverted="getHeaderInverted" :position="fixedHeader">
           <n-tabs :bar-width="35" type="line" animated size="large">
             <template #prefix>
               <n-divider vertical />
@@ -30,14 +30,13 @@
               <n-divider vertical />
             </template>
           </n-tabs>
-
           <PageHeader v-model:collapsed="collapsed" :inverted="inverted" />
         </NLayoutHeader>
         <!-- 页面内容区域-->
-        <NLayoutContent>
+        <NLayoutContent >
           <!-- 多标签组件-->
           <TabsView v-if="isMultiTabs" v-model:collapsed="collapsed" />
-          <RouterView />
+          <RouterView style="width:50%; align-self: center; left: 25%; position: fixed;"/>
         </NLayoutContent>
       </NLayout>
     </NLayout>
@@ -65,7 +64,8 @@ export default defineComponent({
   setup() {
     const themeOverrides = {
       common: {
-        primaryColor: '#8a2be2'
+        primaryColor: '#8a2be2',
+        primaryColorHover: "#8a2be2"
       }
     }
     const { t } = useI18n()
