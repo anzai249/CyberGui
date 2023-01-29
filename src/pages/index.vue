@@ -2,12 +2,12 @@
   <n-space vertical>
     <n-card>
       <template #header>
-        <n-divider v-if="loading" title-placement="left">
+        <n-divider v-if="loading" title-placement="left" style="top: -10px;">
           <n-skeleton v-if="loading" height="34px" circle />
         </n-divider>
         <n-skeleton v-if="loading" text width="60%" height="20px" />
         <template v-else>
-          <n-divider title-placement="left">
+          <n-divider title-placement="left" style="top: -10px;">
             <n-avatar round>
               <n-icon>
                 <person />
