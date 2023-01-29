@@ -2,6 +2,7 @@ export default {
     languageName:"简体中文",
     header: {
         archive: "所有提问",
-        about: "关于"
+        about: "关于",
+        addNew: "添加提问"
     }
 }
