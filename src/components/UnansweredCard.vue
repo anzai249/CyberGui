@@ -23,6 +23,10 @@ defineProps({
     loading: {
         type: Boolean,
         required: true
+    },
+    sensitive: {
+        type: Boolean,
+        required: true
     }
 })
 </script>
@@ -59,28 +63,36 @@ export default defineComponent({
                     </div>
                 </template>
             </template>
-            <n-skeleton v-if="loading" text :repeat="4" />
-            <template v-else>
-                <div class="test_div" style="word-wrap:break-word;">
-                    {{ msg }}
-                </div>
-            </template>
             <n-space vertical>
-                <n-space justify="end">
-                    <n-skeleton v-if="loading" :width="90" round size="small" />
-                    <n-button v-else style="font-size: 20px; width:90px" round size="small">
-                        <n-icon>
-                            <heart />
-                        </n-icon>
-                        {{ likes }}
-                    </n-button>
-                    <n-skeleton v-if="loading" :width="90" round size="small" />
-                    <n-button v-else style="font-size: 20px; width:90px" round size="small">
-                        <n-icon>
-                            <HeartDislike />
-                        </n-icon>
-                        {{ dislikes }}
-                    </n-button>
+                <n-skeleton v-if="loading" text :repeat="4" />
+                <template v-else>
+                    <div class="test_div" style="word-wrap:break-word;">
+                        {{ msg }}
+                    </div>
+                </template>
+                <n-space vertical>
+                    <n-space justify="space-between" size="large" style="height: 28px;">
+                        <n-skeleton v-if="loading" :width="75" text style="top:15%; position: relative;" />
+                        <div v-else style="color: rgba(204, 204, 204, 1); top:15%; position: relative;">
+                            {{ time }}
+                        </div>
+                        <n-space justify="end">
+                            <n-skeleton v-if="loading" :width="90" round size="small" />
+                            <n-button v-else style="font-size: 20px; width:90px" round size="small">
+                                <n-icon>
+                                    <heart />
+                                </n-icon>
+                                {{ likes }}
+                            </n-button>
+                            <n-skeleton v-if="loading" :width="90" round size="small" />
+                            <n-button v-else style="font-size: 20px; width:90px" round size="small">
+                                <n-icon>
+                                    <HeartDislike />
+                                </n-icon>
+                                {{ dislikes }}
+                            </n-button>
+                        </n-space>
+                    </n-space>
                 </n-space>
             </n-space>
         </n-card>

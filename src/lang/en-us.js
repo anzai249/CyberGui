@@ -1,5 +1,5 @@
 export default {
-    languageName: "English",
+    languageName: "English",  // Please change this to the target language.
     header: {
         archive: "Archive",
         about: "About",
