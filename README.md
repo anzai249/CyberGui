@@ -21,7 +21,7 @@
   <a href="#key-features">Key Features</a> •
   <a href="#project-setup">Project Setup</a> •
   <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
+  <a href="#future-plan">Future Plan</a> •
   <a href="#license">License</a>
 </p>
 
@@ -101,22 +101,24 @@ This software uses the following open source packages:
 - [Node.js](https://nodejs.org/)
 - [Naive UI](https://www.naiveui.com)
 
+## Future Plan
+
+* Translation
+  - [x] Simplified Chinese
+  - [x] Traditional Chinese
+  - [x] English
+  - [ ] Japanese
+
+- [ ] BackEnd Manager
+- [ ] Blur sensitive posts
+
 ## Support
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B0668ZJ)
 
-![WeChat](./img/wechat.png)
+or
 
-## Future Plan
-
-* Translation
-  - &#9745; Simplified Chinese
-  - &#9745; Traditional Chinese
-  - &#9745; English
-  - &#9744; Japanese
-
-- [ ] BackEnd Manager
-- [ ] Blur sensitive posts
+<img src="./img/wechat.png" width="300px"></img>
 
 ## License
 
