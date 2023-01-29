@@ -14,7 +14,7 @@
             <n-tab-pane name="about" :tab="$t('header.about')">
             </n-tab-pane>
             <template #suffix>
-              <n-button ghost color="#8a2be2">
+              <n-button ghost color="#8a2be2" @click="active = true">
                 <template #icon>
                   <n-icon>
                     <add-icon />
@@ -32,14 +32,37 @@
           </n-tabs>
           <PageHeader v-model:collapsed="collapsed" :inverted="inverted" />
         </NLayoutHeader>
-        <!-- 页面内容区域-->
-        <NLayoutContent >
-          <!-- 多标签组件-->
-          <TabsView v-if="isMultiTabs" v-model:collapsed="collapsed" />
-          <RouterView style="width:50%; align-self: center; left: 25%; position: fixed;"/>
+        <NLayoutContent>
+          <RouterView style="width:50%; align-self: center; left: 25%; position: fixed;" />
         </NLayoutContent>
       </NLayout>
     </NLayout>
+    <n-drawer v-model:show="active" :width="500" placement="right">
+      <n-drawer-content :title="$t('header.addNew')">
+        <n-form>
+          <n-form-item>
+            <div style="left: 50%; width: auto;">
+              <n-space vertical align="center" >
+                <n-input round v-model:title="title" :placeholder="$t('addNew.title')" show-count :maxlength="12"
+                  :count-graphemes="countGraphemes" style="width: 450px;"/>
+                <n-input round v-model:detail="detail" type="textarea" :placeholder="$t('addNew.detail')" style="width: 450px;"/>
+                <n-switch v-model:sensitive="sensitive" >
+                  <template #checked>
+                    {{ $t('addNew.sensitiveTrue') }}
+                  </template>
+                  <template #unchecked>
+                    {{ $t('addNew.sensitiveFalse') }}
+                  </template>
+                </n-switch>
+                <n-button type="primary" ghost style="width: 150px;">
+                  {{ $t('addNew.submit') }}
+                </n-button>
+              </n-space>
+            </div>
+          </n-form-item>
+        </n-form>
+      </n-drawer-content>
+    </n-drawer>
   </n-config-provider>
 </template>
 
@@ -50,7 +73,7 @@
 </style>
 
 <script>
-import { defineComponent, h } from "vue";
+import { defineComponent, h, ref } from "vue";
 import {
   NImage
 } from "naive-ui";
@@ -62,6 +85,7 @@ export default defineComponent({
     addIcon
   },
   setup() {
+    const active = ref(false);
     const themeOverrides = {
       common: {
         primaryColor: '#8a2be2',
@@ -129,6 +153,7 @@ export default defineComponent({
       );
     };
     return {
+      active,
       themeOverrides,
       value: 'zhcn',
       t,
@@ -159,7 +184,13 @@ export default defineComponent({
     };
   },
   methods: {
-    handleClick() { },
+    handleClick() {
+
+    },
+    activateAdd() {
+      active.value = true;
+      placement.value = "bottom";
+    },
     changeLangEvent(value) {
       console.log(value)
       switch (value) {
