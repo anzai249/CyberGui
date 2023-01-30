@@ -11,5 +11,8 @@ export default {
         sensitiveTrue: "Include Sensitive Content",
         sensitiveFalse: "No Sensitive Content",
         submit: "Submit"
+    },
+    card:{
+        showSensitive:"Show Sensitive Content"
     }
 }

@@ -11,5 +11,8 @@ export default {
         sensitiveTrue: "包含敏感内容",
         sensitiveFalse: "没有敏感内容",
         submit: "提交"
+    },
+    card:{
+        showSensitive:"显示敏感内容"
     }
 }
