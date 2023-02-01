@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">A lightweight anonymous question box.</h4>
+<h4 align="center">A clean personal anonymous question box.</h4>
 
 <p align="center">
 
