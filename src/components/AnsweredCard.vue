@@ -55,14 +55,10 @@ export default defineComponent({
         if (this.sensitive) {
             return {
                 blurRate: '5px',
-                pointerEve: 'auto',
-                sensiSwitch: true
             }
         } else {
             return {
                 blurRate: '0px',
-                pointerEve: 'auto',
-                sensiSwitch: false
             }
         }
     },
@@ -73,8 +69,6 @@ export default defineComponent({
         showSensi() {
             console.log('123')
             this.blurRate = '0px'
-            this.pointerEve = 'auto'
-            this.sensiSwitch = false
         }
     }
 })
