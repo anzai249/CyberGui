@@ -55,7 +55,7 @@ export default defineComponent({
         if (this.sensitive) {
             return {
                 blurRate: '5px',
-                pointerEve: 'none',
+                pointerEve: 'auto',
                 sensiSwitch: true
             }
         } else {
@@ -73,7 +73,7 @@ export default defineComponent({
         showSensi() {
             console.log('123')
             this.blurRate = '0px'
-            this.pointerEve = 'suto'
+            this.pointerEve = 'auto'
             this.sensiSwitch = false
         }
     }
@@ -102,7 +102,7 @@ export default defineComponent({
 <template>
     <div class="cardAll">
         <n-space vertical>
-            <n-card ref="card" class="mask">
+            <n-card ref="card" class="mask" @click="showSensi()">
                 <template #header>
                     <n-divider v-if="loading" title-placement="left" style="top: -10px;">
                         <n-skeleton v-if="loading" height="34px" circle />
@@ -165,8 +165,5 @@ export default defineComponent({
                 </n-space>
             </n-card>
         </n-space>
-        <n-button v-if="sensiSwitch" strong secondary type="primary" @click="showSensi()">
-            {{ $t('card.showSensitive') }}
-        </n-button>
     </div>
 </template>
