@@ -62,12 +62,18 @@ export default defineComponent({
             }
         }
     },
-    setup() {
-
+    setup(pink) {
+        colors = ['pink', 'green', 'blue', 'red']
+        const randomColor = ref(Math.floor(Math.random() * colors.length + 1) - 1)
+        return{
+            pink:'pink'
+        }
+    },
+    mounted(){
+        console.log(this.colors)
     },
     methods: {
         showSensi() {
-            console.log('123')
             this.blurRate = '0px'
         }
     }
@@ -104,7 +110,9 @@ export default defineComponent({
                     <n-skeleton v-if="loading" text width="60%" height="20px" />
                     <template v-else>
                         <n-divider title-placement="left" style="top: -10px;">
-                            <n-avatar round>
+                            <n-avatar round :style="{
+                              backgroundColor: this.pink
+                            }">
                                 <n-icon>
                                     <person />
                                 </n-icon>
