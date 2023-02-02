@@ -2,7 +2,8 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <n-layout position="absolute">
       <n-layout-header style="height: 53px;" bordered>
-        <n-tabs :bar-width="35" type="line" animated size="large">
+        <n-tabs :bar-width="35" type="line" animated size="large"
+          @update:value="handleBeforeLeave" default-value="archive">
           <template #prefix>
             <n-divider vertical />
             <img width="150" src="@/assets/logo.png" />
@@ -30,7 +31,7 @@
           </template>
         </n-tabs>
       </n-layout-header>
-      <n-layout position="absolute"  style="top: 53px; bottom: 0px">
+      <n-layout position="absolute" style="top: 53px; bottom: 0px">
         <RouterView />
       </n-layout>
     </n-layout>
@@ -72,17 +73,17 @@
 
 <script>
 import { defineComponent, h, ref } from "vue";
-import {
-  NImage
-} from "naive-ui";
+import { NImage } from "naive-ui";
 import { useI18n } from 'vue-i18n'
 import { Add as addIcon } from '@vicons/ionicons5'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   components: {
     addIcon
   },
   setup() {
+    const router = useRouter()
     const active = ref(false);
     const themeOverrides = {
       common: {
@@ -178,7 +179,19 @@ export default defineComponent({
         }
       ],
       renderSingleSelectTag,
-      renderLabel
+      renderLabel,
+      handleBeforeLeave: (tabName) => {
+        switch (tabName) {
+          case "archive":
+            router.push('/')
+            return true;
+          case "about":
+            router.push('/about')
+            return true;
+          default:
+            return true;
+        }
+      }
     };
   },
   methods: {
@@ -190,7 +203,6 @@ export default defineComponent({
       placement.value = "bottom";
     },
     changeLangEvent(value) {
-      console.log(value)
       switch (value) {
         case 'zhcn':
           this.lang = value;
