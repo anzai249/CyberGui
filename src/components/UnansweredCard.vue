@@ -29,6 +29,8 @@ defineProps({
         required: true
     }
 })
+const colors = ['#00c6fb', '#ff9a9e', '#fecfef', '#fbc2eb', '#d4fc79', '#a1c4fd', '#c3cfe2','#764ba2','#f43b47']
+const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 </script>
 
 <script>
@@ -100,7 +102,9 @@ export default defineComponent({
                     <n-skeleton v-if="loading" text width="60%" height="20px" />
                     <template v-else>
                         <n-divider title-placement="left" style="top: -10px;">
-                            <n-avatar round>
+                            <n-avatar round :style="{
+                              backgroundColor: colors[randomColor]
+                            }">
                                 <n-icon>
                                     <person />
                                 </n-icon>

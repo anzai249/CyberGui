@@ -1,4 +1,6 @@
 <script setup>
+import { defineComponent, ref } from 'vue'
+import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 defineProps({
     title: {
         type: String,
@@ -33,11 +35,11 @@ defineProps({
         required: true
     }
 })
+const colors = ['#00c6fb', '#ff9a9e', '#fecfef', '#fbc2eb', '#d4fc79', '#a1c4fd', '#c3cfe2','#764ba2','#f43b47']
+const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 </script>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 
 export default defineComponent({
     props: {
@@ -62,15 +64,8 @@ export default defineComponent({
             }
         }
     },
-    setup(pink) {
-        colors = ['pink', 'green', 'blue', 'red']
-        const randomColor = ref(Math.floor(Math.random() * colors.length + 1) - 1)
-        return{
-            pink:'pink'
-        }
-    },
-    mounted(){
-        console.log(this.colors)
+
+    setup() {
     },
     methods: {
         showSensi() {
@@ -78,6 +73,8 @@ export default defineComponent({
         }
     }
 })
+
+
 </script>
 
 <style>
@@ -111,7 +108,7 @@ export default defineComponent({
                     <template v-else>
                         <n-divider title-placement="left" style="top: -10px;">
                             <n-avatar round :style="{
-                              backgroundColor: this.pink
+                              backgroundColor: colors[randomColor]
                             }">
                                 <n-icon>
                                     <person />
