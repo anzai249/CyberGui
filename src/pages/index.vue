@@ -1,6 +1,6 @@
 <template>
   <n-layout>
-    <n-layout-content content-style="padding: 30px; width: 75%;" style="justify-content: center; display: flex;">
+    <n-layout-content content-style="padding: 30px; width: 80%;" style="justify-content: center; display: flex;">
       <n-switch v-model:value="loading">
         <template #checked>
           Skel

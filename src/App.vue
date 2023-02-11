@@ -2,11 +2,11 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <n-layout position="absolute">
       <n-layout-header style="height: 53px;" bordered>
-        <n-tabs :bar-width="35" type="line" animated size="large"
-          @update:value="handleBeforeLeave" default-value="archive">
+        <n-tabs :bar-width="35" type="line" animated size="large" @update:value="handleBeforeLeave"
+          default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
-            <img width="150" src="@/assets/logo.png" />
+            <img height="53" src="@/assets/logo.png" />
             <n-divider vertical />
           </template>
           <n-tab-pane name="archive" :tab="$t('header.archive')">
@@ -30,13 +30,35 @@
             <n-divider vertical />
           </template>
         </n-tabs>
+        <n-tabs class="mobile">
+          <template #prefix>
+            <n-divider vertical />
+            <img height="53" src="@/assets/logoMobile.png" />
+            <n-divider vertical />
+          </template>
+          <template #suffix>
+            <n-button ghost color="#8a2be2" @click="menuActive = true">
+              <template #icon>
+                <n-icon>
+                  <ReorderThreeSharp />
+                </n-icon>
+              </template>
+            </n-button>
+            <n-divider vertical />
+          </template>
+        </n-tabs>
       </n-layout-header>
       <n-layout position="absolute" style="top: 53px; bottom: 0px">
         <RouterView />
       </n-layout>
     </n-layout>
+    <n-drawer v-model:show="menuActive" :width="502" :placement="right">
+      <n-drawer-content closable>
+        手机端菜单，妮可妮可妮
+      </n-drawer-content>
+    </n-drawer>
     <n-drawer v-model:show="active" :width="500" placement="right">
-      <n-drawer-content :title="$t('header.addNew')">
+      <n-drawer-content :title="$t('header.addNew')" closable>
         <n-form>
           <n-form-item>
             <div style="left: 50%; width: auto;">
@@ -69,22 +91,36 @@
 .n-layout-footer {
   padding: 24px;
 }
+
+@media (min-width: 650px) {
+  .mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .notMobile {
+    display: none;
+  }
+}
 </style>
 
 <script>
 import { defineComponent, h, ref } from "vue";
 import { NImage } from "naive-ui";
 import { useI18n } from 'vue-i18n'
-import { Add as addIcon } from '@vicons/ionicons5'
+import { Add as addIcon, ReorderThreeSharp } from '@vicons/ionicons5'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
   components: {
-    addIcon
+    addIcon,
+    ReorderThreeSharp
   },
   setup() {
     const router = useRouter()
     const active = ref(false);
+    const menuActive = ref(false);
     const themeOverrides = {
       common: {
         primaryColor: '#8a2be2',
@@ -153,6 +189,7 @@ export default defineComponent({
     };
     return {
       active,
+      menuActive,
       themeOverrides,
       value: 'zhcn',
       t,
@@ -200,7 +237,9 @@ export default defineComponent({
     },
     activateAdd() {
       active.value = true;
-      placement.value = "bottom";
+    },
+    activateMenu() {
+      menuActive.value = true;
     },
     changeLangEvent(value) {
       switch (value) {
