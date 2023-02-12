@@ -65,8 +65,8 @@
         </n-button>
         <n-divider vertical />
         <n-space vertical style="width:175px">
-          <n-select v-model:value="valueMobile" :options="options" :render-label="renderLabel"
-            :render-tag="renderSingleSelectTag" placeholder="Language" @update:value="changeLangMobile" />
+          <n-select v-model:value="value" :options="options" :render-label="renderLabel"
+            :render-tag="renderSingleSelectTag" placeholder="Language" @update:value="changeLangEvent" />
         </n-space>
       </n-drawer-content>
     </n-drawer>
@@ -134,6 +134,7 @@ export default defineComponent({
     const router = useRouter()
     const active = ref(false);
     const menuActive = ref(false);
+    const value = ref("zhcn");
     const themeOverrides = {
       common: {
         primaryColor: '#8a2be2',
@@ -204,8 +205,7 @@ export default defineComponent({
       active,
       menuActive,
       themeOverrides,
-      value: 'zhcn',
-      valueMobile: 'zhcn',
+      value,
       t,
       options: [
         {
@@ -248,31 +248,6 @@ export default defineComponent({
   methods: {
     changeLangEvent(value) {
       this.valueMobile = value
-      switch (value) {
-        case 'zhcn':
-          this.lang = value;
-          this.$i18n.locale = this.lang;
-          break;
-        case 'zhtw':
-          this.lang = value;
-          this.$i18n.locale = this.lang;
-          break;
-        case 'enus':
-          this.lang = value;
-          this.$i18n.locale = this.lang;
-          break;
-        case 'jajp':
-          this.lang = value;
-          this.$i18n.locale = this.lang;
-          break;
-        default:
-          this.lang = value;
-          this.$i18n.locale = this.lang;
-          break;
-      }
-    },
-    changeLangMobile(value) {
-      this.value = value
       switch (value) {
         case 'zhcn':
           this.lang = value;
