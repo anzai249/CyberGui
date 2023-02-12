@@ -52,34 +52,46 @@
         <RouterView />
       </n-layout>
     </n-layout>
-    <n-drawer v-model:show="menuActive" :width="502" :placement="right">
+    <!-- Mobile Header Menu -->
+    <n-drawer v-model:show="menuActive" :width="350" :placement="right">
       <n-drawer-content closable>
-        <!-- Mobile Header Menu Here -->
-        <n-button ghost color="#8a2be2" @click="active = true">
-          <template #icon>
-            <n-icon>
-              <add-icon />
-            </n-icon>
-          </template>
-          {{ $t('header.addNew') }}
-        </n-button>
-        <n-divider vertical />
-        <n-space vertical style="width:175px">
-          <n-select v-model:value="value" :options="options" :render-label="renderLabel"
-            :render-tag="renderSingleSelectTag" placeholder="Language" @update:value="changeLangEvent" />
+        <!-- Mobile Header Menu Content Here -->
+        <n-space vertical align="center">
+          <n-button-group size="large">
+            <n-button type="default" round @click="$router.push('/')">
+              {{ $t('header.archive') }}
+            </n-button>
+            <n-button type="default" round @click="$router.push('/about')">
+              {{ $t('header.about') }}
+            </n-button>
+          </n-button-group>
+          <n-divider />
+          <n-button ghost color="#8a2be2" @click="active = true" style="width: 150px;">
+            <template #icon>
+              <n-icon>
+                <add-icon />
+              </n-icon>
+            </template>
+            {{ $t('header.addNew') }}
+          </n-button>
+          <n-space vertical style="width:175px">
+            <n-select v-model:value="value" :options="options" :render-label="renderLabel"
+              :render-tag="renderSingleSelectTag" placeholder="Language" @update:value="changeLangEvent" />
+          </n-space>
         </n-space>
       </n-drawer-content>
     </n-drawer>
-    <n-drawer v-model:show="active" :width="500" placement="right">
+    <!-- Add New Drawer Menu -->
+    <n-drawer v-model:show="active" :width="450" placement="right">
       <n-drawer-content :title="$t('header.addNew')" closable>
         <n-form>
           <n-form-item>
             <div style="left: 50%; width: auto;">
               <n-space vertical align="center">
                 <n-input round v-model:title="title" :placeholder="$t('addNew.title')" show-count :maxlength="12"
-                  :count-graphemes="countGraphemes" style="width: 450px;" />
+                  :count-graphemes="countGraphemes" style="width: 400px;" />
                 <n-input round v-model:detail="detail" type="textarea" :placeholder="$t('addNew.detail')"
-                  style="width: 450px;" />
+                  style="width: 400px;" />
                 <n-switch v-model:sensitive="sensitive">
                   <template #checked>
                     {{ $t('addNew.sensitiveTrue') }}
@@ -89,6 +101,11 @@
                   </template>
                 </n-switch>
                 <n-button type="primary" ghost style="width: 150px;">
+                  <template #icon>
+                    <n-icon>
+                      <Checkmark />
+                    </n-icon>
+                  </template>
                   {{ $t('addNew.submit') }}
                 </n-button>
               </n-space>
@@ -122,13 +139,14 @@
 import { defineComponent, h, ref } from "vue";
 import { NImage } from "naive-ui";
 import { useI18n } from 'vue-i18n'
-import { Add as addIcon, ReorderThreeSharp } from '@vicons/ionicons5'
-import { useRouter } from 'vue-router'
+import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
+import { useRouter } from "vue-router"
 
 export default defineComponent({
   components: {
     addIcon,
-    ReorderThreeSharp
+    ReorderThreeSharp,
+    Checkmark
   },
   setup() {
     const router = useRouter()
