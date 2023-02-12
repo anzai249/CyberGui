@@ -54,7 +54,20 @@
     </n-layout>
     <n-drawer v-model:show="menuActive" :width="502" :placement="right">
       <n-drawer-content closable>
-        手机端菜单，妮可妮可妮
+        <!-- Mobile Header Menu Here -->
+        <n-button ghost color="#8a2be2" @click="active = true">
+          <template #icon>
+            <n-icon>
+              <add-icon />
+            </n-icon>
+          </template>
+          {{ $t('header.addNew') }}
+        </n-button>
+        <n-divider vertical />
+        <n-space vertical style="width:175px">
+          <n-select v-model:value="valueMobile" :options="options" :render-label="renderLabel"
+            :render-tag="renderSingleSelectTag" placeholder="Language" @update:value="changeLangMobile" />
+        </n-space>
       </n-drawer-content>
     </n-drawer>
     <n-drawer v-model:show="active" :width="500" placement="right">
@@ -128,7 +141,7 @@ export default defineComponent({
       }
     }
     const { t } = useI18n()
-    const renderSingleSelectTag = ({ option }) => {
+    const renderSingleSelectTag = ref(({ option }) => {
       return h(
         "div",
         {
@@ -157,8 +170,8 @@ export default defineComponent({
           )
         ]
       );
-    };
-    const renderLabel = (option) => {
+    });
+    const renderLabel = ref((option) => {
       return h(
         "div",
         {
@@ -186,12 +199,13 @@ export default defineComponent({
           )
         ]
       );
-    };
+    });
     return {
       active,
       menuActive,
       themeOverrides,
       value: 'zhcn',
+      valueMobile: 'zhcn',
       t,
       options: [
         {
@@ -232,16 +246,33 @@ export default defineComponent({
     };
   },
   methods: {
-    handleClick() {
-
-    },
-    activateAdd() {
-      active.value = true;
-    },
-    activateMenu() {
-      menuActive.value = true;
-    },
     changeLangEvent(value) {
+      this.valueMobile = value
+      switch (value) {
+        case 'zhcn':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'zhtw':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'enus':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'jajp':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        default:
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+      }
+    },
+    changeLangMobile(value) {
+      this.value = value
       switch (value) {
         case 'zhcn':
           this.lang = value;
