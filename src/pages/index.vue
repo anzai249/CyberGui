@@ -1,6 +1,6 @@
 <template>
   <n-layout>
-    <n-layout-content content-style="padding: 30px; width: 80%;" style="justify-content: center; display: flex;">
+    <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
       <n-switch v-model:value="loading">
         <template #checked>
           Skel
@@ -68,6 +68,7 @@
     <n-layout-footer class="innerFooter">
 
     </n-layout-footer>
+  
   </n-layout>
 </template>
   
@@ -100,5 +101,17 @@ body {
 .innerFooter {
   background: rgba(128, 128, 128, 0.2);
   padding: 24px;
+}
+
+@media (max-width: 650px) {
+  .cardContainer {
+    width:100%;
+  }
+}
+
+@media (min-width: 650px) {
+  .cardContainer {
+    width:80%;
+  }
 }
 </style>
