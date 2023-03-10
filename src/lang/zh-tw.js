@@ -21,5 +21,9 @@ export default {
         author:"作者",
         github:"Github",
         email:"電子郵箱"
+    },
+    terminal:{
+        answer:"你的回答",
+        delete:"刪除"
     }
 }

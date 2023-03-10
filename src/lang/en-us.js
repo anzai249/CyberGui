@@ -21,5 +21,9 @@ export default {
         author:"Author",
         github:"Github",
         email:"Email"
+    },
+    terminal:{
+        answer:"Your answer here...",
+        delete:"Delete"
     }
 }

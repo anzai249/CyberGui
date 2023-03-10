@@ -88,9 +88,9 @@
           <n-form-item>
             <div style="left: 50%; width: auto;">
               <n-space vertical align="center">
-                <n-input round v-model:title="title" :placeholder="$t('addNew.title')" show-count :maxlength="12"
+                <n-input round v-model:title="title" :placeholder="$t('addNew.title')" show-count :maxlength="15"
                   :count-graphemes="countGraphemes" style="width: 400px;" />
-                <n-input round v-model:detail="detail" type="textarea" :placeholder="$t('addNew.detail')"
+                <n-input round v-model:detail="detail" type="textarea" :placeholder="$t('addNew.detail')" show-count :maxlength="120"
                   style="width: 400px;" />
                 <n-switch v-model:sensitive="sensitive">
                   <template #checked>
