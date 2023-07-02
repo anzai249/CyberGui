@@ -1,0 +1,527 @@
+{
+  "config": {
+    "session": {
+      "maxAge": 86400000,
+      "key": "EGG_SESS",
+      "httpOnly": true,
+      "encrypt": true,
+      "logValue": true,
+      "overwrite": true,
+      "signed": true,
+      "autoCommit": true,
+      "encode": "<Function encode>",
+      "decode": "<Function decode>",
+      "genid": "<Function v4>"
+    },
+    "security": {
+      "domainWhiteList": [],
+      "protocolWhiteList": [],
+      "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
+      "csrf": {
+        "enable": true,
+        "type": "ctoken",
+        "ignoreJSON": false,
+        "useSession": false,
+        "cookieName": "csrfToken",
+        "sessionName": "csrfToken",
+        "headerName": "x-csrf-token",
+        "bodyName": "_csrf",
+        "queryName": "_csrf",
+        "supportedRequests": [
+          {
+            "path": {},
+            "methods": [
+              "POST",
+              "PATCH",
+              "DELETE",
+              "PUT",
+              "CONNECT"
+            ]
+          }
+        ],
+        "refererWhiteList": [],
+        "matching": "<Function anonymous>"
+      },
+      "xframe": {
+        "enable": true,
+        "value": "SAMEORIGIN",
+        "matching": "<Function anonymous>"
+      },
+      "hsts": {
+        "enable": false,
+        "maxAge": 31536000,
+        "includeSubdomains": false
+      },
+      "dta": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "methodnoallow": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "noopen": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "nosniff": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "referrerPolicy": {
+        "enable": false,
+        "value": "no-referrer-when-downgrade"
+      },
+      "xssProtection": {
+        "enable": true,
+        "value": "1; mode=block",
+        "matching": "<Function anonymous>"
+      },
+      "csp": {
+        "enable": false,
+        "policy": {}
+      },
+      "ssrf": {
+        "ipBlackList": null,
+        "ipExceptionList": null,
+        "checkAddress": null
+      },
+      "_protocolWhiteListSet": "<Set>"
+    },
+    "helper": {
+      "shtml": {}
+    },
+    "jsonp": {
+      "limit": 50,
+      "callback": [
+        "_callback",
+        "callback"
+      ],
+      "csrf": false
+    },
+    "onerror": {
+      "errorPageUrl": "",
+      "appErrorFilter": null,
+      "templatePath": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-onerror@2.2.0\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+    },
+    "i18n": {
+      "defaultLocale": "en_US",
+      "dirs": [
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-jsonp@2.0.0\\node_modules\\egg-jsonp\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-onerror@2.2.0\\node_modules\\egg-onerror\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-schedule@4.0.0\\node_modules\\egg-schedule\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\locales",
+        "E:\\Projects\\Website\\CyberGui\\server\\config\\locales"
+      ],
+      "queryField": "locale",
+      "cookieField": "locale",
+      "cookieDomain": "",
+      "cookieMaxAge": "1y",
+      "functionName": "__"
+    },
+    "watcher": {
+      "type": "development",
+      "eventSources": {
+        "default": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+      }
+    },
+    "customLogger": {
+      "scheduleLogger": {
+        "consoleLevel": "NONE",
+        "file": "egg-schedule.log"
+      }
+    },
+    "schedule": {
+      "directory": []
+    },
+    "multipart": {
+      "mode": "stream",
+      "autoFields": false,
+      "defaultCharset": "utf8",
+      "defaultParamCharset": "utf8",
+      "fieldNameSize": 100,
+      "fieldSize": 102400,
+      "fields": 10,
+      "fileSize": 10485760,
+      "files": 10,
+      "fileExtensions": [],
+      "whitelist": null,
+      "allowArrayField": false,
+      "tmpdir": "C:\\Users\\a3818\\AppData\\Local\\Temp\\egg-multipart-tmp\\cybergui-server",
+      "cleanSchedule": {
+        "cron": "0 30 4 * * *",
+        "disable": false
+      },
+      "checkFile": "<Function anonymous>"
+    },
+    "development": {
+      "watchDirs": [],
+      "ignoreDirs": [],
+      "fastReady": false,
+      "reloadOnDebug": true,
+      "overrideDefault": false,
+      "overrideIgnore": false
+    },
+    "logrotator": {
+      "filesRotateByHour": null,
+      "hourDelimiter": "-",
+      "filesRotateBySize": null,
+      "maxFileSize": 52428800,
+      "maxFiles": 10,
+      "rotateDuration": 60000,
+      "maxDays": 31
+    },
+    "static": {
+      "prefix": "/public/",
+      "dir": "E:\\Projects\\Website\\CyberGui\\server\\app\\public",
+      "dynamic": true,
+      "preload": false,
+      "buffer": false,
+      "maxFiles": 1000
+    },
+    "view": {
+      "root": "E:\\Projects\\Website\\CyberGui\\server\\app\\view",
+      "cache": false,
+      "defaultExtension": ".html",
+      "defaultViewEngine": "",
+      "mapping": {}
+    },
+    "env": "local",
+    "name": "cybergui-server",
+    "keys": "<String len: 22>",
+    "cookies": {},
+    "proxy": false,
+    "maxIpsCount": 0,
+    "maxProxyCount": 0,
+    "protocolHeaders": "x-forwarded-proto",
+    "ipHeaders": "x-forwarded-for",
+    "hostHeaders": "",
+    "pkg": {
+      "name": "cybergui-server",
+      "version": "1.0.0",
+      "description": "",
+      "main": "server.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "dev": "egg-bin dev"
+      },
+      "author": "anzai249",
+      "license": "MIT",
+      "dependencies": {
+        "dompurify": "^3.0.4",
+        "egg": "^3.17.3",
+        "jsdom": "^22.1.0"
+      },
+      "devDependencies": {
+        "egg-bin": "^6.4.1"
+      }
+    },
+    "baseDir": "E:\\Projects\\Website\\CyberGui\\server",
+    "HOME": "C:\\Users\\a3818",
+    "rundir": "E:\\Projects\\Website\\CyberGui\\server\\run",
+    "dump": {
+      "ignore": "<Set>",
+      "timing": {
+        "slowBootActionMinDuration": 5000
+      }
+    },
+    "confusedConfigurations": {
+      "bodyparser": "bodyParser",
+      "notFound": "notfound",
+      "sitefile": "siteFile",
+      "middlewares": "middleware",
+      "httpClient": "httpclient"
+    },
+    "notfound": {
+      "pageUrl": ""
+    },
+    "siteFile": {
+      "/favicon.ico": "<Buffer len: 6463>",
+      "cacheControl": "public, max-age=2592000"
+    },
+    "bodyParser": {
+      "enable": true,
+      "encoding": "utf8",
+      "formLimit": "1mb",
+      "jsonLimit": "1mb",
+      "textLimit": "1mb",
+      "strict": true,
+      "queryString": {
+        "arrayLimit": 100,
+        "depth": 5,
+        "parameterLimit": 1000
+      },
+      "returnRawBody": true
+    },
+    "logger": {
+      "dir": "E:\\Projects\\Website\\CyberGui\\server\\logs\\cybergui-server",
+      "encoding": "utf8",
+      "env": "local",
+      "level": "INFO",
+      "consoleLevel": "INFO",
+      "disableConsoleAfterReady": false,
+      "outputJSON": false,
+      "buffer": true,
+      "appLogName": "cybergui-server-web.log",
+      "coreLogName": "egg-web.log",
+      "agentLogName": "egg-agent.log",
+      "errorLogName": "common-error.log",
+      "coreLogger": {
+        "consoleLevel": "WARN"
+      },
+      "allowDebugAtProd": false,
+      "enablePerformanceTimer": false,
+      "enableFastContextLogger": false,
+      "type": "application",
+      "localStorage": "<AsyncLocalStorage>"
+    },
+    "httpclient": {
+      "enableDNSCache": false,
+      "dnsCacheLookupInterval": 10000,
+      "dnsCacheMaxLength": 1000,
+      "request": {
+        "timeout": 5000
+      },
+      "httpAgent": {
+        "keepAlive": true,
+        "freeSocketTimeout": 4000,
+        "maxSockets": 9007199254740991,
+        "maxFreeSockets": 256
+      },
+      "httpsAgent": {
+        "keepAlive": true,
+        "freeSocketTimeout": 4000,
+        "maxSockets": 9007199254740991,
+        "maxFreeSockets": 256
+      },
+      "useHttpClientNext": false
+    },
+    "meta": {
+      "enable": true,
+      "logging": false
+    },
+    "coreMiddleware": [
+      "meta",
+      "siteFile",
+      "notfound",
+      "static",
+      "bodyParser",
+      "overrideMethod",
+      "session",
+      "securities",
+      "i18n",
+      "eggLoaderTrace"
+    ],
+    "workerStartTimeout": 600000,
+    "serverTimeout": null,
+    "cluster": {
+      "listen": {
+        "path": "",
+        "port": 7001,
+        "hostname": ""
+      }
+    },
+    "clusterClient": {
+      "maxWaitTime": 60000,
+      "responseTimeout": 60000
+    },
+    "onClientError": null,
+    "coreMiddlewares": "~config~coreMiddleware",
+    "appMiddlewares": [],
+    "appMiddleware": "~config~appMiddlewares"
+  },
+  "plugins": {
+    "onerror": {
+      "enable": true,
+      "package": "egg-onerror",
+      "name": "onerror",
+      "dependencies": [],
+      "optionalDependencies": [
+        "jsonp"
+      ],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-onerror@2.2.0\\node_modules\\egg-onerror",
+      "version": "2.2.0"
+    },
+    "session": {
+      "enable": true,
+      "package": "egg-session",
+      "name": "session",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session",
+      "version": "3.3.0"
+    },
+    "i18n": {
+      "enable": true,
+      "package": "egg-i18n",
+      "name": "i18n",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n",
+      "version": "2.1.1"
+    },
+    "watcher": {
+      "enable": true,
+      "package": "egg-watcher",
+      "name": "watcher",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher",
+      "version": "3.1.1",
+      "dependents": [
+        "development"
+      ]
+    },
+    "multipart": {
+      "enable": true,
+      "package": "egg-multipart",
+      "name": "multipart",
+      "dependencies": [],
+      "optionalDependencies": [
+        "schedule"
+      ],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart",
+      "version": "3.3.0"
+    },
+    "security": {
+      "enable": true,
+      "package": "egg-security",
+      "name": "security",
+      "dependencies": [],
+      "optionalDependencies": [
+        "session"
+      ],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security",
+      "version": "3.0.0"
+    },
+    "development": {
+      "enable": true,
+      "package": "egg-development",
+      "name": "development",
+      "dependencies": [
+        "watcher"
+      ],
+      "optionalDependencies": [],
+      "env": [
+        "local"
+      ],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development",
+      "version": "2.7.0"
+    },
+    "logrotator": {
+      "enable": true,
+      "package": "egg-logrotator",
+      "name": "logrotator",
+      "dependencies": [
+        "schedule"
+      ],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator",
+      "version": "3.1.0"
+    },
+    "schedule": {
+      "enable": true,
+      "package": "egg-schedule",
+      "name": "schedule",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-schedule@4.0.0\\node_modules\\egg-schedule",
+      "version": "4.0.0",
+      "dependents": [
+        "logrotator"
+      ]
+    },
+    "static": {
+      "enable": true,
+      "package": "egg-static",
+      "name": "static",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static",
+      "version": "2.3.1"
+    },
+    "jsonp": {
+      "enable": true,
+      "package": "egg-jsonp",
+      "name": "jsonp",
+      "dependencies": [],
+      "optionalDependencies": [
+        "security"
+      ],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-jsonp@2.0.0\\node_modules\\egg-jsonp",
+      "version": "2.0.0"
+    },
+    "view": {
+      "enable": true,
+      "package": "egg-view",
+      "name": "view",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\plugin.js",
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view",
+      "version": "2.1.4"
+    }
+  },
+  "appInfo": {
+    "name": "cybergui-server",
+    "baseDir": "E:\\Projects\\Website\\CyberGui\\server",
+    "env": "local",
+    "scope": "",
+    "HOME": "C:\\Users\\a3818",
+    "pkg": {
+      "name": "cybergui-server",
+      "version": "1.0.0",
+      "description": "",
+      "main": "server.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "dev": "egg-bin dev"
+      },
+      "author": "anzai249",
+      "license": "MIT",
+      "dependencies": {
+        "dompurify": "^3.0.4",
+        "egg": "^3.17.3",
+        "jsdom": "^22.1.0"
+      },
+      "devDependencies": {
+        "egg-bin": "^6.4.1"
+      }
+    },
+    "root": "E:\\Projects\\Website\\CyberGui\\server"
+  }
+}

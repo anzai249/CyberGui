@@ -1,0 +1,281 @@
+{
+  "keys": "E:\\Projects\\Website\\CyberGui\\server\\config\\config.default.js",
+  "session": {
+    "maxAge": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session\\config\\config.default.js",
+    "logValue": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-session@3.3.0\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "type": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "supportedRequests": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "refererWhiteList": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "ipExceptionList": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-security@3.0.0\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-jsonp@2.0.0\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-jsonp@2.0.0\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-jsonp@2.0.0\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-onerror@2.2.0\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-onerror@2.2.0\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-onerror@2.2.0\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieDomain": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-i18n@2.1.1\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-watcher@3.1.1\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-schedule@4.0.0\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-schedule@4.0.0\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-schedule@4.0.0\\node_modules\\egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultParamCharset": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "allowArrayField": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js",
+      "disable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-multipart@3.3.0\\node_modules\\egg-multipart\\config\\config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideIgnore": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-development@2.7.0\\node_modules\\egg-development\\config\\config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-logrotator@3.1.0\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-static@2.3.1\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "view": {
+    "root": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg-view@2.1.4\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "env": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "name": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "cookies": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "maxIpsCount": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "version": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "description": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "main": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "test": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "start": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "dev": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    },
+    "author": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "license": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "dompurify": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "egg": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "jsdom": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "timing": {
+      "slowBootActionMinDuration": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "confusedConfigurations": {
+    "bodyparser": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "cacheControl": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "textLimit": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "strict": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "depth": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    },
+    "onerror": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "logger": {
+    "dir": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "env": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "level": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "enablePerformanceTimer": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "enableFastContextLogger": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    },
+    "useHttpClientNext": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "meta": {
+    "enable": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "logging": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "port": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "E:\\Projects\\Website\\CyberGui\\server\\node_modules\\.store\\egg@3.17.3\\node_modules\\egg\\config\\config.default.js"
+}
