@@ -8,6 +8,7 @@ const mysql = connect()
 const pages = {
   "/ask": require('./pages/ask.js'),
   "/answer": require('./pages/answer.js'),
+  "/like": require('./pages/like.js'),
   // "/comment": require('./pages/comment.js'),
   // "/delete": require('./pages/delete.js')
 }

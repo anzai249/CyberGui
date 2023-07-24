@@ -15,7 +15,7 @@ async function ask(req, res, mysql) {
     // at last 5 characters
     if (!title || title.length < 5) return response(req, res, 400, "Error 400: Bad Request");
     // at last 10 characters
-    if (!content || content.length < 10) return response(req, res, 400, "Error 400: Bad Request");
+    if (!content || content.length < 10 || content.length > 120) return response(req, res, 400, "Error 400: Bad Request");
     // 1/0
     if (!sensitive || (sensitive !== 1 && sensitive !== 0)) return response(req, res, 400, "Error 400: Bad Request");
 
@@ -25,7 +25,7 @@ async function ask(req, res, mysql) {
     const result = await mysql.query(req, res,
         "INSERT INTO `questions` (`title`, `content`, `time`, `like`, `dislike`, `sensitive`, `answerid`) VALUES (?, ?, ?, ?, ?, ?, ?)",
         [title, content, getUTCDate(), 0, 0, sensitive, null]);
-    
+
     // return
     return response(req, res, 200, {
         "status": "success",
