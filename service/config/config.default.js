@@ -18,6 +18,37 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  config.security = {
+    csrf: { enable: false },
+  };
+
+  config.cors = {
+    origin: '*',
+    credentials: true,
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+  };
+
+  // mysql
+  config.mysql = {
+    client: {
+      host: 'localhost',
+      port: '3306',
+      user: 'root',
+      password: 'root',
+      database: 'anonymous_question'
+    },
+    app: true,
+    agent: false
+  };
+
+  // {app_root}/config/config.default.js
+  config.sqlite = {
+    default: {
+      path: '/db/CyberGui.db',
+      options: null
+    }
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -28,3 +59,4 @@ module.exports = appInfo => {
     ...userConfig,
   };
 };
+

@@ -9,6 +9,9 @@
   "dependencies": {
     "dompurify": "^3.0.5",
     "egg": "^3",
+    "egg-cors": "^2.2.3",
+    "egg-database-sqlite": "^1.0.1",
+    "egg-mysql": "^4.0.0",
     "egg-scripts": "^2",
     "jsdom": "^22.1.0"
   },
