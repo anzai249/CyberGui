@@ -1,53 +1,17 @@
 {
-  "name": "cybergui",
+  "name": "service",
   "version": "1.0.0",
-  "description": "an anonymous question box",
-  "private": true,
-  "egg": {
-    "declarations": true
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "dompurify": "^3.0.5",
-    "egg": "^3",
-    "egg-cors": "^2.2.3",
-    "egg-database-sqlite": "^1.0.1",
-    "egg-mysql": "^4.0.0",
-    "egg-scripts": "^2",
-    "jsdom": "^22.1.0"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "bufferutil": "^4.0.7",
-    "canvas": "^2.11.2",
-    "egg-bin": "^5",
-    "egg-ci": "^2",
-    "egg-mock": "^5",
-    "encoding": "^0.1.13",
-    "eslint": "^8",
-    "eslint-config-egg": "^12",
-    "utf-8-validate": "^6.0.3"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-cybergui",
-    "stop": "egg-scripts stop --title=egg-server-cybergui",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov"
-  },
-  "ci": {
-    "version": "16, 18",
-    "type": "github"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "anzai249",
-  "license": "MIT"
+    "nodemon": "^3.0.1"
+  }
 }
