@@ -72,7 +72,7 @@
   </n-layout>
 </template>
   
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 import UnansweredCard from '../components/UnansweredCard.vue'
