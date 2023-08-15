@@ -77,6 +77,8 @@ import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 import UnansweredCard from '../components/UnansweredCard.vue'
 import AnsweredCard from '../components/AnsweredCard.vue'
+import axios from 'axios'
+
 
 export default defineComponent({
   components: {
@@ -91,7 +93,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.$http.post('localhost:1107/getQuestions').then(res => {console.log(res)});
+    axios.post('http://localhost:1107/getquestions').then(res => {console.log(res)});
   }
 })
 </script>

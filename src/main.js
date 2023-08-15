@@ -4,6 +4,7 @@ import naive from 'naive-ui'
 import App from './App.vue'
 import router from './router'
 import i18n from './lang/i18n.js'
+import axios from 'axios'
 
 const app = createApp(App)
 

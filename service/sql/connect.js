@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   user: secret[env].username,
   password: secret[env].password,
-  database: "cybergui",
+  database: "anonymous_question",
   // auto handle reconnect
   reconnect: true
 })

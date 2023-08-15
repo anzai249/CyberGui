@@ -31,13 +31,13 @@ async function DeleteQuestion(req, res, mysql) {
     const answerid = result.answerid;
     // delete questions
     await mysql.query(req, res,
-        "DELETE `questions` WHERE `id` = ?",
+        "DELETE * FROM `questions` WHERE `id` = ?",
         [id]);
 
     if (answerid) {
         // delete that answer
         await mysql.query(req, res,
-            "DELETE `answers` WHERE `id` = ?",
+            "DELETE * FROM `answers` WHERE `id` = ?",
             [answerid]);
 
     }

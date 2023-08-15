@@ -11,7 +11,7 @@ async function GetAllQuestions(req, res, mysql) {
     if (req.method !== 'POST') return response(req, res, 405, "Error 405: Method Not Allowed");
 
     // get all questions
-    const result = await mysql.query(req, res, "SELECT `questions`");
+    const result = await mysql.query(req, res, "SELECT * FROM `questions`");
 
     console.log(result)
 
