@@ -89,6 +89,9 @@ export default defineComponent({
       loading: ref(true),
       sensitive: ref(true)
     }
+  },
+  mounted() {
+    this.$http.post('localhost:1107/getQuestions').then(res => {console.log(res)});
   }
 })
 </script>
