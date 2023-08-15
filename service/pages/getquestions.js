@@ -21,4 +21,4 @@ async function GetAllQuestions(req, res, mysql) {
     });
 }
 
-module.export = GetAllQuestions;
+module.exports = GetAllQuestions;
