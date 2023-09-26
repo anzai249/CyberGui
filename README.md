@@ -6,7 +6,7 @@
   Cyber Gui
   <br>
 </h1>
-
+<h2>This project is not finished yet.</h2>
 <h4 align="center">A clean personal anonymous question box.</h4>
 
 <p align="center">
@@ -55,10 +55,10 @@ npm run build
 
 Thanks to:
 
-- [anzai249](http://electron.atom.io/)
+- [anzai249](https://github.com/anzai249)
 (It's me.)
-- [anzai249](http://electron.atom.io/)
-(Japanese translation.)
+- [DY_XiaoDong](https://github.com/dy-xiaodong2022)
+(Backend.)
 
 This software uses the following open source packages:
 
