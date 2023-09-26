@@ -6,7 +6,9 @@
   Cyber Gui
   <br>
 </h1>
+
 <h2>This project is not finished yet.</h2>
+
 <h4 align="center">A clean personal anonymous question box.</h4>
 
 <p align="center">
