@@ -15,7 +15,10 @@ const pages = {
 }
 
 const response = createServer(1107, async (req, res) => {
-  // console.log(req)
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   // req.ip = req.headers['CF-Connecting-IP'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   // req.ip = req.ip.match(/(\d{1,3}\.){3}\d{1,3}/)[0];
