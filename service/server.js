@@ -11,7 +11,8 @@ const pages = {
   "/like": require('./pages/like.js'),
   // "/comment": require('./pages/comment.js'),
   "/delete": require('./pages/delete.js'),
-  "/getquestions": require('./pages/getquestions.js')
+  "/getquestions": require('./pages/getquestions.js'),
+  "/getanswers": require('./pages/getanswers.js')
 }
 
 const response = createServer(1107, async (req, res) => {

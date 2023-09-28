@@ -21,10 +21,10 @@
       <n-grid cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="item in questionsData">
           <AnsweredCard v-if="item.answerid" :title="item.title" :msg="item.content" :likes="item.like"
-            :dislikes="item.dislike" time="2023-01-29" :loading="loading" :sensitive="item.sensitive"
-            answer="季姬寂，集鸡，鸡即棘鸡。棘鸡饥叽，季姬及箕稷济鸡。鸡既济，跻姬笈，季姬忌，急咭鸡，鸡急，继圾几，季姬急，即籍箕击鸡，箕疾击几伎，伎即齑，鸡叽集几基，季姬急极屐击鸡，鸡既殛，季姬激，即记《季姬击鸡记》。" />
+            :dislikes="item.dislike" :time="item.time" :loading="loading" :sensitive="item.sensitive"
+            :answer="answersData.find(function(answerItem) { return answerItem.id === item.answerid; }).answer" />
           <UnansweredCard v-else :title="item.title" :msg="item.content" :likes="item.like" :dislikes="item.dislike"
-            time="2023-01-29" :loading="loading" :sensitive="item.sensitive" />
+            :time="item.time" :loading="loading" :sensitive="item.sensitive" />
         </n-grid-item>
       </n-grid>
     </n-layout-content>
@@ -49,7 +49,8 @@ export default defineComponent({
   },
   data() {
     return {
-      questionsData: null
+      questionsData: null,
+      answersData: null
     };
   },
   setup() {
@@ -62,12 +63,22 @@ export default defineComponent({
   },
   mounted() {
     this.fetchQuestions()
+    this.fetchAnswers()
   },
   methods: {
     fetchQuestions() {
       axios.post('http://localhost:1107/getquestions')
         .then(response => {
           this.questionsData = response.data.result;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    },
+    fetchAnswers() {
+      axios.post('http://localhost:1107/getanswers')
+        .then(response => {
+          this.answersData = response.data.result;
         })
         .catch(error => {
           console.error('Error fetching data:', error);
