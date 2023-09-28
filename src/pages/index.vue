@@ -84,6 +84,11 @@ export default defineComponent({
   components: {
     Person, Heart, HeartDislike, UnansweredCard, AnsweredCard
   },
+  data() {
+    return {
+      questionsData: null
+    };
+  },
   setup() {
 
     return {
