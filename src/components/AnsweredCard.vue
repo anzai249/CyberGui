@@ -35,7 +35,7 @@ defineProps({
         required: true
     }
 })
-const colors = ['#00c6fb', '#ff9a9e', '#fecfef', '#fbc2eb', '#d4fc79', '#a1c4fd', '#c3cfe2','#764ba2','#f43b47']
+const colors = ['#c3cfe2']
 const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 </script>
 

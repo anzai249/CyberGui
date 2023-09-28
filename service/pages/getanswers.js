@@ -13,8 +13,6 @@ async function GetAllAnswers(req, res, mysql) {
     // get all questions
     const result = await mysql.query(req, res, "SELECT * FROM `answers`");
 
-    console.log(result)
-
     return response(req, res, 200, {
         "status": "success",
         "result": result

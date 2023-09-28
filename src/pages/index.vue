@@ -1,7 +1,7 @@
 <template>
   <n-layout>
     <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
-      <n-switch v-model:value="loading">
+      <!-- <n-switch v-model:value="loading">
         <template #checked>
           Skel
         </template>
@@ -16,13 +16,13 @@
         <template #unchecked>
           Sens
         </template>
-      </n-switch>
+      </n-switch> -->
       UNDER DEVELOPMENT
       <n-grid cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="item in questionsData">
           <AnsweredCard v-if="item.answerid" :title="item.title" :msg="item.content" :likes="item.like"
             :dislikes="item.dislike" :time="item.time" :loading="loading" :sensitive="item.sensitive"
-            :answer="answersData.find(function(answerItem) { return answerItem.id === item.answerid; }).answer" />
+            :answer="answersData.find(function (answerItem) { return answerItem.id === item.answerid; }).answer" />
           <UnansweredCard v-else :title="item.title" :msg="item.content" :likes="item.like" :dislikes="item.dislike"
             :time="item.time" :loading="loading" :sensitive="item.sensitive" />
         </n-grid-item>
@@ -54,16 +54,20 @@ export default defineComponent({
     };
   },
   setup() {
-
     return {
-
-      loading: ref(true),
-      sensitive: ref(true)
+      loading: ref(true)
     }
   },
   mounted() {
     this.fetchQuestions()
     this.fetchAnswers()
+    
+  },
+  watch: {
+    questionsData: {
+      handler: 'arrayChange',
+      deep: true
+    }
   },
   methods: {
     fetchQuestions() {
@@ -83,6 +87,9 @@ export default defineComponent({
         .catch(error => {
           console.error('Error fetching data:', error);
         });
+    },
+    arrayChange() {
+      this.loading = ref(false)
     }
   }
 })
