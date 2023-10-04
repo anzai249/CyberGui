@@ -6,9 +6,9 @@ const { isBan } = require('./modules/security.js');
 const mysql = connect()
 
 const pages = {
-  "/ask": require('./pages/ask.js'),
+  "/user/ask": require('./pages/ask.js'),
   "/answer": require('./pages/answer.js'),
-  "/like": require('./pages/like.js'),
+  "/user/like": require('./pages/like.js'),
   // "/comment": require('./pages/comment.js'),
   "/delete": require('./pages/delete.js'),
   "/getquestions": require('./pages/getquestions.js'),
@@ -27,7 +27,6 @@ const response = createServer(1107, async (req, res) => {
   // check if this ip is banned
   const result = await isBan(req, res, req.ip, mysql)
   let url = req.url.split('?')[0]
-  // let url = "localhost:1107"
   if (url in pages) {
     pages[url](req, res, mysql)
   } else {

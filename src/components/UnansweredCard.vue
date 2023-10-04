@@ -1,5 +1,9 @@
 <script setup>
 defineProps({
+    id: {
+        type: Number,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -18,10 +22,6 @@ defineProps({
     },
     time: {
         type: String,
-        required: true
-    },
-    loading: {
-        type: Boolean,
         required: true
     },
     sensitive: {
@@ -65,8 +65,13 @@ export default defineComponent({
     },
     methods: {
         showSensi() {
-            console.log('123')
             this.blurRate = '0px'
+        },
+        handleLike() {
+            console.log(123)
+        },
+        handleDislike() {
+
         }
     }
 })
@@ -96,48 +101,36 @@ export default defineComponent({
         <n-space vertical class="maskUn" @click="showSensi()">
             <n-card ref="card">
                 <template #header>
-                    <n-divider v-if="loading" title-placement="left" style="top: -10px;">
-                        <n-skeleton v-if="loading" height="34px" circle />
+                    <n-divider title-placement="left" style="top: -10px;">
+                        <n-avatar round :style="{
+                            backgroundColor: colors[randomColor]
+                        }">
+                            <n-icon>
+                                <person />
+                            </n-icon>
+                        </n-avatar>
                     </n-divider>
-                    <n-skeleton v-if="loading" text width="60%" height="20px" />
-                    <template v-else>
-                        <n-divider title-placement="left" style="top: -10px;">
-                            <n-avatar round :style="{
-                              backgroundColor: colors[randomColor]
-                            }">
-                                <n-icon>
-                                    <person />
-                                </n-icon>
-                            </n-avatar>
-                        </n-divider>
-                        <div>
-                            {{ title }}
-                        </div>
-                    </template>
+                    <div>
+                        {{ title }}
+                    </div>
                 </template>
                 <n-space vertical>
-                    <n-skeleton v-if="loading" text :repeat="4" />
-                    <template v-else>
-                        <div class="test_div" style="word-wrap:break-word;">
-                            {{ msg }}
-                        </div>
-                    </template>
+                    <div class="test_div" style="word-wrap:break-word;">
+                        {{ msg }}
+                    </div>
                     <n-space vertical>
                         <n-space justify="space-between" size="large" style="height: 28px;">
-                            <n-skeleton v-if="loading" :width="75" text style="top:15%; position: relative;" />
-                            <div v-else style="color: rgba(204, 204, 204, 1); top:15%; position: relative;">
+                            <div style="color: rgba(204, 204, 204, 1); top:15%; position: relative;">
                                 {{ time }}
                             </div>
                             <n-space justify="end">
-                                <n-skeleton v-if="loading" :width="90" round size="small" />
-                                <n-button v-else style="font-size: 20px; width:90px" round size="small">
+                                <n-button style="font-size: 20px; width:90px" round size="small" @click="handleLike()">
                                     <n-icon>
                                         <heart />
                                     </n-icon>
                                     {{ likes }}
                                 </n-button>
-                                <n-skeleton v-if="loading" :width="90" round size="small" />
-                                <n-button v-else style="font-size: 20px; width:90px" round size="small">
+                                <n-button style="font-size: 20px; width:90px" round size="small" @click="handleDislike()">
                                     <n-icon>
                                         <HeartDislike />
                                     </n-icon>
