@@ -6,9 +6,10 @@ const { isBan } = require('./modules/security.js');
 const mysql = connect()
 
 const pages = {
-  "/user/ask": require('./pages/ask.js'),
+  "/ask": require('./pages/ask.js'),
   "/answer": require('./pages/answer.js'),
-  "/user/like": require('./pages/like.js'),
+  "/like": require('./pages/like.js'),
+  "/dislike": require('./pages/dislike.js'),
   // "/comment": require('./pages/comment.js'),
   "/delete": require('./pages/delete.js'),
   "/getquestions": require('./pages/getquestions.js'),

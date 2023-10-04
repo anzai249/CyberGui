@@ -14,7 +14,7 @@ async function GetAllQuestions(req, res, mysql) {
     // get all questions
     const result = await mysql.query(req, res, "SELECT * FROM `questions`");
 
-    await sleep(10)
+    await sleep(50)
 
     return response(req, res, 200, {
         "status": "success",

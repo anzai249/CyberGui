@@ -21,8 +21,6 @@ async function dislike(req, res, mysql) {
         "SELECT * FROM `questions` WHERE `id` = ?",
         [req.body.id]);
     if (inside.length === 0) return response(req, res, 404, "Error 404: Not Found");
-    // check is this question already answered
-    if (inside[0].answerid !== null) return response(req, res, 403, "Error 403: Forbidden");
 
     // insert to `question` table
     // title, content, time, like, dislike, sensitive, answerid(null)

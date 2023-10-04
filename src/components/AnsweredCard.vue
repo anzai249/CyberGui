@@ -1,6 +1,7 @@
 <script setup>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
+import axios from 'axios'
 defineProps({
     id: {
         type: Number,
@@ -57,10 +58,18 @@ export default defineComponent({
         if (this.sensitive) {
             return {
                 blurRate: '5px',
+                likesObj: {
+                    "likes": this.likes,
+                    "dislikes": this.dislikes
+                }
             }
         } else {
             return {
                 blurRate: '0px',
+                likesObj: {
+                    "likes": this.likes,
+                    "dislikes": this.dislikes
+                }
             }
         }
     },
@@ -70,6 +79,20 @@ export default defineComponent({
     methods: {
         showSensi() {
             this.blurRate = '0px'
+        },
+        handleLike() {
+            axios.post('http://localhost:1107/like', '{ "id": "' + this.id + '" }')
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            this.likesObj.likes++
+        },
+        handleDislike() {
+            axios.post('http://localhost:1107/dislike', '{ "id": "' + this.id + '" }')
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            this.likesObj.dislikes++
         }
     }
 })
@@ -124,17 +147,17 @@ export default defineComponent({
                                 {{ time }}
                             </div>
                             <n-space justify="end">
-                                <n-button style="font-size: 20px; width:90px" round size="small">
+                                <n-button style="font-size: 20px; width:90px" round size="small" @click="handleLike()">
                                     <n-icon>
                                         <heart />
                                     </n-icon>
-                                    {{ likes }}
+                                    {{ likesObj.likes }}
                                 </n-button>
-                                <n-button style="font-size: 20px; width:90px" round size="small">
+                                <n-button style="font-size: 20px; width:90px" round size="small" @click="handleDislike()">
                                     <n-icon>
                                         <HeartDislike />
                                     </n-icon>
-                                    {{ dislikes }}
+                                    {{ likesObj.dislikes }}
                                 </n-button>
                             </n-space>
                         </n-space>
