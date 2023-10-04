@@ -1,7 +1,7 @@
 <template>
   <n-layout>
     <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
-      <!-- <n-switch v-model:value="loading">
+      <n-switch v-model:value="loading">
         <template #checked>
           Skel
         </template>
@@ -16,9 +16,14 @@
         <template #unchecked>
           Sens
         </template>
-      </n-switch> -->
+      </n-switch>
       UNDER DEVELOPMENT
-      <n-grid cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
+      <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
+        <n-grid-item v-for="i in 6">
+          <LoadingCard />
+        </n-grid-item>
+      </n-grid>
+      <n-grid v-else="!loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="item in questionsData">
           <AnsweredCard v-if="item.answerid" :title="item.title" :msg="item.content" :likes="item.like"
             :dislikes="item.dislike" :time="item.time" :loading="loading" :sensitive="item.sensitive"
@@ -40,17 +45,19 @@ import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 import UnansweredCard from '../components/UnansweredCard.vue'
 import AnsweredCard from '../components/AnsweredCard.vue'
+import LoadingCard from '../components/LoadingCard.vue'
 import axios from 'axios'
 
 
 export default defineComponent({
   components: {
-    Person, Heart, HeartDislike, UnansweredCard, AnsweredCard
+    Person, Heart, HeartDislike, UnansweredCard, AnsweredCard, LoadingCard
   },
   data() {
     return {
       questionsData: null,
-      answersData: null
+      answersData: null,
+      loading: true
     };
   },
   setup() {
@@ -61,7 +68,7 @@ export default defineComponent({
   mounted() {
     this.fetchQuestions()
     this.fetchAnswers()
-    
+    // this.loading = false
   },
   watch: {
     questionsData: {
@@ -89,7 +96,7 @@ export default defineComponent({
         });
     },
     arrayChange() {
-      this.loading = ref(false)
+      this.loading = false
     }
   }
 })
