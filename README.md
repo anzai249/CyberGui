@@ -39,7 +39,6 @@ The word 匭(Gui) is a box that the emperor accepts submissions from his people 
   - Random avatar color.
 * Multi language
 * Out of the box and ready to use
-  - SQLite
   - No need to create an account
 
 ## Project Setup
@@ -76,7 +75,8 @@ This software uses the following open source packages:
   - [ ] Japanese
 
 - [ ] BackEnd Manager
-- [ ] Blur sensitive posts
+- [x] Blur sensitive posts
+- [ ] SQLite
 
 ## Support
 
