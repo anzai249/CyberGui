@@ -78,6 +78,7 @@ export default defineComponent({
             axios.post('http://localhost:1107/ask', '{ "title": "' + title + '", "content": "' + detail + '", "sensitive": "' + sensitiveParam + '"}')
                 .then(response => {
                     this.askSuccess()
+                    this.activeChange()
                 })
                 .catch(error => {
                     console.log(error)

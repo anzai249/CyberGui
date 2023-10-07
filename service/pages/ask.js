@@ -14,11 +14,11 @@ async function ask(req, res, mysql) {
     const title = req.body.title, content = req.body.content, sensitive = req.body.sensitive;
 
     // at least 5 characters
-    if (title === undefined || !title || title.length < 5 || content.length > 30) return response(req, res, 400, "Illegal Title!");
+    if (title === 'undefined' || title === undefined || !title || title.length < 5 || content.length > 30) return response(req, res, 400, "Illegal Title!");
     // at least 5 characters
-    if (content === undefined || !content || content.length < 5 || content.length > 150) return response(req, res, 400, "Illegal Content!");
+    if (content === 'undefined' || content === undefined || !content || content.length < 5 || content.length > 150) return response(req, res, 400, "Illegal Content!");
     // 1/0
-    if (sensitive === undefined || !sensitive || (sensitive != 1 && sensitive != 0)) return response(req, res, 400, "Illegal Sensitive?!");
+    if (sensitive === 'undefined' || sensitive === undefined || !sensitive || (sensitive != 1 && sensitive != 0)) return response(req, res, 400, "Illegal Sensitive?!");
 
     // insert to `question` table
     // title, content, time, like, dislike, sensitive, answerid(null)
