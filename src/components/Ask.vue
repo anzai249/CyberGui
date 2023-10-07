@@ -102,7 +102,7 @@ export default defineComponent({
             },
             askFailed(error) {
                 message.error(
-                    t('addNew.error')
+                    t('addNew.error') + error.response.data
                 );
             }
         }
