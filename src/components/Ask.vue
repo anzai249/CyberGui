@@ -18,9 +18,9 @@ export default defineComponent({
     components: {
         addIcon
     },
+    emits:['changeActive'],
     setup() {
         const message = useMessage()
-        const askActive = ref(false)
         return {
             askSuccess() {
                 message.success($t('addNew.success'))
@@ -28,15 +28,20 @@ export default defineComponent({
             askFailed(error) {
                 message.error($t('addNew.error'), error)
             },
-            askActive
         }
     },
     data() {
-
+        return{
+            askActive: ref(false)
+        }
     },
     watch: {
         active: {
             handler: 'activeChange',
+            deep: true
+        },
+        askActive: {
+            handler: 'askActiveChange',
             deep: true
         }
     },
@@ -54,7 +59,10 @@ export default defineComponent({
                 });
         },
         activeChange(){
-            this.askActive = true
+            this.askActive = !this.askActive
+        },
+        askActive(){
+            this.$emit('changeActive')
         }
     }
 })

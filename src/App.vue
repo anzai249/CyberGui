@@ -82,7 +82,7 @@
       </n-drawer-content>
     </n-drawer>
     <n-message-provider>
-      <Ask ref="askDrawer" v-model:active="this.addDrawer"/>
+      <Ask ref="askDrawer" :active="this.addDrawer" @change-active="showAddDrawer"/>
     </n-message-provider>
   </n-config-provider>
 </template>
@@ -265,7 +265,7 @@ export default defineComponent({
       }
     },
     showAddDrawer() {
-      this.addDrawer = true
+      this.addDrawer = !this.addDrawer
     }
   }
 });
