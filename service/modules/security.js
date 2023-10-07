@@ -8,7 +8,7 @@ function ban(min, ip, reason = "Too many requests") {
         [ip, getDate(getUTCTime() + min * 60 * 1000), reason]);
 }
 
-async function isBan(req, res, ip, mysql) {
+async function isBan(req,  ip, mysql) {
     // check if this ip is banned
     const result = await mysql.query(req, res,
         "SELECT * FROM `ban` WHERE `ip` = ? AND `time` > ?",
@@ -18,7 +18,7 @@ async function isBan(req, res, ip, mysql) {
 }
 
 // like or dislike api security
-async function like(req, mysql) {
+async function like(req, res, mysql) {
     // if in 5 minute, this ip already like/dislike this question, ban 2 min
     if ((await mysql.query(req, res,
         "SELECT * FROM `like` WHERE `ip` = ? AND `questionid` = ? AND `time` > ?",
