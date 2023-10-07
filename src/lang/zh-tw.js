@@ -10,7 +10,9 @@ export default {
         detail: "内容",
         sensitiveTrue: "包含敏感内容",
         sensitiveFalse: "沒有敏感内容",
-        submit: "提交"
+        submit: "提交",
+        success: "提問成功！",
+        error: "錯誤："
     },
     card:{
         showSensitive:"顯示敏感内容"

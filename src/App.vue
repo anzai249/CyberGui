@@ -14,7 +14,7 @@
           <n-tab-pane name="about" :tab="$t('header.about')">
           </n-tab-pane>
           <template #suffix>
-            <n-button ghost color="#8a2be2" @click="active = true">
+            <n-button ghost color="#8a2be2" @click="showAddDrawer">
               <template #icon>
                 <n-icon>
                   <add-icon />
@@ -66,7 +66,7 @@
             </n-button>
           </n-button-group>
           <n-divider />
-          <n-button ghost color="#8a2be2" @click="active = true" style="width: 150px;">
+          <n-button ghost color="#8a2be2" @click="showAddDrawer" style="width: 150px;">
             <template #icon>
               <n-icon>
                 <add-icon />
@@ -81,39 +81,9 @@
         </n-space>
       </n-drawer-content>
     </n-drawer>
-    <!-- Add New Drawer Menu -->
-    <n-drawer v-model:show="active" :width="450" placement="right">
-      <n-drawer-content :title="$t('header.addNew')" closable>
-        <n-form>
-          <n-form-item>
-            <div style="left: 50%; width: auto;">
-              <n-space vertical align="center">
-                <n-input round v-model:title="title" :placeholder="$t('addNew.title')" show-count :maxlength="15"
-                  :count-graphemes="countGraphemes" style="width: 400px;" />
-                <n-input round v-model:detail="detail" type="textarea" :placeholder="$t('addNew.detail')" show-count :maxlength="120"
-                  style="width: 400px;" />
-                <n-switch v-model:sensitive="sensitive">
-                  <template #checked>
-                    {{ $t('addNew.sensitiveTrue') }}
-                  </template>
-                  <template #unchecked>
-                    {{ $t('addNew.sensitiveFalse') }}
-                  </template>
-                </n-switch>
-                <n-button type="primary" ghost style="width: 150px;">
-                  <template #icon>
-                    <n-icon>
-                      <Checkmark />
-                    </n-icon>
-                  </template>
-                  {{ $t('addNew.submit') }}
-                </n-button>
-              </n-space>
-            </div>
-          </n-form-item>
-        </n-form>
-      </n-drawer-content>
-    </n-drawer>
+    <n-message-provider>
+      <Ask ref="askDrawer" v-model:active="this.addDrawer"/>
+    </n-message-provider>
   </n-config-provider>
 </template>
 
@@ -137,22 +107,26 @@
 
 <script>
 import { defineComponent, h, ref } from "vue";
-import { NImage } from "naive-ui";
+import { NImage, useMessage } from "naive-ui";
 import { useI18n } from 'vue-i18n'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
+import Ask from "./components/ask.vue"
 import { useRouter } from "vue-router"
 
 export default defineComponent({
   components: {
     addIcon,
     ReorderThreeSharp,
-    Checkmark
+    Checkmark,
+    Ask
   },
   setup() {
     const router = useRouter()
-    const active = ref(false);
-    const menuActive = ref(false);
-    const value = ref("zhcn");
+    const askActive = ref(false)
+    const menuActive = ref(false)
+    const addDrawer = ref(false)
+    const value = ref("zhcn")
+    
     const themeOverrides = {
       common: {
         primaryColor: '#8a2be2',
@@ -220,8 +194,9 @@ export default defineComponent({
       );
     });
     return {
-      active,
+      askActive,
       menuActive,
+      addDrawer,
       themeOverrides,
       value,
       t,
@@ -288,6 +263,9 @@ export default defineComponent({
           this.$i18n.locale = this.lang;
           break;
       }
+    },
+    showAddDrawer() {
+      this.addDrawer = true
     }
   }
 });

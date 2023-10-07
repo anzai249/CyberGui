@@ -10,7 +10,9 @@ export default {
         detail: "Detail",
         sensitiveTrue: "Include Sensitive Content",
         sensitiveFalse: "No Sensitive Content",
-        submit: "Submit"
+        submit: "Submit",
+        success: "Successfully asked.",
+        error: "Error: "
     },
     card:{
         showSensitive:"Show Sensitive Content"

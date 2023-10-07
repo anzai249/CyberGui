@@ -8,7 +8,7 @@ function ban(min, ip, reason = "Too many requests") {
         [ip, getDate(getUTCTime() + min * 60 * 1000), reason]);
 }
 
-async function isBan(req,  ip, mysql) {
+async function isBan(req, res, ip, mysql) {
     // check if this ip is banned
     const result = await mysql.query(req, res,
         "SELECT * FROM `ban` WHERE `ip` = ? AND `time` > ?",
