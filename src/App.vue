@@ -118,7 +118,7 @@ export default defineComponent({
     addIcon,
     ReorderThreeSharp,
     Checkmark,
-    Ask
+    Ask,
   },
   setup() {
     const router = useRouter()
