@@ -9,7 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.18.1"
+    "base85": "^3.1.0",
+    "mysql": "^2.18.1",
+    "node-rsa": "^1.1.1",
+    "socket.io": "^4.7.2",
+    "zero-width-lib": "^1.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

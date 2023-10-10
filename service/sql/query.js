@@ -1,4 +1,4 @@
-const { response, serverError } = require('../modules/http.js');
+const { serverError } = require('../modules/http.js');
 
 // function factory
 function createQuery(connection) {
@@ -8,7 +8,7 @@ function createQuery(connection) {
    * @param {boolean} handleError - Whether to handle the error or not, if true,
    *  it will reject the promise without throwing an error, if false, it will finish the http request with 500
    */
-  return function (req, res, query, params, handleError = false) {
+  return function (query, params, handleError = false) {
     return new Promise((resolve, reject) => {
       if (typeof query !== 'string') query = req, params = res
       connection._query(query, params, (err, result) => {
@@ -17,9 +17,11 @@ function createQuery(connection) {
             serverError('Mysql<handled>', err)
             reject(err);
           } else if (typeof req !== 'string') {
-            response(req, res, 500, {
-              msg: 'Error executing query',
-            }, true, 'Mysql', err);
+            // response(req, res, 500, {
+            //   msg: 'Error executing query',
+            // }, true, 'Mysql', err);
+            serverError('Mysql', err)
+            reject("Error executing query");
           }
         } else {
           resolve(result);

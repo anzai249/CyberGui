@@ -27,7 +27,7 @@
         <n-grid-item v-for="item in questionsData">
           <AnsweredCard v-if="item.answerid" :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
             :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive"
-            :answer="answersData.find(function (answerItem) { return answerItem.id === item.answerid; }).answer" />
+            :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer" />
           <UnansweredCard v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like" :dislikes="item.dislike"
             :time="item.time" :sensitive="item.sensitive" />
         </n-grid-item>
@@ -46,7 +46,7 @@ import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 import UnansweredCard from '../components/UnansweredCard.vue'
 import AnsweredCard from '../components/AnsweredCard.vue'
 import LoadingCard from '../components/LoadingCard.vue'
-import axios from 'axios'
+import api from "../api.js"
 
 
 export default defineComponent({
@@ -55,16 +55,16 @@ export default defineComponent({
   },
   data() {
     return {
-      questionsData: null,
-      answersData: null,
+      questionsData: [],
+      answersData: [],
       loading: true
     };
   },
-  setup() {
-    return {
-      loading: ref(true)
-    }
-  },
+  // setup() {
+  //   return {
+  //     loading: ref(true)
+  //   }
+  // },
   mounted() {
     this.fetchQuestions()
     this.fetchAnswers()
@@ -78,20 +78,28 @@ export default defineComponent({
   },
   methods: {
     fetchQuestions() {
-      axios.post('http://localhost:1107/getquestions')
+      api.post('/getquestions')
         .then(response => {
-          this.questionsData = response.data.result;
+          // this.questionsData = response.result;
+          response.result.forEach(element => {
+            this.questionsData.push(element)
+          });
+          console.log("fetch success", response.result);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
         });
     },
     fetchAnswers() {
-      axios.post('http://localhost:1107/getanswers')
+      api.post('/getanswers')
         .then(response => {
-          this.answersData = response.data.result;
+          console.log("fetch success", response.result);
+          response.result.forEach(element => {
+            this.answersData.push(element)
+          });
         })
         .catch(error => {
+          console.log("fetch failed");
           console.error('Error fetching data:', error);
         });
     },

@@ -41,7 +41,7 @@ import { defineComponent, ref } from "vue";
 import { useMessage } from "naive-ui";
 import { Add as addIcon, Checkmark } from "@vicons/ionicons5"
 import { useI18n } from 'vue-i18n'
-import axios from 'axios'
+import api from "../api.js"
 
 export default defineComponent({
     props: {
@@ -75,7 +75,7 @@ export default defineComponent({
             // Ask new question
             let sensitiveParam = 0
             if (sensitive) { sensitiveParam = 1 } else { sensitiveParam = 0 }
-            axios.post('http://localhost:1107/ask', '{ "title": "' + title + '", "content": "' + detail + '", "sensitive": "' + sensitiveParam + '"}')
+            api.post('/ask', '{ "title": "' + title + '", "content": "' + detail + '", "sensitive": "' + sensitiveParam + '"}')
                 .then(response => {
                     this.askSuccess()
                     this.activeChange()
@@ -103,7 +103,7 @@ export default defineComponent({
             },
             askFailed(error) {
                 message.error(
-                    t('addNew.error') + error.response.data
+                    t('addNew.error') + error.response
                 );
             }
         }

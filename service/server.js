@@ -39,3 +39,75 @@ const response = createServer(1107, async (req, res) => {
 process.on('uncaughtException', (err) => {
   serverCrash(err)
 })
+
+const NodeRSA = require('node-rsa');
+const serverKey = new NodeRSA({ b: 1024 });
+const Server = require("socket.io").Server;
+console.log(serverKey.exportKey('pkcs8-public-pem'));
+const base85 = require('base85');
+const { z2t, t2z } = require('zero-width-lib')
+
+const io = new Server(1106, {
+  // options
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+io.on("connection", (socket) => {
+  console.log("a user connected");
+  let clientKey, solve, pack;
+  socket.emit("swapKey", serverKey.exportKey('pkcs8-public-pem'))
+  socket.on("swapKey", (msg) => {
+    clientKey = new NodeRSA(serverKey.decrypt(msg, 'utf8'), 'pkcs8-public-pem')
+    console.log("Swap key from client success");
+    solve = msg => {
+      msg = z2t(msg);
+      msg = base85.decode(msg);
+      msg = Buffer.from(msg).toString('utf8');
+      msg = serverKey.decrypt(msg, 'utf8');
+      try {
+        msg = JSON.parse(msg);
+      } catch (e) { }
+      return msg;
+    }
+    pack = msg => {
+      msg = JSON.stringify(msg);
+      msg = clientKey.encrypt(msg, 'base64');
+      msg = base85.encode(msg);
+      msg = t2z(msg);
+      try {
+        msg = JSON.parse(msg);
+      } catch (e) { }
+      return msg;
+    }
+    socket.emit("update", pack({ type: "swap_OK" }))
+  })
+  socket.on("request", (msg) => {
+    msg = solve(msg);
+    console.log(msg);
+    if (!msg.url in pages) {
+      socket.emit("request", pack({
+        error: "404 Not Found",
+        success: false,
+        _request_id: msg._request_id
+      }))
+      return;
+    }
+    pages[msg.url](msg.data, mysql).then(data => {
+      socket.emit("request", pack({
+        data,
+        success: true,
+        _request_id: msg._request_id
+      }))
+      console.log("return to client", data);
+    }).catch(err => {
+      socket.emit("request", pack({
+        error: err,
+        success: false,
+        _request_id: msg._request_id
+      }))
+    })
+  })
+});

@@ -36,7 +36,7 @@ const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 <script>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
-import axios from 'axios'
+import api from "../api.js"
 
 export default defineComponent({
     props: {
@@ -76,14 +76,14 @@ export default defineComponent({
             this.blurRate = '0px'
         },
         handleLike() {
-            axios.post('http://localhost:1107/like', '{ "id": "' + this.id + '" }')
+            api.post('/like', { id: this.id })
                 .catch(error => {
                     console.error('Error:', error);
                 });
             this.likesObj.likes++
         },
         handleDislike() {
-            axios.post('http://localhost:1107/dislike', '{ "id": "' + this.id + '" }')
+            api.post('/dislike', { id: this.id })
                 .catch(error => {
                     console.error('Error:', error);
                 });
