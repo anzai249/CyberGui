@@ -18,7 +18,7 @@ async function isBan(req, res, ip, mysql) {
 }
 
 // like or dislike api security
-async function like(req, res, mysql) {
+async function checkLike(req, res, mysql) {
     // if in 5 minute, this ip already like/dislike this question, ban 2 min
     if ((await mysql.query(req, res,
         "SELECT * FROM `like` WHERE `ip` = ? AND `questionid` = ? AND `time` > ?",
@@ -47,5 +47,5 @@ async function like(req, res, mysql) {
 module.exports = {
     ban,
     isBan,
-    like
+    checkLike
 }

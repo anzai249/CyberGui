@@ -6,7 +6,7 @@
 
 const { response } = require('../modules/http.js');
 const { getUTCDate } = require('../modules/date.js');
-// const { isBan, like } = require('../modules/security.js')
+const { isBan, checkLike } = require('../modules/security.js')
 
 async function like(data, mysql) {
     return new Promise(async (resolve, reject) => {
@@ -15,6 +15,8 @@ async function like(data, mysql) {
             // if (req.method !== 'POST') return response(req, res, 405, "Error 405: Method Not Allowed");
 
             const id = data.id;
+
+            console.log(resolve)
 
             // I THINK YOU SHOULD PUT THE SECURITY CODE HERE
 

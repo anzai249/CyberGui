@@ -79,9 +79,9 @@ export default defineComponent({
                 .then(response => {
                     this.askSuccess()
                     this.activeChange()
+                    window.reload()
                 })
                 .catch(error => {
-                    console.log(error)
                     this.askFailed(error)
                 });
         },
