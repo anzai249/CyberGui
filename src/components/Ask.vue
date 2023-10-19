@@ -75,7 +75,7 @@ export default defineComponent({
             // Ask new question
             let sensitiveParam = 0
             if (sensitive) { sensitiveParam = 1 } else { sensitiveParam = 0 }
-            api.post('/ask', '{ "title": "' + title + '", "content": "' + detail + '", "sensitive": "' + sensitiveParam + '"}')
+            api.post('/ask', { title: title , content: detail, sensitive: sensitiveParam})
                 .then(response => {
                     this.askSuccess()
                     this.activeChange()
@@ -103,7 +103,7 @@ export default defineComponent({
             },
             askFailed(error) {
                 message.error(
-                    t('addNew.error') + error.response
+                    t('addNew.error') + error
                 );
             }
         }

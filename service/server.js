@@ -86,7 +86,7 @@ io.on("connection", (socket) => {
   })
   socket.on("request", (msg) => {
     msg = solve(msg);
-    console.log(msg);
+    // console.log(msg);
     if (!msg.url in pages) {
       socket.emit("request", pack({
         error: "404 Not Found",

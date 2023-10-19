@@ -110,7 +110,7 @@ import { defineComponent, h, ref } from "vue";
 import { NImage, useMessage } from "naive-ui";
 import { useI18n } from 'vue-i18n'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
-import Ask from "./components/ask.vue"
+import Ask from "./components/Ask.vue"
 import { useRouter } from "vue-router"
 
 export default defineComponent({
