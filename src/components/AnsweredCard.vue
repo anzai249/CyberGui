@@ -61,6 +61,7 @@ export default defineComponent({
     if (this.sensitive) {
       return {
         blurRate: "5px",
+        cursor: "pointer",
         likesObj: {
           likes: this.likes,
           dislikes: this.dislikes,
@@ -69,6 +70,7 @@ export default defineComponent({
     } else {
       return {
         blurRate: "0px",
+        cursor: "auto",
         likesObj: {
           likes: this.likes,
           dislikes: this.dislikes,
@@ -81,6 +83,7 @@ export default defineComponent({
   methods: {
     showSensi() {
       this.blurRate = "0px";
+      this.cursor = "auto";
     },
     handleLike() {
       api.post("/like", { id: this.id }).catch((error) => {
@@ -102,6 +105,7 @@ export default defineComponent({
 .mask {
   filter: blur(v-bind(blurRate));
   pointer-events: v-bind(pointerEve);
+  cursor: v-bind(cursor);
 }
 
 .cardAll {

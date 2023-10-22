@@ -95,7 +95,7 @@ export default defineComponent({
                 <n-space vertical>
                     <n-space justify="space-between" size="large" style="height: 28px;">
                         <div style="color: rgba(204, 204, 204, 1); top:15%; position: relative;">
-                            {{ time }}
+                            {{ new Date(time).toLocaleString() }}
                         </div>
                     </n-space>
                     <n-input round type="textarea" :placeholder="$t('terminal.answer')" show-count :maxlength="120" />
