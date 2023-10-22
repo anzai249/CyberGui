@@ -17,7 +17,7 @@ defineProps({
         required: true
     }
 })
-const colors = ['#c3cfe2']
+const colors = require('../settings.json').others.colors
 const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 </script>
 

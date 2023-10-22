@@ -1,5 +1,12 @@
 {
-    "avatar": "https://avatars.githubusercontent.com/u/32564494",
-    "logo_big": "https://github.com/anzai249/CyberGui/blob/main/public/assets/logo.png?raw=true",
-    "logo_small": "https://github.com/anzai249/CyberGui/blob/main/public/assets/logoMobile.png?raw=true"
+    "images": {
+        "avatar": "https://avatars.githubusercontent.com/u/32564494",
+        "logo_big": "https://github.com/anzai249/CyberGui/blob/main/public/assets/logo.png?raw=true",
+        "logo_small": "https://github.com/anzai249/CyberGui/blob/main/public/assets/logoMobile.png?raw=true"
+    },
+    "others": {
+        "colors": [
+            "#c3cfe2"
+        ]
+    }
 }

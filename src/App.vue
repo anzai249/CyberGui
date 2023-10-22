@@ -112,8 +112,8 @@ import { useI18n } from 'vue-i18n'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
 import Ask from "./components/Ask.vue"
 import { useRouter } from "vue-router"
-const logoBig = require("./settings.json").logo_big
-const logoSmall = require("./settings.json").logo_small
+const logoBig = require("./settings.json").images.logo_big
+const logoSmall = require("./settings.json").images.logo_small
 
 export default defineComponent({
   components: {
