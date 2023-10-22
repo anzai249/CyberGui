@@ -1,20 +1,33 @@
 import { io } from "socket.io-client";
-const NodeRSA = require('node-rsa');
+import { RSA, Crypt } from "hybrid-crypto-js";
+const rsa = new RSA();
+const crypt = new Crypt();
 const base85 = require('base85');
 import { z2t, t2z } from 'zero-width-lib'
 import { rand } from "fastjs-next"
 
+// const crypt.encrypt = (key, msg) => {
+//     console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
+//     console.log("keys", key, api.serverKey);
+//     return JSON.parse(crypt.encrypt(key, msg)).cipher;
+// }
+// const crypt.decrypt = (key, msg) => {
+//     return JSON.parse(crypt.decrypt(key, msg)).message;
+// }
+
 const api = {
     connect() {
         return new Promise(finish => {
+            console.log("client key", this.clientKey);
             const socket = io('http://localhost:1106');
             this.socket = socket;
             socket.on('connect', () => {
                 new Promise(resolve => {
                     socket.on("swapKey", (key) => {
                         console.log("Swap key from server success");
-                        this.serverKey = new NodeRSA(key);
-                        socket.emit("swapKey", this.serverKey.encrypt(this.clientKey.exportKey('pkcs8-public-pem'), 'base64'))
+                        this.serverKey = key;
+                        console.log("server key", this.serverKey);
+                        socket.emit("swapKey", crypt.encrypt(key, this.clientKey.publicKey));
                         socket.on("update", msg => {
                             msg = this.solve(msg);
                             if (msg.type === "swap_OK") {
@@ -57,12 +70,12 @@ const api = {
             })
         })
     },
-    clientKey: new NodeRSA({ b: 1024 }),
+    clientKey: await rsa.generateKeyPairAsync(1024),
     solve(msg) {
         msg = z2t(msg);
         msg = base85.decode(msg)
         msg = Buffer.from(msg).toString('utf8');
-        msg = this.clientKey.decrypt(msg, 'utf8');
+        msg = crypt.decrypt(this.clientKey.privateKey, msg).message;
         try {
             msg = JSON.parse(msg);
         } catch (e) { }
@@ -71,7 +84,8 @@ const api = {
     },
     pack(msg) {
         msg = JSON.stringify(msg);
-        msg = this.serverKey.encrypt(msg, 'base64');
+        // msg = this.serverKey.encrypt(msg, 'base64');
+        msg = crypt.encrypt(this.serverKey, msg);
         msg = base85.encode(msg);
         msg = t2z(msg);
         try {

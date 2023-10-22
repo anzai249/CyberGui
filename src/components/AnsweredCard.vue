@@ -143,13 +143,13 @@ export default defineComponent({
             {{ msg }}
           </div>
           <n-space vertical>
-            <n-space justify="space-between" size="large" style="height: 28px">
+            <n-space justify="space-between" size="large">
               <div style="color: rgba(204, 204, 204, 1); top: 15%; position: relative">
-                {{ time }}
+                {{ new Date(time).toLocaleString() }}
               </div>
               <n-space justify="end">
                 <n-button
-                  style="font-size: 20px; width: 90px"
+                  style="font-size: 20px; min-width: 90px; padding-left: 20px; padding-right: 20px"
                   round
                   size="small"
                   @click="handleLike()"
@@ -160,7 +160,7 @@ export default defineComponent({
                   {{ likesObj.likes }}
                 </n-button>
                 <n-button
-                  style="font-size: 20px; width: 90px"
+                  style="font-size: 20px; min-width: 90px; padding-left: 20px; padding-right: 20px"
                   round
                   size="small"
                   @click="handleDislike()"

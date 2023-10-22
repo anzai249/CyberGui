@@ -40,10 +40,27 @@ process.on('uncaughtException', (err) => {
   serverCrash(err)
 })
 
-const NodeRSA = require('node-rsa');
-const serverKey = new NodeRSA({ b: 1024 });
+const { RSA, Crypt } = require('hybrid-crypto-js');
+const rsa = new RSA();
+const crypt = new Crypt();
+let serverKey
+rsa.generateKeyPairAsync().then(keyPair => (serverKey = keyPair, console.log("Keypair ready")));
+
+// const crypt.encrypt = (key, msg) => {
+//   console.log(msg);
+//   console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
+//   console.log("keys", key, api.serverKey);
+//   return JSON.parse(crypt.encrypt(key, msg)).cipher;
+// }
+// const crypt.decrypt = (key, msg) => {
+//   console.log(key, msg);
+//   return JSON.parse(crypt.decrypt(key, msg)).message;
+// }
+
+// const NodeRSA = require('node-rsa');
+// const serverKey = new NodeRSA({ b: 1024 });
 const Server = require("socket.io").Server;
-console.log(serverKey.exportKey('pkcs8-public-pem'));
+// console.log(serverKey.exportKey('pkcs8-public-pem'));
 const base85 = require('base85');
 const { z2t, t2z } = require('zero-width-lib')
 
@@ -56,17 +73,27 @@ const io = new Server(1106, {
 });
 
 io.on("connection", (socket) => {
+  if (!serverKey) {
+    // disconnect
+    return socket.disconnect();
+  }
   console.log("a user connected");
   let clientKey, solve, pack;
-  socket.emit("swapKey", serverKey.exportKey('pkcs8-public-pem'))
+  // socket.emit("swapKey", serverKey.exportKey('pkcs8-public-pem'))
+  socket.emit("swapKey", serverKey.publicKey)
   socket.on("swapKey", (msg) => {
-    clientKey = new NodeRSA(serverKey.decrypt(msg, 'utf8'), 'pkcs8-public-pem')
+
+    // clientKey = new NodeRSA(serverKey.decrypt(msg, 'utf8'), 'pkcs8-public-pem')
+    // console.log("Swap key from client", msg);
+    clientKey = crypt.decrypt(serverKey.privateKey, msg).message;
+    console.log(msg);
     console.log("Swap key from client success");
     solve = msg => {
       msg = z2t(msg);
       msg = base85.decode(msg);
       msg = Buffer.from(msg).toString('utf8');
-      msg = serverKey.decrypt(msg, 'utf8');
+      // msg = serverKey.decrypt(msg, 'utf8');
+      msg = crypt.decrypt(serverKey.privateKey, msg).message;
       try {
         msg = JSON.parse(msg);
       } catch (e) { }
@@ -74,7 +101,8 @@ io.on("connection", (socket) => {
     }
     pack = msg => {
       msg = JSON.stringify(msg);
-      msg = clientKey.encrypt(msg, 'base64');
+      // msg = clientKey.encrypt(msg, 'base64');
+      msg = crypt.encrypt(clientKey, msg);
       msg = base85.encode(msg);
       msg = t2z(msg);
       try {
@@ -101,7 +129,7 @@ io.on("connection", (socket) => {
         success: true,
         _request_id: msg._request_id
       }))
-      console.log("return to client", data);
+      // console.log("return to client", data);
     }).catch(err => {
       socket.emit("request", pack({
         error: err,
