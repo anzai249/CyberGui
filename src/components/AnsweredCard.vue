@@ -2,6 +2,8 @@
 import { defineComponent, ref } from "vue";
 import { Person, Heart, HeartDislike } from "@vicons/ionicons5";
 import api from "../api.js";
+const avatar = require('../settings.json').avatar;
+
 defineProps({
   id: {
     type: Number,
@@ -171,7 +173,7 @@ export default defineComponent({
               </n-space>
             </n-space>
             <n-divider title-placement="left">
-              <n-avatar round src="./src/assets/Avatar.jpg" />
+              <n-avatar round :src="avatar" />
             </n-divider>
             <div class="answer_div" style="word-wrap: break-word">
               {{ answer }}
