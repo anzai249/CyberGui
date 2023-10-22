@@ -6,7 +6,7 @@
           default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
-            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" src="@/assets/logo.png" /></a>
+            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" :src="logoBig" /></a>
             <n-divider vertical />
           </template>
           <n-tab-pane name="archive" :tab="$t('header.archive')">
@@ -33,7 +33,7 @@
         <n-tabs class="mobile">
           <template #prefix>
             <n-divider vertical />
-            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" src="@/assets/logoMobile.png" /></a>
+            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" :src="logoSmall" /></a>
             <n-divider vertical />
           </template>
           <template #suffix>
@@ -112,6 +112,8 @@ import { useI18n } from 'vue-i18n'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
 import Ask from "./components/Ask.vue"
 import { useRouter } from "vue-router"
+const logoBig = require("./settings.json").logo_big
+const logoSmall = require("./settings.json").logo_small
 
 export default defineComponent({
   components: {
@@ -194,6 +196,8 @@ export default defineComponent({
       );
     });
     return {
+      logoBig,
+      logoSmall,
       askActive,
       menuActive,
       addDrawer,
