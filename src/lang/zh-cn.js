@@ -26,6 +26,8 @@ export default {
     },
     terminal:{
         answer:"你的回答",
-        delete:"删除"
+        delete:"删除",
+        sensitiveTrue: "敏感",
+        sensitiveFalse: "常规"
     }
 }

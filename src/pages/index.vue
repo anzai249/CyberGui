@@ -9,14 +9,6 @@
           Skel
         </template>
       </n-switch>
-      <n-switch v-model:value="sensitive">
-        <template #checked>
-          Sens
-        </template>
-        <template #unchecked>
-          Sens
-        </template>
-      </n-switch>
       UNDER DEVELOPMENT
       <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="i in 6">
@@ -84,7 +76,6 @@ export default defineComponent({
           response.result.forEach(element => {
             this.questionsData.push(element)
           });
-          console.log("fetch success", response.result);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -93,7 +84,6 @@ export default defineComponent({
     fetchAnswers() {
       api.post('/getanswers')
         .then(response => {
-          console.log("fetch success", response.result);
           response.result.forEach(element => {
             this.answersData.push(element)
           });

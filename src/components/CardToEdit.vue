@@ -15,6 +15,10 @@ defineProps({
     sensitive: {
         type: Boolean,
         required: true
+    },
+    answer: {
+        type: String,
+        required: true,
     }
 })
 const colors = ['#c3cfe2']
@@ -38,16 +42,18 @@ export default defineComponent({
         Person, Heart, HeartDislike, Checkmark, CloseOutline
     },
     data() {
+
         if (this.sensitive) {
             return {
-                sensitiveObj: { sensitive: true }
+                sensitiveObj: { sensitive: true },
+                answerObj: { answer: this.answer }
             }
-        }else {
+        } else {
             return {
-                sensitiveObj: { sensitive: false }
+                sensitiveObj: { sensitive: false },
+                answerObj: { answer: this.answer }
             }
         }
-
     },
     setup() {
 
@@ -98,7 +104,8 @@ export default defineComponent({
                             {{ time }}
                         </div>
                     </n-space>
-                    <n-input round type="textarea" :placeholder="$t('terminal.answer')" show-count :maxlength="120" />
+                    <n-input round type="textarea" :placeholder="$t('terminal.answer')" show-count :maxlength="120"
+                        v-model:value="this.answerObj.answer" />
                 </n-space>
                 <n-space justify="space-between" align="center">
                     <n-button type="primary" secondary>

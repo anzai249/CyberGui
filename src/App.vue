@@ -6,7 +6,7 @@
           default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
-            <img height="53" src="@/assets/logo.png" />
+            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" src="@/assets/logo.png" /></a>
             <n-divider vertical />
           </template>
           <n-tab-pane name="archive" :tab="$t('header.archive')">
@@ -33,7 +33,7 @@
         <n-tabs class="mobile">
           <template #prefix>
             <n-divider vertical />
-            <img height="53" src="@/assets/logoMobile.png" />
+            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" src="@/assets/logoMobile.png" /></a>
             <n-divider vertical />
           </template>
           <template #suffix>

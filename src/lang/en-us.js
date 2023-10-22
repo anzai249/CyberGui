@@ -26,6 +26,8 @@ export default {
     },
     terminal:{
         answer:"Your answer here...",
-        delete:"Delete"
+        delete:"Delete",
+        sensitiveTrue: "Sensitive",
+        sensitiveFalse: "Normal"
     }
 }

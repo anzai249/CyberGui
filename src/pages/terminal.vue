@@ -1,16 +1,18 @@
 <template>
     <n-layout>
         <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
-            <n-grid cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
-                <n-grid-item>
-                    <CardToAnswer title="石室诗士施氏"
-                        msg="石室诗士施氏，嗜狮，誓食十狮。适施氏时时适市视狮。十时，适十狮适市。是时，适施氏适市。氏视是十狮，恃矢势，使是十狮逝世。氏拾是十狮尸，适石室。石室湿，氏使侍拭石室。石室拭，氏始试食是十狮尸。食时，始识是十狮尸，实十石狮尸。试释是事。"
-                        time="2023-01-29" :loading="loading" :sensitive="false" />
+            <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
+                <n-grid-item v-for="i in 6">
+                    <LoadingCard />
                 </n-grid-item>
-                <n-grid-item>
-                    <UnansweredCard title="石室诗士施氏"
-                        msg="石室诗士施氏，嗜狮，誓食十狮。适施氏时时适市视狮。十时，适十狮适市。是时，适施氏适市。氏视是十狮，恃矢势，使是十狮逝世。氏拾是十狮尸，适石室。石室湿，氏使侍拭石室。石室拭，氏始试食是十狮尸。食时，始识是十狮尸，实十石狮尸。试释是事。"
-                        :likes="666" :dislikes="994" time="2023-01-29" :loading="loading" :sensitive="false" />
+            </n-grid>
+            <n-grid v-else="!loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
+                <n-grid-item v-for="item in questionsData">
+                    <CardToEdit v-if="item.answerid" :id="item.id" :title="item.title" :msg="item.content"
+                        :likes="item.like" :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive"
+                        :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer" />
+                    <CardToAnswer v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
+                        :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive" />
                 </n-grid-item>
             </n-grid>
         </n-layout-content>
@@ -19,30 +21,70 @@
     </n-layout>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
-import UnansweredCard from '../components/UnansweredCard.vue'
-import AnsweredCard from '../components/AnsweredCard.vue'
 import CardToAnswer from '../components/CardToAnswer.vue'
+import CardToEdit from '../components/CardToEdit.vue'
+import LoadingCard from '../components/LoadingCard.vue'
+import api from "../api.js"
 
 export default defineComponent({
     components: {
         Person,
         Heart,
         HeartDislike,
-        UnansweredCard,
-        AnsweredCard,
-        CardToAnswer
+        CardToAnswer,
+        CardToEdit,
+        LoadingCard
+    },
+    data() {
+        return {
+            questionsData: [],
+            answersData: [],
+            loading: true
+        }
     },
     setup() {
-
-        return {
-
-            loading: ref(true),
-            sensitive: ref(true)
-        }
+    },
+    mounted() {
+        this.fetchQuestions()
+        this.fetchAnswers()
+    },
+  watch: {
+    questionsData: {
+      handler: 'arrayChange',
+      deep: true
     }
+  },methods: {
+    fetchQuestions() {
+      api.post('/getquestions')
+        .then(response => {
+          // this.questionsData = response.result;
+          response.result.forEach(element => {
+            this.questionsData.push(element)
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    },
+    fetchAnswers() {
+      api.post('/getanswers')
+        .then(response => {
+          response.result.forEach(element => {
+            this.answersData.push(element)
+          });
+        })
+        .catch(error => {
+          console.log("fetch failed");
+          console.error('Error fetching data:', error);
+        });
+    },
+    arrayChange() {
+      this.loading = false
+    }
+  }
 })
 </script>
 
