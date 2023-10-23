@@ -5,10 +5,10 @@ const { getDate } = require('../modules/date');
 const env = process.env.NODE_ENV === 'development' ? 'dev' : 'prod';
 
 const connection = mysql.createConnection({
-  host: "localhost",
+  host: secret[env].host,
   user: secret[env].username,
   password: secret[env].password,
-  database: "cybergui",
+  database: secret[env].name,
   // auto handle reconnect
   reconnect: true
 })

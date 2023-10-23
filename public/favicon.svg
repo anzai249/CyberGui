@@ -1,0 +1,8 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" version="1.1">
+ <title>Gui</title>
+ <g id="Gui">
+  <rect id="svg_1" height="400" width="75" y="50" x="212.5" stroke="#000" fill="#000000"/>
+  <rect transform="rotate(120 250 250)" id="svg_3" height="400" width="75" y="50" x="212.5" stroke="#000" fill="#000000"/>
+  <rect transform="rotate(60 250 250)" id="svg_4" height="400" width="75" y="50" x="212.5" stroke="#000" fill="#000000"/>
+ </g>
+</svg>
