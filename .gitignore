@@ -15,7 +15,7 @@ coverage
 *.local
 
 cypress
-/service/secret.json
+service/secret.json
 
 # Editor directories and files
 .vscode
