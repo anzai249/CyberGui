@@ -57,6 +57,7 @@ export default defineComponent({
       return {
         blurRate: "5px",
         cursor: "pointer",
+        pointerEve: "all",
         likesObj: {
           likes: this.likes,
           dislikes: this.dislikes,
@@ -66,6 +67,7 @@ export default defineComponent({
       return {
         blurRate: "0px",
         cursor: "auto",
+        pointerEve: "auto",
         likesObj: {
           likes: this.likes,
           dislikes: this.dislikes,
