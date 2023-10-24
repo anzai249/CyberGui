@@ -46,19 +46,6 @@ const crypt = new Crypt();
 let serverKey
 rsa.generateKeyPairAsync().then(keyPair => (serverKey = keyPair, console.log("Keypair ready")));
 
-// const crypt.encrypt = (key, msg) => {
-//   console.log(msg);
-//   console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
-//   console.log("keys", key, api.serverKey);
-//   return JSON.parse(crypt.encrypt(key, msg)).cipher;
-// }
-// const crypt.decrypt = (key, msg) => {
-//   console.log(key, msg);
-//   return JSON.parse(crypt.decrypt(key, msg)).message;
-// }
-
-// const NodeRSA = require('node-rsa');
-// const serverKey = new NodeRSA({ b: 1024 });
 const Server = require("socket.io").Server;
 // console.log(serverKey.exportKey('pkcs8-public-pem'));
 const base85 = require('base85');

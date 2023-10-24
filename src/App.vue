@@ -224,6 +224,11 @@ export default defineComponent({
           label: "日本語",
           value: "jajp",
           img: "https://flagcdn.com/40x30/jp.png"
+        },
+        {
+          label: "减啼忠吻",
+          value: "zhsb",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png"
         }
       ],
       renderSingleSelectTag,
@@ -259,6 +264,10 @@ export default defineComponent({
           this.$i18n.locale = this.lang;
           break;
         case 'jajp':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'zhsb':
           this.lang = value;
           this.$i18n.locale = this.lang;
           break;
