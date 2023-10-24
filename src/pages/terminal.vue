@@ -73,7 +73,8 @@ export default defineComponent({
     }
   },
   mounted() {
-
+    this.fetchQuestions()
+    this.fetchAnswers()
   },
   watch: {
     questionsData: {

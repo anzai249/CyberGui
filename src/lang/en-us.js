@@ -33,6 +33,9 @@ export default {
         confirm: "Confirm",
         password: "Password",
         wrongPass: "Error: ",
-        emptyPass: "Empty password"
+        emptyPass: "Empty password",
+        deleteConfirm: "Confirm Delete?",
+        cancel: "Cancel",
+        deleted: "Deleted"
     }
 }

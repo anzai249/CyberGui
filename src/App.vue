@@ -109,13 +109,16 @@
 
 <script>
 import { defineComponent, h, ref } from "vue";
-import { NImage, useMessage } from "naive-ui";
+import { NImage } from "naive-ui";
 import { useI18n } from 'vue-i18n'
+import cookies from 'vue-cookies'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
 import Ask from "./components/Ask.vue"
 import { useRouter } from "vue-router"
-const logoBig = require("./settings.json").images.logo_big
-const logoSmall = require("./settings.json").images.logo_small
+const globalSettings = require("./settings.json")
+const logoBig = globalSettings.images.logo_big
+const logoSmall = globalSettings.images.logo_small
+const defaultLang = globalSettings.others.defaultLanguage
 
 export default defineComponent({
   components: {
@@ -129,7 +132,13 @@ export default defineComponent({
     const askActive = ref(false)
     const menuActive = ref(false)
     const addDrawer = ref(false)
-    const value = ref("zhcn")
+    let value = ref()
+
+    if (cookies.isKey("cyberguiLang")) {
+      value = ref(cookies.get("cyberguiLang"))
+    } else {
+      value = ref(defaultLang)
+    }
 
     const themeOverrides = {
       common: {
@@ -278,6 +287,7 @@ export default defineComponent({
           this.$i18n.locale = this.lang;
           break;
       }
+      cookies.set('cyberguiLang', this.lang)
     },
     showAddDrawer() {
       this.addDrawer = !this.addDrawer

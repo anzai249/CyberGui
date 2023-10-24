@@ -24,6 +24,7 @@ const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 <script>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike, Checkmark, CloseOutline } from '@vicons/ionicons5'
+import { useMessage } from 'naive-ui'
 
 export default defineComponent({
     props: {
@@ -42,7 +43,7 @@ export default defineComponent({
             return {
                 sensitiveObj: { sensitive: true }
             }
-        }else {
+        } else {
             return {
                 sensitiveObj: { sensitive: false }
             }
@@ -50,7 +51,12 @@ export default defineComponent({
 
     },
     setup() {
-
+        const message = useMessage();
+        return {
+            handlePositiveClick() {
+                message.info(t('terminal.deleted'));
+            }
+        };
     },
     methods: {
     }
@@ -117,14 +123,20 @@ export default defineComponent({
                             {{ $t('terminal.sensitiveFalse') }}
                         </template>
                     </n-switch>
-                    <n-button type="error" secondary>
-                        <template #icon>
-                            <n-icon>
-                                <CloseOutline />
-                            </n-icon>
+                    <n-popconfirm @positive-click="handlePositiveClick" :negative-text="$t('terminal.cancel')"
+                        :positive-text="$t('terminal.confirm')">
+                        <template #trigger>
+                            <n-button type="error" secondary>
+                                <template #icon>
+                                    <n-icon>
+                                        <CloseOutline />
+                                    </n-icon>
+                                </template>
+                                {{ $t('terminal.delete') }}
+                            </n-button>
                         </template>
-                        {{ $t('terminal.delete') }}
-                    </n-button>
+                        {{ $t('terminal.deleteConfirm') }}
+                    </n-popconfirm>
                 </n-space>
             </n-space>
         </n-card>

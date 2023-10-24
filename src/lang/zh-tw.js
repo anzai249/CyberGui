@@ -33,6 +33,9 @@ export default {
         confirm: "確認",
         password: "密碼",
         wrongPass: "錯誤：",
-        emptyPass: "空密碼"
+        emptyPass: "空密碼",
+        deleteConfirm: "確認刪除嗎？",
+        cancel: "取消",
+        deleted: "已刪除"
     }
 }

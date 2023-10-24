@@ -7,6 +7,7 @@
     "others": {
         "colors": [
             "#c3cfe2"
-        ]
+        ],
+        "defaultLanguage": "zhcn"
     }
 }
