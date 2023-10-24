@@ -18,7 +18,7 @@ export default {
         showSensitive:"顯示敏感内容"
     },
     aboutPage:{
-        description:"Cyber Gui 是一個開源個人匿名提問箱，軟體乾淨且易部署，可以讓大家通過匿名提問的方式瞭解你。",
+        description:"CyberGui 是一個開源個人匿名提問箱，軟體乾淨且易部署，可以讓大家通過匿名提問的方式瞭解你。",
         guiCharacter:"匭是中國古代政府用來收集人民投書的箱子。",
         author:"作者",
         github:"Github",

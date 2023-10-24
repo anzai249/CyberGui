@@ -18,7 +18,7 @@ export default {
         showSensitive:"Show Sensitive Content"
     },
     aboutPage:{
-        description:"Cyber Gui is a clean personal anonymous question box. You can deploy it easily.",
+        description:"CyberGui is a clean personal anonymous question box. You can deploy it easily.",
         guiCharacter:"The word 匭(Gui) is a box that the emperor accepts submissions from his people in order to correct his mistakes.",
         author:"Author",
         github:"Github",
