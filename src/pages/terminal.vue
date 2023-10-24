@@ -1,4 +1,13 @@
 <template>
+  <div class="adminLoginBack">
+    <n-card class="adminLogin" :title="$t('terminal.login')">
+      <n-space justify="space-around" size="large">
+        <n-input type="password" v-model:value="terminalPass" :placeholder="$t('terminal.password')" :maxlength="50" />
+        <n-button type="primary" @click="handleLogin(terminalPass)">{{ $t("terminal.confirm") }}</n-button>
+      </n-space>
+    </n-card>
+    <div class="adminLoginShadow"></div>
+  </div>
   <n-layout>
     <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
       <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
@@ -22,8 +31,10 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
+import { useMessage } from 'naive-ui'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
+import md5 from "blueimp-md5"
 import CardToAnswer from '../components/CardToAnswer.vue'
 import CardToEdit from '../components/CardToEdit.vue'
 import LoadingCard from '../components/LoadingCard.vue'
@@ -42,14 +53,27 @@ export default defineComponent({
     return {
       questionsData: [],
       answersData: [],
-      loading: true
+      loading: true,
+      terminalPass: ''
     }
   },
   setup() {
+    const message = useMessage()
+    return {
+      emptyPass() {
+        message.error(
+          t('terminal.emptyPass')
+        );
+      },
+      wrongPass(error) {
+        message.error(
+          t('terminal.wrongPass') + error
+        );
+      }
+    }
   },
   mounted() {
-    this.fetchQuestions()
-    this.fetchAnswers()
+
   },
   watch: {
     questionsData: {
@@ -57,6 +81,20 @@ export default defineComponent({
       deep: true
     }
   }, methods: {
+    handleLogin(terminalPass) {
+      if (!terminalPass) {
+        this.emptyPass()
+      } else {
+        api.post('/login', { password: md5(terminalPass) })
+          .then(response => {
+            this.fetchQuestions()
+            this.fetchAnswers()
+          })
+          .catch(error => {
+            this.wrongPass(error)
+          });
+      }
+    },
     fetchQuestions() {
       api.post('/getquestions')
         .then(response => {
@@ -91,6 +129,31 @@ export default defineComponent({
 <style>
 body {
   background-color: snow;
+}
+
+.adminLoginBack {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminLoginShadow {
+  background-color: black;
+  opacity: 0.25;
+  width: 100%;
+  height: 100%;
+  z-index: 24;
+}
+
+.adminLogin {
+  position: absolute;
+  width: 25%;
+  min-width: 150px;
+  min-width: 100px;
+  z-index: 25;
 }
 
 .innerFooter {

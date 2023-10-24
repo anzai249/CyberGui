@@ -49,7 +49,9 @@
         </n-tabs>
       </n-layout-header>
       <n-layout position="absolute" style="top: 53px; bottom: 0px">
-        <RouterView />
+        <n-message-provider>
+          <RouterView />
+        </n-message-provider>
       </n-layout>
     </n-layout>
     <!-- Mobile Header Menu -->
@@ -82,7 +84,7 @@
       </n-drawer-content>
     </n-drawer>
     <n-message-provider>
-      <Ask ref="askDrawer" :active="this.addDrawer" @change-active="showAddDrawer"/>
+      <Ask ref="askDrawer" :active="this.addDrawer" @change-active="showAddDrawer" />
     </n-message-provider>
   </n-config-provider>
 </template>
@@ -128,7 +130,7 @@ export default defineComponent({
     const menuActive = ref(false)
     const addDrawer = ref(false)
     const value = ref("zhcn")
-    
+
     const themeOverrides = {
       common: {
         primaryColor: '#8a2be2',

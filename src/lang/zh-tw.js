@@ -28,6 +28,11 @@ export default {
         answer:"你的回答",
         delete:"刪除",
         sensitiveTrue: "敏感",
-        sensitiveFalse: "常規"
+        sensitiveFalse: "常規",
+        login: "登入",
+        confirm: "確認",
+        password: "密碼",
+        wrongPass: "錯誤：",
+        emptyPass: "空密碼"
     }
 }

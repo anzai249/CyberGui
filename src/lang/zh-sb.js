@@ -28,6 +28,10 @@ export default {
         answer:"your的回答",
         delete:"删除锟斤拷",
         sensitiveTrue: "xoxo",
-        sensitiveFalse: "no xoxo"
+        sensitiveFalse: "no xoxo",
+        confirm: "雀腚",
+        password: "迷马",
+        wrongPass: "烫烫烫：",
+        emptyPass: "⑤阀建册到迷马"
     }
 }

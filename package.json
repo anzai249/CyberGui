@@ -15,6 +15,7 @@
     "@vicons/ionicons5": "^0.12.0",
     "@vueuse/core": "^10.5.0",
     "base85": "^3.1.0",
+    "blueimp-md5": "^2.19.0",
     "fastjs-next": "^1.3.0",
     "hybrid-crypto-js": "^0.2.4",
     "naive-ui": "^2.34.3",

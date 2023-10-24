@@ -28,6 +28,11 @@ export default {
         answer:"Your answer here...",
         delete:"Delete",
         sensitiveTrue: "Sensitive",
-        sensitiveFalse: "Normal"
+        sensitiveFalse: "Normal",
+        login: "Login",
+        confirm: "Confirm",
+        password: "Password",
+        wrongPass: "Error: ",
+        emptyPass: "Empty password"
     }
 }
