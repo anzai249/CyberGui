@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="./public/favicon.png" alt="CyberGui" width="150"></a>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="./public/favicon.svg" alt="CyberGui" width="150"></a>
   <br>
   Cyber Gui
   <br>
