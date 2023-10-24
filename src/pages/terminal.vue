@@ -9,10 +9,10 @@
             <n-grid v-else="!loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
                 <n-grid-item v-for="item in questionsData">
                     <CardToEdit v-if="item.answerid" :id="item.id" :title="item.title" :msg="item.content"
-                        :likes="item.like" :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive"
+                        :likes="item.like" :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive"
                         :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer" />
                     <CardToAnswer v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
-                        :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive" />
+                        :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive" />
                 </n-grid-item>
             </n-grid>
         </n-layout-content>
