@@ -119,6 +119,8 @@ const globalSettings = require("./settings.json")
 const logoBig = globalSettings.images.logo_big
 const logoSmall = globalSettings.images.logo_small
 const defaultLang = globalSettings.others.defaultLanguage
+const primaryColor = globalSettings.theme.primaryColor
+const primaryColorHover = globalSettings.theme.primaryColorHover
 
 export default defineComponent({
   components: {
@@ -142,8 +144,8 @@ export default defineComponent({
 
     const themeOverrides = {
       common: {
-        primaryColor: '#8a2be2',
-        primaryColorHover: "#8a2be2"
+        primaryColor: primaryColor,
+        primaryColorHover: primaryColorHover
       }
     }
     const { t } = useI18n()
