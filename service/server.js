@@ -1,4 +1,4 @@
-// main node server
+
 const { createServer, serverCrash } = require('./modules/http.js');
 const { connect } = require('./sql/connect.js');
 const { isBan } = require('./modules/security.js');
@@ -10,7 +10,7 @@ const pages = {
   "/answer": require('./pages/answer.js'),
   "/like": require('./pages/like.js'),
   "/dislike": require('./pages/dislike.js'),
-  // "/comment": require('./pages/comment.js'),
+
   "/delete": require('./pages/delete.js'),
   "/getquestions": require('./pages/getquestions.js'),
   "/getanswers": require('./pages/getanswers.js')
@@ -22,10 +22,10 @@ const response = createServer(1107, async (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // req.ip = req.headers['CF-Connecting-IP'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  // req.ip = req.ip.match(/(\d{1,3}\.){3}\d{1,3}/)[0];
+
+
   req.ip = req.connection.remoteAddress;
-  // check if this ip is banned
+
   const result = await isBan(req, res, req.ip, mysql)
   let url = req.url.split('?')[0]
   if (url in pages) {
@@ -35,7 +35,7 @@ const response = createServer(1107, async (req, res) => {
   }
 })
 
-// catch uncaughtException
+
 process.on('uncaughtException', (err) => {
   serverCrash(err)
 })
@@ -47,12 +47,12 @@ let serverKey
 rsa.generateKeyPairAsync().then(keyPair => (serverKey = keyPair, console.log("Keypair ready")));
 
 const Server = require("socket.io").Server;
-// console.log(serverKey.exportKey('pkcs8-public-pem'));
+
 const base85 = require('base85');
 const { z2t, t2z } = require('zero-width-lib')
 
 const io = new Server(1106, {
-  // options
+
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
@@ -60,18 +60,20 @@ const io = new Server(1106, {
 });
 
 io.on("connection", (socket) => {
+  // get ip
+  const ip = socket.handshake.address;
   if (!serverKey) {
-    // disconnect
+
     return socket.disconnect();
   }
   console.log("a user connected");
   let clientKey, solve, pack;
-  // socket.emit("swapKey", serverKey.exportKey('pkcs8-public-pem'))
+
   socket.emit("swapKey", serverKey.publicKey)
   socket.on("swapKey", (msg) => {
 
-    // clientKey = new NodeRSA(serverKey.decrypt(msg, 'utf8'), 'pkcs8-public-pem')
-    // console.log("Swap key from client", msg);
+
+
     clientKey = crypt.decrypt(serverKey.privateKey, msg).message;
     console.log(msg);
     console.log("Swap key from client success");
@@ -79,7 +81,7 @@ io.on("connection", (socket) => {
       msg = z2t(msg);
       msg = base85.decode(msg);
       msg = Buffer.from(msg).toString('utf8');
-      // msg = serverKey.decrypt(msg, 'utf8');
+
       msg = crypt.decrypt(serverKey.privateKey, msg).message;
       try {
         msg = JSON.parse(msg);
@@ -88,7 +90,7 @@ io.on("connection", (socket) => {
     }
     pack = msg => {
       msg = JSON.stringify(msg);
-      // msg = clientKey.encrypt(msg, 'base64');
+
       msg = crypt.encrypt(clientKey, msg);
       msg = base85.encode(msg);
       msg = t2z(msg);
@@ -101,7 +103,7 @@ io.on("connection", (socket) => {
   })
   socket.on("request", (msg) => {
     msg = solve(msg);
-    // console.log(msg);
+
     if (!msg.url in pages) {
       socket.emit("request", pack({
         error: "404 Not Found",
@@ -110,13 +112,13 @@ io.on("connection", (socket) => {
       }))
       return;
     }
-    pages[msg.url](msg.data, mysql).then(data => {
+    pages[msg.url](msg.data, mysql, ip).then(data => {
       socket.emit("request", pack({
         data,
         success: true,
         _request_id: msg._request_id
       }))
-      // console.log("return to client", data);
+
     }).catch(err => {
       socket.emit("request", pack({
         error: err,
