@@ -2,7 +2,7 @@
 import { defineComponent, ref } from "vue";
 import { Person, Heart, HeartDislike } from "@vicons/ionicons5";
 import api from "../api.js";
-const avatar = require('../settings.json').images.avatar;
+const avatar = (require('../settings.json').images.avatar || "./assets/Avatar.jpg")
 
 defineProps({
   id: {
