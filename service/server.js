@@ -1,4 +1,3 @@
-
 const { createServer, serverCrash } = require('./modules/http.js');
 const { connect } = require('./sql/connect.js');
 const { isBan } = require('./modules/security.js');
@@ -13,7 +12,8 @@ const pages = {
 
   "/delete": require('./pages/delete.js'),
   "/getquestions": require('./pages/getquestions.js'),
-  "/getanswers": require('./pages/getanswers.js')
+  "/getanswers": require('./pages/getanswers.js'),
+  "/login": require('./pages/login.js')
 }
 
 const response = createServer(1107, async (req, res) => {

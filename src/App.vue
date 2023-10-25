@@ -116,11 +116,11 @@ import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
 import Ask from "./components/Ask.vue"
 import { useRouter } from "vue-router"
 const globalSettings = require("./settings.json")
-const logoBig = globalSettings.images.logo_big
-const logoSmall = globalSettings.images.logo_small
-const defaultLang = globalSettings.others.defaultLanguage
-const primaryColor = globalSettings.theme.primaryColor
-const primaryColorHover = globalSettings.theme.primaryColorHover
+const logoBig = (globalSettings.images.logo_big || "./assets/logo.png")
+const logoSmall = (globalSettings.images.logo_small || "./assets/logoMobile.png")
+const defaultLang = (globalSettings.others.defaultLanguage || 'enus')
+const primaryColor = (globalSettings.theme.primaryColor || "#8a2be2")
+const primaryColorHover = (globalSettings.theme.primaryColorHover || "#8a2be2")
 
 export default defineComponent({
   components: {

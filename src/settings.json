@@ -1,8 +1,8 @@
 {
     "images": {
-        "avatar": "https://avatars.githubusercontent.com/u/32564494",
-        "logo_big": "https://github.com/anzai249/CyberGui/blob/main/public/assets/logo.png?raw=true",
-        "logo_small": "https://github.com/anzai249/CyberGui/blob/main/public/assets/logoMobile.png?raw=true"
+        "avatar": "./assets/Avatar.jpg",
+        "logo_big": "./assets/logo.png",
+        "logo_small": "./assets/logoMobile.png"
     },
     "others": {
         "colors": [

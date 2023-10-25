@@ -18,10 +18,10 @@
       <n-grid v-else="!loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="item in questionsData">
           <CardToEdit v-if="item.answerid" :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
-            :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive"
+            :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive"
             :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer" />
           <CardToAnswer v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
-            :dislikes="item.dislike" :time="item.time" :sensitive="item.sensitive" />
+            :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive" />
         </n-grid-item>
       </n-grid>
     </n-layout-content>
@@ -34,6 +34,7 @@
 import { defineComponent } from 'vue'
 import { useMessage } from 'naive-ui'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
+import { useI18n } from 'vue-i18n'
 import md5 from "blueimp-md5"
 import CardToAnswer from '../components/CardToAnswer.vue'
 import CardToEdit from '../components/CardToEdit.vue'
@@ -54,10 +55,12 @@ export default defineComponent({
       questionsData: [],
       answersData: [],
       loading: true,
-      terminalPass: ''
+      terminalPass: '',
+      isLoginShow: 'flex'
     }
   },
   setup() {
+    const { t } = useI18n()
     const message = useMessage()
     return {
       emptyPass() {
@@ -73,15 +76,14 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.fetchQuestions()
-    this.fetchAnswers()
   },
   watch: {
     questionsData: {
       handler: 'arrayChange',
       deep: true
     }
-  }, methods: {
+  },
+  methods: {
     handleLogin(terminalPass) {
       if (!terminalPass) {
         this.emptyPass()
@@ -90,6 +92,7 @@ export default defineComponent({
           .then(response => {
             this.fetchQuestions()
             this.fetchAnswers()
+            this.isLoginShow = 'none'
           })
           .catch(error => {
             this.wrongPass(error)
@@ -134,7 +137,7 @@ body {
 
 .adminLoginBack {
   position: absolute;
-  display: flex;
+  display: v-bind(isLoginShow);
   width: 100%;
   height: 100%;
   align-items: center;
