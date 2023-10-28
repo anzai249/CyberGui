@@ -19,6 +19,7 @@
     "fastjs-next": "^1.3.0",
     "hybrid-crypto-js": "^0.2.4",
     "naive-ui": "^2.34.3",
+    "node-forge": ">=1.3.0"
     "pinia": "^2.0.28",
     "socket.io-client": "^4.7.2",
     "unplugin-auto-import": "^0.12.2",
@@ -41,6 +42,7 @@
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.3",
     "naive-ui": "^2.34.3",
+    "node-forge": ">=1.3.0"
     "start-server-and-test": "^1.15.2",
     "vite": "^4.5.0",
     "vite-plugin-javascript-obfuscator": "^3.0.3",
