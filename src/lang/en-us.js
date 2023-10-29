@@ -14,19 +14,19 @@ export default {
         success: "Successfully asked.",
         error: "Error: "
     },
-    card:{
-        showSensitive:"Show Sensitive Content"
+    card: {
+        showSensitive: "Show Sensitive Content"
     },
-    aboutPage:{
-        description:"CyberGui is a clean personal anonymous question box. You can deploy it easily.",
-        guiCharacter:"The word 匭(Gui) is a box that the emperor accepts submissions from his people in order to correct his mistakes.",
-        author:"Author",
-        github:"Github",
-        email:"Email"
+    aboutPage: {
+        description: "CyberGui is a clean personal anonymous question box. You can deploy it easily.",
+        guiCharacter: "The word 匭(Gui) is a box that the emperor accepts submissions from his people in order to correct his mistakes.",
+        author: "Author",
+        github: "Github",
+        email: "Email"
     },
-    terminal:{
-        answer:"Your answer here...",
-        delete:"Delete",
+    terminal: {
+        answer: "Your answer here...",
+        delete: "Delete",
         sensitiveTrue: "Sensitive",
         sensitiveFalse: "Normal",
         login: "Login",

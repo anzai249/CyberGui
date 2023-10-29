@@ -121,6 +121,7 @@ const logoSmall = (globalSettings.images.logo_small || "./assets/logoMobile.png"
 const defaultLang = (globalSettings.others.defaultLanguage || 'enus')
 const primaryColor = (globalSettings.theme.primaryColor || "#8a2be2")
 const primaryColorHover = (globalSettings.theme.primaryColorHover || "#8a2be2")
+const languageFlags = (globalSettings.images.language_flags || { "enus": "./assets/flags/gb.png", "zhcn": "./assets/flags/cn.png", "zhtw": "./assets/flags/tw.png", "ja": "./assets/flags/jp.png", "de": "./assets/flags/de.png", "zhsb": "./assets/flags/unknown.png" })
 
 export default defineComponent({
   components: {
@@ -219,29 +220,34 @@ export default defineComponent({
       t,
       options: [
         {
+          label: "English",
+          value: "enus",
+          img: languageFlags.enus
+        },
+        {
           label: "简体中文",
           value: "zhcn",
-          img: "https://flagcdn.com/40x30/cn.png"
+          img: languageFlags.zhcn
         },
         {
           label: "繁體中文",
           value: "zhtw",
-          img: "https://flagcdn.com/40x30/tw.png"
-        },
-        {
-          label: "English",
-          value: "enus",
-          img: "https://flagcdn.com/40x30/gb.png"
+          img: languageFlags.zhtw
         },
         {
           label: "日本語",
-          value: "jajp",
-          img: "https://flagcdn.com/40x30/jp.png"
+          value: "ja",
+          img: languageFlags.ja
+        },
+        {
+          label: "Deutsch",
+          value: "de",
+          img: languageFlags.de
         },
         {
           label: "减啼忠吻",
           value: "zhsb",
-          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png"
+          img: languageFlags.zhsb
         }
       ],
       renderSingleSelectTag,
@@ -276,7 +282,11 @@ export default defineComponent({
           this.lang = value;
           this.$i18n.locale = this.lang;
           break;
-        case 'jajp':
+        case 'ja':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'de':
           this.lang = value;
           this.$i18n.locale = this.lang;
           break;
