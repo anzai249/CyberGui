@@ -3,14 +3,7 @@
         "avatar": "./assets/Avatar.jpg",
         "logo_big": "./assets/logo.png",
         "logo_small": "./assets/logoMobile.png",
-        "language_flags": {
-            "enus": "./assets/flags/gb.png",
-            "zhcn": "./assets/flags/cn.png",
-            "zhtw": "./assets/flags/tw.png",
-            "ja": "./assets/flags/jp.png",
-            "de": "./assets/flags/de.png",
-            "zhsb": "./assets/flags/unknown.png"
-        }
+        "language_flags": {}
     },
     "others": {
         "colors": [

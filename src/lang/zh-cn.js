@@ -20,9 +20,9 @@ export default {
     aboutPage:{
         description:"CyberGui 是一个开源的个人匿名提问箱，软件干净且易部署，可以让大家通过匿名提问的方式了解你。",
         guiCharacter:"匦是中国古代政府用来收集人民投书的箱子。",
-        author:"作者",
-        github:"Github",
-        email:"电子邮箱"
+        author:"作者：",
+        github:"Github：",
+        email:"电子邮箱："
     },
     terminal:{
         answer:"你的回答",

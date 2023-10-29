@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   id: {
-    type: Number,
+    type: String,
     required: true,
   },
   title: {

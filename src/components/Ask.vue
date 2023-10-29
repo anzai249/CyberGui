@@ -7,7 +7,7 @@
                     <div style="left: 50%; width: auto;">
                         <n-space vertical align="center">
                             <n-input round v-model:value="title" :placeholder="$t('addNew.title')" show-count
-                                :maxlength="30" :count-graphemes="countGraphemes" style="width: 400px;" />
+                                :maxlength="30" style="width: 400px;" />
                             <n-input round v-model:value="detail" type="textarea" :placeholder="$t('addNew.detail')"
                                 show-count :maxlength="120" style="width: 400px;" />
                             <n-switch v-model:value="sensitive">
@@ -57,7 +57,9 @@ export default defineComponent({
     data() {
         return {
             askActive: ref(false),
-
+            sensitive: ref(false),
+            title: "",
+            detail: ""
         }
     },
     watch: {
@@ -75,11 +77,11 @@ export default defineComponent({
             // Ask new question
             let sensitiveParam = 0
             if (sensitive) { sensitiveParam = 1 } else { sensitiveParam = 0 }
-            api.post('/ask', { title: title , content: detail, sensitive: sensitiveParam})
+            api.post('/ask', { title: title, content: detail, sensitive: sensitiveParam })
                 .then(response => {
                     this.askSuccess()
                     this.activeChange()
-                    window.reload()
+                    this.$router.go(0)
                 })
                 .catch(error => {
                     this.askFailed(error)

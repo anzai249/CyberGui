@@ -4,6 +4,7 @@ import zhsb from "./zh-sb.js";
 import enus from "./en-us.js";
 import ja from "./ja.js";
 import de from "./de.js";
+import ru from "./ru.js";
 
 export default {
     zhcn,
@@ -11,5 +12,6 @@ export default {
     zhsb,
     enus,
     ja,
-    de
+    de,
+    ru
 }

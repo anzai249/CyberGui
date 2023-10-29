@@ -76,8 +76,9 @@ And thanks to:
   - [x] Simplified Chinese
   - [x] Traditional Chinese
   - [x] English
-  - [x] Germany
+  - [x] German
   - [ ] Japanese
+  - [ ] Russian
 
 - [ ] BackEnd Manager
 - [x] Blur sensitive posts

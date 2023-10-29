@@ -20,9 +20,9 @@ export default {
     aboutPage: {
         description:"CyberGui 是锟斤拷锟斤拷，软件锟斤锟斤，yes匿名ask",
         guiCharacter:"匦是中国古代政府用来锟斤拷锟斤拷的箱子。",
-        author:"坐着",
-        github:"Pornhub",
-        email:"电子鱿鱼"
+        author:"坐着：",
+        github:"Pornhub：",
+        email:"电子鱿鱼："
     },
     terminal:{
         answer:"your的回答",

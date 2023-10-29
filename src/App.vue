@@ -55,7 +55,7 @@
       </n-layout>
     </n-layout>
     <!-- Mobile Header Menu -->
-    <n-drawer v-model:show="menuActive" :width="350" :placement="right">
+    <n-drawer v-model:show="menuActive" :width="350">
       <n-drawer-content closable>
         <!-- Mobile Header Menu Content Here -->
         <n-space vertical align="center">
@@ -121,7 +121,7 @@ const logoSmall = (globalSettings.images.logo_small || "./assets/logoMobile.png"
 const defaultLang = (globalSettings.others.defaultLanguage || 'enus')
 const primaryColor = (globalSettings.theme.primaryColor || "#8a2be2")
 const primaryColorHover = (globalSettings.theme.primaryColorHover || "#8a2be2")
-const languageFlags = (globalSettings.images.language_flags || { "enus": "./assets/flags/gb.png", "zhcn": "./assets/flags/cn.png", "zhtw": "./assets/flags/tw.png", "ja": "./assets/flags/jp.png", "de": "./assets/flags/de.png", "zhsb": "./assets/flags/unknown.png" })
+const languageFlags = (globalSettings.images.language_flags)
 
 export default defineComponent({
   components: {
@@ -222,32 +222,38 @@ export default defineComponent({
         {
           label: "English",
           value: "enus",
-          img: languageFlags.enus
-        },
-        {
-          label: "简体中文",
-          value: "zhcn",
-          img: languageFlags.zhcn
-        },
-        {
-          label: "繁體中文",
-          value: "zhtw",
-          img: languageFlags.zhtw
-        },
-        {
-          label: "日本語",
-          value: "ja",
-          img: languageFlags.ja
+          img: (languageFlags.enus||"./assets/flags/gb.png")
         },
         {
           label: "Deutsch",
           value: "de",
-          img: languageFlags.de
+          img: (languageFlags.de||"./assets/flags/de.png")
+        },
+        {
+          label: "Русский",
+          value: "ru",
+          disabled: true,
+          img: (languageFlags.ru||"./assets/flags/ru.png")
+        },
+        {
+          label: "日本語",
+          value: "ja",
+          img: (languageFlags.ja||"./assets/flags/jp.png")
+        },
+        {
+          label: "简体中文",
+          value: "zhcn",
+          img: (languageFlags.zhcn||"./assets/flags/cn.png")
+        },
+        {
+          label: "繁體中文",
+          value: "zhtw",
+          img: (languageFlags.zhtw||"./assets/flags/tw.png")
         },
         {
           label: "减啼忠吻",
           value: "zhsb",
-          img: languageFlags.zhsb
+          img: (languageFlags.zhsb||"./assets/flags/unknown.png")
         }
       ],
       renderSingleSelectTag,
@@ -287,6 +293,10 @@ export default defineComponent({
           this.$i18n.locale = this.lang;
           break;
         case 'de':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'ru':
           this.lang = value;
           this.$i18n.locale = this.lang;
           break;

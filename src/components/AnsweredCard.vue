@@ -6,7 +6,7 @@ const avatar = (require('../settings.json').images.avatar || "./assets/Avatar.jp
 
 defineProps({
   id: {
-    type: Number,
+    type: String,
     required: true,
   },
   title: {
