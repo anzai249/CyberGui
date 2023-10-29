@@ -66,12 +66,17 @@ This software uses the following open source packages:
 - [Node.js](https://nodejs.org/)
 - [Naive UI](https://www.naiveui.com)
 
+And thanks to:
+
+- [flagcdn](https://flagcdn.com)
+
 ## Future Plan
 
 * Translation
   - [x] Simplified Chinese
   - [x] Traditional Chinese
   - [x] English
+  - [x] Germany
   - [ ] Japanese
 
 - [ ] BackEnd Manager
