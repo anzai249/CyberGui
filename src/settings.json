@@ -9,7 +9,8 @@
         "colors": [
             "#c3cfe2"
         ],
-        "defaultLanguage": "zhcn"
+        "defaultLanguage": "zhcn",
+        "serverHost": "127.0.0.1"
     },
     "theme": {
         "primaryColor": "#8a2be2",
