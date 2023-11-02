@@ -9,8 +9,16 @@ const password = require('../secret.json').password;
 
 async function Login(data, mysql) {
     return new Promise(async (resolve, reject) => {
-
         const givenPassword = data.password;
+
+        if (!givenPassword) {
+            return reject("Password not given!");
+        }
+
+        if (givenPassword.length !== 32) {
+            return reject("Illegal Password!");
+        }
+
         if (md5(password) === givenPassword) {
             return resolve({
                 "status": "success"

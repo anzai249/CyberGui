@@ -1,41 +1,41 @@
 export default {
-    languageName: "Русский",  // Please change this to the target language.
+    languageName: "Русский",
     header: {
-        archive: "Archive",
-        about: "About",
-        addNew: "New Question"
+        archive: "Все вопросы",
+        about: "О нас",
+        addNew: "Добавить вопрос"
     },
     addNew: {
-        title: "Title",
-        detail: "Detail",
-        sensitiveTrue: "Include Sensitive Content",
-        sensitiveFalse: "No Sensitive Content",
-        submit: "Submit",
-        success: "Successfully asked.",
-        error: "Error: "
+        title: "Заголовок",
+        detail: "Содержание",
+        sensitiveTrue: "Содержит конфиденциальную информацию",
+        sensitiveFalse: "Не содержит конфиденциальной информации",
+        submit: "Отправить",
+        success: "Вопрос успешно добавлен!",
+        error: "Ошибка:"
     },
     card: {
-        showSensitive: "Show Sensitive Content"
+        showSensitive: "Показать конфиденциальную информацию"
     },
     aboutPage: {
-        description: "CyberGui is a clean personal anonymous question box. You can deploy it easily.",
-        guiCharacter: "The word 匭(Gui) is a box that the emperor accepts submissions from his people in order to correct his mistakes.",
-        author: "Author: ",
-        github: "Github: ",
-        email: "Email: "
+        description: "CyberGui - это открытый источник анонимного личного ящика для вопросов, чистое программное обеспечение, легко развертываемое, позволяющее понять вас через анонимные вопросы.",
+        guiCharacter: "匦 - это ящик, который использовался древнегреческим правительством для сбора писем от людей.",
+        author: "Автор:",
+        github: "GitHub:",
+        email: "Электронная почта:"
     },
     terminal: {
-        answer: "Your answer here...",
-        delete: "Delete",
-        sensitiveTrue: "Sensitive",
-        sensitiveFalse: "Normal",
-        login: "Login",
-        confirm: "Confirm",
-        password: "Password",
-        wrongPass: "Error: ",
-        emptyPass: "Empty password",
-        deleteConfirm: "Confirm Delete?",
-        cancel: "Cancel",
-        deleted: "Deleted"
+        answer: "Ваш ответ",
+        delete: "Удалить",
+        sensitiveTrue: "Конфиденциально",
+        sensitiveFalse: "Обычный",
+        login: "Логин",
+        confirm: "Подтвердить",
+        password: "Пароль",
+        wrongPass: "Ошибка:",
+        emptyPass: "Пустой пароль",
+        deleteConfirm: "Вы уверены, что хотите удалить?",
+        cancel: "Отмена",
+        deleted: "Удалено"
     }
 }

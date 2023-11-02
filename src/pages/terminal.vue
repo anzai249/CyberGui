@@ -92,6 +92,7 @@ export default defineComponent({
           .then(response => {
             this.fetchQuestions()
             this.fetchAnswers()
+            cookies.set('SID', 0)
             this.isLoginShow = 'none'
           })
           .catch(error => {
