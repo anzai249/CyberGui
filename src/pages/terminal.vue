@@ -36,6 +36,7 @@ import { useMessage } from 'naive-ui'
 import { Person, Heart, HeartDislike } from '@vicons/ionicons5'
 import { useI18n } from 'vue-i18n'
 import md5 from "blueimp-md5"
+import cookies from 'vue-cookies'
 import CardToAnswer from '../components/CardToAnswer.vue'
 import CardToEdit from '../components/CardToEdit.vue'
 import LoadingCard from '../components/LoadingCard.vue'

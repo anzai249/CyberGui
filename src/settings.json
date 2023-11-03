@@ -10,7 +10,8 @@
             "#c3cfe2"
         ],
         "defaultLanguage": "zhcn",
-        "serverHost": "127.0.0.1"
+        "serverHost": "8.222.150.30",
+        "serverPort": "1106"
     },
     "theme": {
         "primaryColor": "#8a2be2",

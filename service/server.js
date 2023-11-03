@@ -67,9 +67,6 @@ io.on("connection", (socket) => {
 
   socket.emit("swapKey", serverKey.publicKey)
   socket.on("swapKey", (msg) => {
-
-
-
     clientKey = sm2.doDecrypt(msg, serverKey.privateKey);
     console.log(msg);
     console.log("Swap key from client success");
@@ -77,8 +74,9 @@ io.on("connection", (socket) => {
       msg = z2t(msg);
       msg = base85.decode(msg);
       msg = Buffer.from(msg).toString('utf8');
-
-      msg = sm2.doDecrypt(msg, serverKey.privateKey);
+      if (msg) {
+        msg = sm2.doDecrypt(msg, serverKey.privateKey);
+      }
       try {
         msg = JSON.parse(msg);
       } catch (e) { }

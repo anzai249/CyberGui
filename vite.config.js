@@ -34,12 +34,12 @@ export default defineConfig({
     port: 1108,
     // proxy: {
     //   '/api': {
-    //     target: 'http://localhost:1107',
+    //     target: 'http://127.0.0.1:1107',
     //     changeOrigin: true,
     //     rewrite: (path) => path.replace(/^\/api/, ''),
     //   },
     //   '/ws': {
-    //     target: 'http://localhost:1106',
+    //     target: 'http://127.0.0.1:1106',
     //     changeOrigin: true,
     //     rewrite: (path) => path.replace(/^\/ws/, ''),
     //     ws: true
@@ -50,12 +50,12 @@ export default defineConfig({
     port: 1108,
     // proxy: {
     //   '/api': {
-    //     target: 'http://localhost:1107',
+    //     target: 'http://127.0.0.1:1107',
     //     changeOrigin: true,
     //     rewrite: (path) => path.replace(/^\/api/, ''),
     //   },
     //   '/ws': {
-    //     target: 'http://localhost:1106',
+    //     target: 'http://127.0.0.1:1106',
     //     changeOrigin: true,
     //     rewrite: (path) => path.replace(/^\/ws/, ''),
     //     ws: true

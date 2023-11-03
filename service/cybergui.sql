@@ -4,7 +4,7 @@
  Source Server         : MySQL
  Source Server Type    : MySQL
  Source Server Version : 80028 (8.0.28)
- Source Host           : localhost:3306
+ Source Host           : 127.0.0.1:3306
  Source Schema         : cybergui
 
  Target Server Type    : MySQL

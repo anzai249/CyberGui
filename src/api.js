@@ -7,6 +7,8 @@ const base85 = require('base85');
 import { z2t, t2z } from 'zero-width-lib'
 import { rand } from "fastjs-next"
 const clientKey = sm2.generateKeyPairHex()
+const host = require("./settings.json").others.serverHost
+const port = require("./settings.json").others.serverPort
 
 // const crypt.encrypt = (key, msg) => {
 //     console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
@@ -21,7 +23,7 @@ const api = {
     connect() {
         return new Promise(finish => {
             console.log("client key", clientKey);
-            const socket = io('http://localhost:1106');
+            const socket = io('http://' + host + ':' + port);
             this.socket = socket;
             socket.on('connect', () => {
                 new Promise(resolve => {
@@ -76,13 +78,12 @@ const api = {
     solve(msg) {
         msg = z2t(msg);
         msg = base85.decode(msg)
-        console.log(msg)
         msg = Buffer.from(msg).toString('utf8');
+        console.log(msg)
         msg = sm2.doDecrypt(msg, clientKey.privateKey);
         try {
             msg = JSON.parse(msg);
         } catch (e) { }
-        console.log(msg);
         return msg;
     },
     pack(msg) {
