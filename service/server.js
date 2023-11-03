@@ -67,16 +67,14 @@ io.on("connection", (socket) => {
 
   socket.emit("swapKey", serverKey.publicKey)
   socket.on("swapKey", (msg) => {
-    clientKey = sm2.doDecrypt(msg, serverKey.privateKey);
+    clientKey = sm2.doDecrypt(msg, serverKey.privateKey, true);
     console.log(msg);
     console.log("Swap key from client success");
     solve = msg => {
       msg = z2t(msg);
-      msg = base85.decode(msg);
+      // msg = base85.decode(msg);
       msg = Buffer.from(msg).toString('utf8');
-      if (msg) {
-        msg = sm2.doDecrypt(msg, serverKey.privateKey);
-      }
+      msg = sm2.doDecrypt(msg, serverKey.privateKey, true);
       try {
         msg = JSON.parse(msg);
       } catch (e) { }
@@ -84,9 +82,9 @@ io.on("connection", (socket) => {
     }
     pack = msg => {
       msg = JSON.stringify(msg);
-
-      msg = sm2.doEncrypt(msg, clientKey);
-      msg = base85.encode(msg);
+      // console.log(msg)
+      msg = sm2.doEncrypt(msg, clientKey, true);
+      // msg = base85.encode(msg.toString);
       msg = t2z(msg);
       try {
         msg = JSON.parse(msg);

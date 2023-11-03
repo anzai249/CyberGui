@@ -31,7 +31,7 @@ const api = {
                         console.log("Swap key from server success");
                         this.serverKey = key;
                         console.log("server key", this.serverKey);
-                        socket.emit("swapKey", sm2.doEncrypt(clientKey.publicKey, key));
+                        socket.emit("swapKey", sm2.doEncrypt(clientKey.publicKey, key, true));
                         socket.on("update", msg => {
                             msg = this.solve(msg);
                             if (msg.type === "swap_OK") {
@@ -77,10 +77,9 @@ const api = {
     // clientKey: await rsa.generateKeyPairAsync(1024),
     solve(msg) {
         msg = z2t(msg);
-        msg = base85.decode(msg)
+        // msg = base85.decode(msg)
         msg = Buffer.from(msg).toString('utf8');
-        console.log(msg)
-        msg = sm2.doDecrypt(msg, clientKey.privateKey);
+        msg = sm2.doDecrypt(msg, clientKey.privateKey, true);
         try {
             msg = JSON.parse(msg);
         } catch (e) { }
@@ -89,8 +88,8 @@ const api = {
     pack(msg) {
         msg = JSON.stringify(msg);
         // msg = this.serverKey.encrypt(msg, 'base64');
-        msg = sm2.doEncrypt(msg, this.serverKey);
-        msg = base85.encode(msg);
+        msg = sm2.doEncrypt(msg, this.serverKey, true);
+        // msg = base85.encode(msg);
         msg = t2z(msg);
         try {
             msg = JSON.parse(msg);
