@@ -18,10 +18,10 @@ function getUTCDate(time) {
   return `${date.getUTCFullYear()}-${month}-${day} ${hour}:${minute}:${second}`
 }
 
-function getUTCTime() {
+function getUTCTime(time) {
   // return timestamp(UTC)
   // get server timestamp
-  const date = new Date()
+  const date = time ? new Date(time) : new Date()
   // convert to UTC
   date.setFullYear(date.getUTCFullYear())
   date.setMonth(date.getUTCMonth())
@@ -38,9 +38,15 @@ function toNormalFormat(date) {
   return date.replace("T", " ").replace("Z", "").replace(/\.\d{3}/, "")
 }
 
+function toSlashFormat(date) {
+  // convert - to /
+  return date.replace(/-/g, "/")
+}
+
 module.exports = {
   getDate,
   getUTCDate,
   getUTCTime,
-  toNormalFormat
+  toNormalFormat,
+  toSlashFormat
 }

@@ -77,6 +77,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.checkLogin()
   },
   watch: {
     questionsData: {
@@ -85,6 +86,21 @@ export default defineComponent({
     }
   },
   methods: {
+    checkLogin() {
+      api.post('/loginstate', { session: md5(cookies.get('SID')) })
+        .then(response => {
+          if (response.logined) {
+            this.fetchQuestions()
+            this.fetchAnswers()
+            this.isLoginShow = 'none'
+          } else {
+            return
+          }
+        })
+        .catch(error => {
+          return
+        });
+    },
     handleLogin(terminalPass) {
       if (!terminalPass) {
         this.emptyPass()
@@ -93,8 +109,8 @@ export default defineComponent({
           .then(response => {
             this.fetchQuestions()
             this.fetchAnswers()
-            cookies.set('SID', 0)
             this.isLoginShow = 'none'
+            cookies.set('SID', response.session)
           })
           .catch(error => {
             this.wrongPass(error)

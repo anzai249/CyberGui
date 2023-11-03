@@ -12,7 +12,7 @@
             "#c3cfe2"
         ],
         "defaultLanguage": "zhcn",
-        "serverHost": "8.222.150.30",
+        "serverHost": "127.0.0.1",
         "serverPort": "1106"
     },
     "theme": {

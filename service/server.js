@@ -9,10 +9,10 @@ const pages = {
   "/answer": require('./pages/answer.js'),
   "/like": require('./pages/like.js'),
   "/dislike": require('./pages/dislike.js'),
-
   "/delete": require('./pages/delete.js'),
   "/getquestions": require('./pages/getquestions.js'),
   "/getanswers": require('./pages/getanswers.js'),
+  "/loginstate": require('./pages/loginstate.js'),
   "/login": require('./pages/login.js')
 }
 

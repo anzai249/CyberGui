@@ -4,6 +4,10 @@ defineProps({
         type: String,
         required: true
     },
+    id: {
+        type: String,
+        required: true
+    },
     msg: {
         type: String,
         required: true
@@ -25,6 +29,9 @@ const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike, Checkmark, CloseOutline } from '@vicons/ionicons5'
 import { useMessage } from 'naive-ui'
+import api from "../api.js"
+import md5 from "blueimp-md5"
+import cookies from 'vue-cookies'
 
 export default defineComponent({
     props: {
@@ -41,11 +48,13 @@ export default defineComponent({
     data() {
         if (this.sensitive) {
             return {
-                sensitiveObj: { sensitive: true }
+                sensitiveObj: { sensitive: true },
+                answer: ''
             }
         } else {
             return {
-                sensitiveObj: { sensitive: false }
+                sensitiveObj: { sensitive: false },
+                answer: ''
             }
         }
 
@@ -53,12 +62,32 @@ export default defineComponent({
     setup() {
         const message = useMessage();
         return {
+            answerSuccess() {
+                message.success(
+                    t('addNew.success')
+                );
+            },
+            answerFailed(error) {
+                message.error(
+                    t('addNew.error') + error
+                );
+            },
             handlePositiveClick() {
                 message.info(t('terminal.deleted'));
             }
         };
     },
     methods: {
+        answerQuestion() {
+            api.post('/answer', { id: this.id, sensitive: this.sensitiveObj.sensitive, reply: this.answer, session: md5(cookies.get('SID')) })
+                .then(response => {
+                    // this.answerSuccess()
+                    this.$router.go(0)
+                })
+                .catch(error => {
+                    console.error(error)
+                });
+        }
     }
 })
 </script>
@@ -104,10 +133,11 @@ export default defineComponent({
                             {{ new Date(time).toLocaleString() }}
                         </div>
                     </n-space>
-                    <n-input round type="textarea" :placeholder="$t('terminal.answer')" show-count :maxlength="120" />
+                    <n-input round type="textarea" :placeholder="$t('terminal.answer')" show-count :maxlength="120"
+                        v-model:value="answer" />
                 </n-space>
                 <n-space justify="space-between" align="center">
-                    <n-button type="primary" secondary>
+                    <n-button type="primary" secondary @click="answerQuestion()">
                         <template #icon>
                             <n-icon>
                                 <Checkmark />

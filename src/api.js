@@ -7,8 +7,8 @@ const base85 = require('base85');
 import { z2t, t2z } from 'zero-width-lib'
 import { rand } from "fastjs-next"
 const clientKey = sm2.generateKeyPairHex()
-const host = require("./settings.json").others.serverHost
-const port = require("./settings.json").others.serverPort
+const host = (require("./settings.json").others.serverHost || "127.0.0.1")
+const port = (require("./settings.json").others.serverPort || "1106")
 
 // const crypt.encrypt = (key, msg) => {
 //     console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
