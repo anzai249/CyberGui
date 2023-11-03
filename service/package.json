@@ -11,9 +11,9 @@
   "dependencies": {
     "base85": "^3.1.0",
     "blueimp-md5": "^2.19.0",
-    "hybrid-crypto-js": "^0.2.4",
     "mysql": "^2.18.1",
     "node-rsa": "^1.1.1",
+    "sm-crypto": "^0.3.13",
     "socket.io": "^4.7.2",
     "zero-width-lib": "^1.1.0"
   },

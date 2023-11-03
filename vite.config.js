@@ -32,35 +32,35 @@ export default defineConfig({
   },
   server: {
     port: 1108,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:1107',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-      '/ws': {
-        target: 'http://localhost:1106',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/ws/, ''),
-        ws: true
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:1107',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //   },
+    //   '/ws': {
+    //     target: 'http://localhost:1106',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/ws/, ''),
+    //     ws: true
+    //   }
+    // }
   },
   preview: {
     port: 1108,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:1107',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-      '/ws': {
-        target: 'http://localhost:1106',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/ws/, ''),
-        ws: true
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:1107',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //   },
+    //   '/ws': {
+    //     target: 'http://localhost:1106',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/ws/, ''),
+    //     ws: true
+    //   }
+    // }
   },
 
 })

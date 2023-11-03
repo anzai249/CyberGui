@@ -1,10 +1,12 @@
 import { io } from "socket.io-client";
-import { RSA, Crypt } from "hybrid-crypto-js";
-const rsa = new RSA();
-const crypt = new Crypt();
+// import { RSA, Crypt } from "hybrid-crypto-js";
+// const rsa = new RSA();
+// const crypt = new Crypt();
+const sm2 = require('sm-crypto').sm2
 const base85 = require('base85');
 import { z2t, t2z } from 'zero-width-lib'
 import { rand } from "fastjs-next"
+const clientKey = sm2.generateKeyPairHex()
 
 // const crypt.encrypt = (key, msg) => {
 //     console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
@@ -18,7 +20,7 @@ import { rand } from "fastjs-next"
 const api = {
     connect() {
         return new Promise(finish => {
-            console.log("client key", this.clientKey);
+            console.log("client key", clientKey);
             const socket = io('http://localhost:1106');
             this.socket = socket;
             socket.on('connect', () => {
@@ -27,7 +29,7 @@ const api = {
                         console.log("Swap key from server success");
                         this.serverKey = key;
                         console.log("server key", this.serverKey);
-                        socket.emit("swapKey", crypt.encrypt(key, this.clientKey.publicKey));
+                        socket.emit("swapKey", sm2.doEncrypt(clientKey.publicKey, key));
                         socket.on("update", msg => {
                             msg = this.solve(msg);
                             if (msg.type === "swap_OK") {
@@ -70,12 +72,13 @@ const api = {
             })
         })
     },
-    clientKey: await rsa.generateKeyPairAsync(1024),
+    // clientKey: await rsa.generateKeyPairAsync(1024),
     solve(msg) {
         msg = z2t(msg);
         msg = base85.decode(msg)
+        console.log(msg)
         msg = Buffer.from(msg).toString('utf8');
-        msg = crypt.decrypt(this.clientKey.privateKey, msg).message;
+        msg = sm2.doDecrypt(msg, clientKey.privateKey);
         try {
             msg = JSON.parse(msg);
         } catch (e) { }
@@ -85,7 +88,7 @@ const api = {
     pack(msg) {
         msg = JSON.stringify(msg);
         // msg = this.serverKey.encrypt(msg, 'base64');
-        msg = crypt.encrypt(this.serverKey, msg);
+        msg = sm2.doEncrypt(msg, this.serverKey);
         msg = base85.encode(msg);
         msg = t2z(msg);
         try {

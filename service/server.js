@@ -40,12 +40,8 @@ process.on('uncaughtException', (err) => {
   serverCrash(err)
 })
 
-const { RSA, Crypt } = require('hybrid-crypto-js');
-const rsa = new RSA();
-const crypt = new Crypt();
-let serverKey
-rsa.generateKeyPairAsync().then(keyPair => (serverKey = keyPair, console.log("Keypair ready")));
-
+const sm2 = require('sm-crypto').sm2
+let serverKey = sm2.generateKeyPairHex()
 const Server = require("socket.io").Server;
 
 const base85 = require('base85');
@@ -74,7 +70,7 @@ io.on("connection", (socket) => {
 
 
 
-    clientKey = crypt.decrypt(serverKey.privateKey, msg).message;
+    clientKey = sm2.doDecrypt(msg, serverKey.privateKey);
     console.log(msg);
     console.log("Swap key from client success");
     solve = msg => {
@@ -82,7 +78,7 @@ io.on("connection", (socket) => {
       msg = base85.decode(msg);
       msg = Buffer.from(msg).toString('utf8');
 
-      msg = crypt.decrypt(serverKey.privateKey, msg).message;
+      msg = sm2.doDecrypt(msg, serverKey.privateKey);
       try {
         msg = JSON.parse(msg);
       } catch (e) { }
@@ -91,7 +87,7 @@ io.on("connection", (socket) => {
     pack = msg => {
       msg = JSON.stringify(msg);
 
-      msg = crypt.encrypt(clientKey, msg);
+      msg = sm2.doEncrypt(msg, clientKey);
       msg = base85.encode(msg);
       msg = t2z(msg);
       try {
