@@ -4,14 +4,14 @@
  Source Server         : MySQL
  Source Server Type    : MySQL
  Source Server Version : 80028 (8.0.28)
- Source Host           : 127.0.0.1:3306
+ Source Host           : localhost:3306
  Source Schema         : cybergui
 
  Target Server Type    : MySQL
  Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 22/10/2023 21:05:00
+ Date: 03/11/2023 23:46:46
 */
 
 SET NAMES utf8mb4;
@@ -50,6 +50,16 @@ CREATE TABLE `comment`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
+-- Table structure for likes
+-- ----------------------------
+DROP TABLE IF EXISTS `likes`;
+CREATE TABLE `likes`  (
+  `ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `question` int NULL DEFAULT NULL,
+  `time` datetime NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for questions
 -- ----------------------------
 DROP TABLE IF EXISTS `questions`;
@@ -65,6 +75,6 @@ CREATE TABLE `questions`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `answerid`(`answerid` ASC) USING BTREE,
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`answerid`) REFERENCES `answers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 53 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 SET FOREIGN_KEY_CHECKS = 1;

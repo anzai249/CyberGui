@@ -6,7 +6,7 @@
 
 const { response } = require('../modules/http.js');
 const { getUTCDate } = require('../modules/date.js');
-// const { isBan, like } = require('../modules/security.js')
+const { isBan, checkLike } = require('../modules/security.js')
 
 async function dislike(data, mysql) {
     return new Promise(async (resolve, reject) => {
@@ -15,8 +15,8 @@ async function dislike(data, mysql) {
             // if (req.method !== 'POST') return response(req, res, 405, "Error 405: Method Not Allowed");
 
             const id = data.id;
-
-            // I THINK YOU SHOULD PUT THE SECURITY CODE HERE
+            if (await isBan(ip, mysql)) return reject("Error 403: Forbidden");
+            else if (!await checkLike(id, ip, mysql)) return reject("Error 403: Forbidden");
 
             // is this id in `questions` table?
             const inside = await mysql.query("SELECT * FROM `questions` WHERE `id` = ?",
@@ -25,9 +25,11 @@ async function dislike(data, mysql) {
 
             // insert to `question` table
             // title, content, time, like, dislike, sensitive, answerid(null)
-            const result = await mysql.query(
-                "UPDATE `questions` SET `dislike` = `dislike` + 1 WHERE `id` = ?",
+            await mysql.query("UPDATE `questions` SET `dislike` = `dislike` + 1 WHERE `id` = ?",
                 [id]);
+
+                const result = await mysql.query("INSERT `likes` (`ip`, `question`, `time`) VALUES (?, ?, ?)",
+                    [ip, id, getUTCDate()]);
 
             // return
             return resolve({

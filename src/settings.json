@@ -3,14 +3,16 @@
         "avatar": "./assets/Avatar.jpg",
         "logo_big": "./assets/logo.png",
         "logo_small": "./assets/logoMobile.png",
-        "language_flags": {}
+        "language_flags": {
+            "zhtw": "./assets/flags/hk.png"
+        }
     },
     "others": {
         "colors": [
             "#c3cfe2"
         ],
         "defaultLanguage": "zhcn",
-        "serverHost": "127.0.0.1",
+        "serverHost": "8.222.150.30",
         "serverPort": "1106"
     },
     "theme": {
