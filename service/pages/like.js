@@ -4,7 +4,6 @@
 // Path: /task
 // Data: { like, dislike }
 
-const { response } = require('../modules/http.js');
 const { getUTCDate } = require('../modules/date.js');
 const { isBan, checkLike } = require('../modules/security.js')
 

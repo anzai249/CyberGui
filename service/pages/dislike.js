@@ -4,17 +4,14 @@
 // Path: /task
 // Data: { like, dislike }
 
-const { response } = require('../modules/http.js');
 const { getUTCDate } = require('../modules/date.js');
 const { isBan, checkLike } = require('../modules/security.js')
 
-async function dislike(data, mysql) {
+async function dislike(data, mysql, ip) {
     return new Promise(async (resolve, reject) => {
         try {
-            // check request method
-            // if (req.method !== 'POST') return response(req, res, 405, "Error 405: Method Not Allowed");
-
             const id = data.id;
+
             if (await isBan(ip, mysql)) return reject("Error 403: Forbidden");
             else if (!await checkLike(id, ip, mysql)) return reject("Error 403: Forbidden");
 
