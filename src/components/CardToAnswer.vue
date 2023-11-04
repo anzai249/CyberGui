@@ -1,45 +1,35 @@
-<script setup>
-defineProps({
-    title: {
-        type: String,
-        required: true
-    },
-    id: {
-        type: String,
-        required: true
-    },
-    msg: {
-        type: String,
-        required: true
-    },
-    time: {
-        type: String,
-        required: true
-    },
-    sensitive: {
-        type: Boolean,
-        required: true
-    }
-})
-const colors = require('../settings.json').others.colors
-const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
-</script>
-
 <script>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike, Checkmark, CloseOutline } from '@vicons/ionicons5'
 import { useMessage } from 'naive-ui'
+import { useI18n } from 'vue-i18n'
 import api from "../api.js"
 import md5 from "blueimp-md5"
 import cookies from 'vue-cookies'
+const colors = require('../settings.json').others.colors
+const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 
 export default defineComponent({
     props: {
-        pointerEve: {
-            type: String
+        title: {
+            type: String,
+            required: true
         },
-        blurRate: {
-            type: String
+        id: {
+            type: String,
+            required: true
+        },
+        msg: {
+            type: String,
+            required: true
+        },
+        time: {
+            type: String,
+            required: true
+        },
+        sensitive: {
+            type: Boolean,
+            required: true
         }
     },
     components: {
@@ -49,18 +39,23 @@ export default defineComponent({
         if (this.sensitive) {
             return {
                 sensitiveObj: { sensitive: true },
-                answer: ''
+                answer: '',
+                colors,
+                randomColor
             }
         } else {
             return {
                 sensitiveObj: { sensitive: false },
-                answer: ''
+                answer: '',
+                colors,
+                randomColor
             }
         }
 
     },
     setup() {
         const message = useMessage();
+        const { t } = useI18n()
         return {
             answerSuccess() {
                 message.success(
@@ -81,7 +76,7 @@ export default defineComponent({
         answerQuestion() {
             api.post('/answer', { id: this.id, sensitive: this.sensitiveObj.sensitive, reply: this.answer, session: md5(cookies.get('SID')) })
                 .then(response => {
-                    // this.answerSuccess()
+                    this.answerSuccess()
                     this.$router.go(0)
                 })
                 .catch(error => {

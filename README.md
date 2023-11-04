@@ -15,7 +15,6 @@
 
 ![NPM](https://img.shields.io/npm/l/naive-ui)
 [![Donate](https://img.shields.io/badge/%24-Donate-ff69b4)](https://www.paypal.me/MoriTokugawa)
-![AppVeyor tests](https://img.shields.io/appveyor/tests/anzai249/CyberGui)
 ![GitHub Repo stars](https://img.shields.io/github/stars/anzai249/CyberGui?style=social)
 </p>
 
