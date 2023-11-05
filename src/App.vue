@@ -55,7 +55,7 @@
       </n-layout>
     </n-layout>
     <!-- Mobile Header Menu -->
-    <n-drawer v-model:show="menuActive" :width="350">
+    <n-drawer v-model:show="menuActive" :width="getDrawerWidth()">
       <n-drawer-content closable>
         <!-- Mobile Header Menu Content Here -->
         <n-space vertical align="center">
@@ -222,38 +222,38 @@ export default defineComponent({
         {
           label: "English",
           value: "enus",
-          img: (languageFlags.enus||"./assets/flags/gb.png")
+          img: (languageFlags.enus || "./assets/flags/gb.png")
         },
         {
           label: "Deutsch",
           value: "de",
-          img: (languageFlags.de||"./assets/flags/de.png")
+          img: (languageFlags.de || "./assets/flags/de.png")
         },
         {
           label: "Русский",
           value: "ru",
           disabled: true,
-          img: (languageFlags.ru||"./assets/flags/ru.png")
+          img: (languageFlags.ru || "./assets/flags/ru.png")
         },
         {
           label: "日本語",
           value: "ja",
-          img: (languageFlags.ja||"./assets/flags/jp.png")
+          img: (languageFlags.ja || "./assets/flags/jp.png")
         },
         {
           label: "简体中文",
           value: "zhcn",
-          img: (languageFlags.zhcn||"./assets/flags/cn.png")
+          img: (languageFlags.zhcn || "./assets/flags/cn.png")
         },
         {
           label: "繁體中文",
           value: "zhtw",
-          img: (languageFlags.zhtw||"./assets/flags/tw.png")
+          img: (languageFlags.zhtw || "./assets/flags/tw.png")
         },
         {
           label: "减啼忠吻",
           value: "zhsb",
-          img: (languageFlags.zhsb||"./assets/flags/unknown.png")
+          img: (languageFlags.zhsb || "./assets/flags/unknown.png")
         }
       ],
       renderSingleSelectTag,
@@ -273,6 +273,13 @@ export default defineComponent({
     };
   },
   methods: {
+    getDrawerWidth() {
+      if (window.screen.width >= 350) {
+        return 350
+      } else {
+        return window.screen.width * 0.95
+      }
+    },
     changeLangEvent(value) {
       this.valueMobile = value
       switch (value) {

@@ -1,15 +1,15 @@
 <template>
     <!-- Add New Drawer Menu -->
-    <n-drawer v-model:show="askActive" :width="450" placement="right">
+    <n-drawer v-model:show="askActive" :width="getDrawerWidth()" :max-width="screenWidth" placement="right" >
         <n-drawer-content :title="$t('header.addNew')" closable>
             <n-form>
                 <n-form-item>
-                    <div style="left: 50%; width: auto;">
+                    <div style="left: 50%; width: 100%;">
                         <n-space vertical align="center">
                             <n-input round v-model:value="title" :placeholder="$t('addNew.title')" show-count
-                                :maxlength="30" style="width: 400px;" />
+                                :maxlength="30" class="askInput"/>
                             <n-input round v-model:value="detail" type="textarea" :placeholder="$t('addNew.detail')"
-                                show-count :maxlength="120" style="width: 400px;" />
+                                show-count :maxlength="120" class="askInput" />
                             <n-switch v-model:value="sensitive">
                                 <template #checked>
                                     {{ $t('addNew.sensitiveTrue') }}
@@ -35,6 +35,12 @@
     </n-drawer>
 </template>
 
+<style scoped>
+.askInput {
+    width: 400px;
+}
+
+</style>
 
 <script>
 import { defineComponent, ref } from "vue";
@@ -73,6 +79,13 @@ export default defineComponent({
         }
     },
     methods: {
+        getDrawerWidth(){
+            if (window.screen.width>=650){
+                return 450
+            } else {
+                return window.screen.width * 0.95
+            }
+        },
         submitQuestion(title, detail, sensitive) {
             // Ask new question
             let sensitiveParam = 0

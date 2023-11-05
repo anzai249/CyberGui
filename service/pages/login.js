@@ -10,6 +10,9 @@ const { getUTCDate } = require('../modules/date.js');
 async function Login(data, mysql) {
     return new Promise(async (resolve, reject) => {
         const givenPassword = data.password;
+        const savedSession = await mysql.query("SELECT `session` FROM `sid` WHERE `id` = 1");
+
+
 
         if (!givenPassword) {
             return reject("Password not given!");
@@ -21,6 +24,10 @@ async function Login(data, mysql) {
 
         if (md5(password) === givenPassword) {
             let session = generateSessionId()
+            if (savedSession.length === 0) {
+                await mysql.query("INSERT INTO `sid` (`session`, `time`, `id`) VALUES ?, ?, ?",
+                [session, getUTCDate(), 1]);
+            }
             await mysql.query("UPDATE `sid` SET `session` = ?, `time` = ? WHERE `id` = ?",
                 [session, getUTCDate(), 1]);
             return resolve({

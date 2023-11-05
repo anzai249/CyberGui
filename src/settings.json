@@ -3,9 +3,7 @@
         "avatar": "./assets/Avatar.jpg",
         "logo_big": "./assets/logo.png",
         "logo_small": "./assets/logoMobile.png",
-        "language_flags": {
-            "zhtw": "./assets/flags/hk.png"
-        }
+        "language_flags": {}
     },
     "others": {
         "colors": [

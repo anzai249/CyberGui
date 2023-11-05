@@ -52,14 +52,23 @@ const Server = require("socket.io").Server;
 
 const base85 = require('base85');
 const { z2t, t2z } = require('zero-width-lib')
+let io;
 
-const io = new Server(httpServer, {
-
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
+if (secret.https) {
+  io = new Server(httpServer, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+  });
+} else {
+  io = new Server(secret.serverPort, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+  });
+}
 
 io.on("connection", (socket) => {
   // get ip
@@ -125,5 +134,7 @@ io.on("connection", (socket) => {
   })
 });
 
-httpServer.listen(secret.serverPort || 1106);
+if (secret.https) {
+  httpServer.listen(secret.serverPort || 1106);
+}
 console.log(`Server running at ` + (secret.serverPort || 1106).toString());
