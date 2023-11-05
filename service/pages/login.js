@@ -25,7 +25,7 @@ async function Login(data, mysql) {
         if (md5(password) === givenPassword) {
             let session = generateSessionId()
             if (savedSession.length === 0) {
-                await mysql.query("INSERT INTO `sid` (`session`, `time`, `id`) VALUES ?, ?, ?",
+                await mysql.query("INSERT INTO `sid` (`session`, `time`, `id`) VALUES (?, ?, ?)",
                 [session, getUTCDate(), 1]);
             }
             await mysql.query("UPDATE `sid` SET `session` = ?, `time` = ? WHERE `id` = ?",
