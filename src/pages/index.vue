@@ -1,15 +1,6 @@
 <template>
   <n-layout>
     <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
-      <n-switch v-model:value="loading">
-        <template #checked>
-          Skel
-        </template>
-        <template #unchecked>
-          Skel
-        </template>
-      </n-switch>
-      UNDER DEVELOPMENT
       <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="i in 6">
           <LoadingCard />
