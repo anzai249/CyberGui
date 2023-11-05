@@ -13,7 +13,7 @@ const port = (require("./settings.json").others.serverPort || "1106")
 const api = {
     connect() {
         return new Promise(finish => {
-            const socket = io('http://' + host + ':' + port);
+            const socket = io(host + ':' + port);
             this.socket = socket;
             socket.on('connect', () => {
                 new Promise(resolve => {

@@ -16,6 +16,7 @@ coverage
 
 cypress
 service/secret.json
+service/cert/
 
 # Editor directories and files
 .vscode

@@ -1,6 +1,9 @@
-const { createServer, serverCrash } = require('./modules/http.js');
+const { serverCrash } = require('./modules/http.js');
 const { connect } = require('./sql/connect.js');
 const { isBan } = require('./modules/security.js');
+const { readFileSync } = require("fs");
+const { createServer } = require("https");
+const secret = require("./secret.json");
 
 const mysql = connect()
 
@@ -16,24 +19,27 @@ const pages = {
   "/login": require('./pages/login.js')
 }
 
-const response = createServer(1107, async (req, res) => {
+// const response = createServer(1107, async (req, res) => {
 
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+//   req.ip = req.connection.remoteAddress;
 
+//   const result = await isBan(req, res, req.ip, mysql)
+//   let url = req.url.split('?')[0]
+//   if (url in pages) {
+//     pages[url](req, res, mysql)
+//   } else {
+//     response(req, res, 404, `404 Not Found: ${req.url}`);
+//   }
+// })
 
-  req.ip = req.connection.remoteAddress;
-
-  const result = await isBan(req, res, req.ip, mysql)
-  let url = req.url.split('?')[0]
-  if (url in pages) {
-    pages[url](req, res, mysql)
-  } else {
-    response(req, res, 404, `404 Not Found: ${req.url}`);
-  }
-})
+const httpServer = createServer({
+  key: readFileSync(secret.key),
+  cert: readFileSync(secret.cert)
+});
 
 
 process.on('uncaughtException', (err) => {
@@ -47,7 +53,7 @@ const Server = require("socket.io").Server;
 const base85 = require('base85');
 const { z2t, t2z } = require('zero-width-lib')
 
-const io = new Server(1106, {
+const io = new Server(httpServer, {
 
   cors: {
     origin: "*",
@@ -118,3 +124,6 @@ io.on("connection", (socket) => {
     })
   })
 });
+
+httpServer.listen(secret.serverPort || 1106);
+console.log(`Server running at ` + (secret.serverPort || 1106).toString());
