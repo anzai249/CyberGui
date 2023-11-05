@@ -3,9 +3,6 @@
 // Method: POST
 // Path: /task
 
-const { response } = require('../modules/http.js');
-const { getUTCDate } = require('../modules/date.js');
-
 async function GetAllQuestions(data, mysql) {
     return new Promise(async (resolve, reject) => {
         const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))

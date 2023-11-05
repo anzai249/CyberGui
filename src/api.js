@@ -10,32 +10,19 @@ const clientKey = sm2.generateKeyPairHex()
 const host = (require("./settings.json").others.serverHost || "127.0.0.1")
 const port = (require("./settings.json").others.serverPort || "1106")
 
-// const crypt.encrypt = (key, msg) => {
-//     console.log("encrypt", JSON.parse(crypt.encrypt(key, msg)).cipher);
-//     console.log("keys", key, api.serverKey);
-//     return JSON.parse(crypt.encrypt(key, msg)).cipher;
-// }
-// const crypt.decrypt = (key, msg) => {
-//     return JSON.parse(crypt.decrypt(key, msg)).message;
-// }
-
 const api = {
     connect() {
         return new Promise(finish => {
-            console.log("client key", clientKey);
             const socket = io('http://' + host + ':' + port);
             this.socket = socket;
             socket.on('connect', () => {
                 new Promise(resolve => {
                     socket.on("swapKey", (key) => {
-                        console.log("Swap key from server success");
                         this.serverKey = key;
-                        console.log("server key", this.serverKey);
                         socket.emit("swapKey", sm2.doEncrypt(clientKey.publicKey, key, true));
                         socket.on("update", msg => {
                             msg = this.solve(msg);
                             if (msg.type === "swap_OK") {
-                                console.log("Swap key to server success");
                                 resolve()
                                 finish()
                             }
@@ -44,14 +31,12 @@ const api = {
                     // when receive message ( not event )
                     socket.on("message", (msg) => {
                         msg = this.solve(msg);
-                        console.log(msg);
                     })
                 }).then()
             });
         })
     },
     post(url, data) {
-        console.log("post", url, data);
         let socket = this.socket;
         return new Promise((resolve, reject) => {
             let _request_id = rand(1000000, 9999999);
@@ -68,7 +53,6 @@ const api = {
                         console.error(msg.error);
                         return reject(msg.error)
                     }
-                    console.log(msg.data);
                     resolve(msg.data)
                 }
             })

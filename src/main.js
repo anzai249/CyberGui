@@ -9,7 +9,6 @@ import VueCookies from 'vue-cookies'
 import _api from "./api.js"
 await _api.connect()
 
-console.log(1);
 const app = createApp(App)
 
 app.use(createPinia())

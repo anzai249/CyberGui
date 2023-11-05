@@ -89,7 +89,6 @@ export default defineComponent({
           });
         })
         .catch(error => {
-          console.log("fetch failed");
           console.error('Error fetching data:', error);
         });
     },

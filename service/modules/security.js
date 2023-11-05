@@ -14,7 +14,6 @@ async function isBan(ip, mysql) {
     const result = await mysql.query(
         "SELECT * FROM `ban` WHERE `ip` = ? AND `time` > ?",
         [ip, getUTCDate()]);
-    console.log(result);
     if (result.length === 0) return false;
     return result[0];
 }
@@ -36,11 +35,9 @@ async function checkLike(id, ip, mysql) {
     if ((await mysql.query(
         "SELECT * FROM `likes` WHERE `ip` = ? AND `time` > ?",
         [ip, getDate(getUTCTime() - 2 * 1000)])).length != 0) {
-            console.log(1,r);
             ban(5, ip, mysql);
             return false;
         }
-        console.log(r);
     
     // if in 1 min, this ip already like/dislike 3 time same question, ban 10 min
     if ((await mysql.query(

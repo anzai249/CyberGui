@@ -62,7 +62,6 @@ io.on("connection", (socket) => {
 
     return socket.disconnect();
   }
-  console.log("a user connected");
   let clientKey, solve, pack;
 
   socket.emit("swapKey", serverKey.publicKey)
@@ -82,7 +81,6 @@ io.on("connection", (socket) => {
     }
     pack = msg => {
       msg = JSON.stringify(msg);
-      // console.log(msg)
       msg = sm2.doEncrypt(msg, clientKey, true);
       // msg = base85.encode(msg.toString);
       msg = t2z(msg);
