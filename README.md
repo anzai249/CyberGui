@@ -32,7 +32,7 @@ The word 匭(Gui) is a box that the emperor accepts submissions from his people 
 
 * Lightweight - No redundancy features
 * Full anonymous
-  - No need to leave a email or other things involve your privacy.
+  - No need to leave an email or other things involving your privacy.
   - Random avatar color.
 * Multi language
 * Out of the box and ready to use
@@ -40,7 +40,7 @@ The word 匭(Gui) is a box that the emperor accepts submissions from his people 
 
 ## Project Setup
 
-The project has an official doc, see[📄CyberGui Docs](https://cybergui-docs.sleepingbed.top/).
+The project has an official doc, see📄[CyberGui Docs](https://cybergui-docs.sleepingbed.top/).
 
 ## Credits
 
@@ -70,9 +70,14 @@ And thanks to:
   - [ ] Japanese
   - [ ] Russian
 
+* Database
+  - [x] MySQL
+  - [ ] SQLite
+  - [ ] MongoDB
+
 - [ ] BackEnd Manager
 - [x] Blur sensitive posts
-- [ ] SQLite
+
 
 ## Support
 
