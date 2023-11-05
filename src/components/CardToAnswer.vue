@@ -67,7 +67,7 @@ export default defineComponent({
                     t('addNew.error') + error
                 );
             },
-            handlePositiveClick() {
+            deleteMessage() {
                 message.info(t('terminal.deleted'));
             }
         };
@@ -77,6 +77,16 @@ export default defineComponent({
             api.post('/answer', { id: this.id, sensitive: this.sensitiveObj.sensitive, reply: this.answer, session: md5(cookies.get('SID')) })
                 .then(response => {
                     this.answerSuccess()
+                    this.$router.go(0)
+                })
+                .catch(error => {
+                    console.error(error)
+                });
+        },
+        handleDelete() {
+            api.post('/delete', { id: this.id, session: md5(cookies.get('SID')) })
+                .then(response => {
+                    this.deleteMessage()
                     this.$router.go(0)
                 })
                 .catch(error => {
@@ -148,7 +158,7 @@ export default defineComponent({
                             {{ $t('terminal.sensitiveFalse') }}
                         </template>
                     </n-switch>
-                    <n-popconfirm @positive-click="handlePositiveClick" :negative-text="$t('terminal.cancel')"
+                    <n-popconfirm @positive-click="handleDelete" :negative-text="$t('terminal.cancel')"
                         :positive-text="$t('terminal.confirm')">
                         <template #trigger>
                             <n-button type="error" secondary>

@@ -13,7 +13,7 @@ async function GetAllQuestions(data, mysql) {
         // if (req.method !== 'POST') return response(req, res, 405, "Error 405: Method Not Allowed");
 
         // get all questions
-        const result = await mysql.query("SELECT * FROM `questions`");
+        const result = await mysql.query("SELECT * FROM `questions` WHERE `deleted` != 1");
 
         await sleep(50)
 

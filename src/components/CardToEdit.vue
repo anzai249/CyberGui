@@ -1,70 +1,101 @@
-<script setup>
-defineProps({
-    title: {
-        type: String,
-        required: true
-    },
-    msg: {
-        type: String,
-        required: true
-    },
-    time: {
-        type: String,
-        required: true
-    },
-    sensitive: {
-        type: Boolean,
-        required: true
-    },
-    answer: {
-        type: String,
-        required: true,
-    }
-})
-const colors = require('../settings.json').others.colors
-const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
-</script>
-
 <script>
 import { defineComponent, ref } from 'vue'
 import { Person, Heart, HeartDislike, Checkmark, CloseOutline } from '@vicons/ionicons5'
 import { useMessage } from 'naive-ui'
+import { useI18n } from 'vue-i18n'
+import api from "../api.js"
+import md5 from "blueimp-md5"
+import cookies from 'vue-cookies'
+const colors = require('../settings.json').others.colors
+const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
 
 export default defineComponent({
     props: {
-        pointerEve: {
-            type: String
+        title: {
+            type: String,
+            required: true
         },
-        blurRate: {
-            type: String
+        id: {
+            type: String,
+            required: true
+        },
+        msg: {
+            type: String,
+            required: true
+        },
+        time: {
+            type: String,
+            required: true
+        },
+        sensitive: {
+            type: Boolean,
+            required: true
+        },
+        answer: {
+            type: String,
+            required: true,
         }
     },
     components: {
         Person, Heart, HeartDislike, Checkmark, CloseOutline
     },
     data() {
-
         if (this.sensitive) {
             return {
                 sensitiveObj: { sensitive: true },
-                answerObj: { answer: this.answer }
+                answerObj: { answer: this.answer },
+                colors,
+                randomColor
             }
         } else {
             return {
                 sensitiveObj: { sensitive: false },
-                answerObj: { answer: this.answer }
+                answerObj: { answer: this.answer },
+                colors,
+                randomColor
             }
         }
     },
     setup() {
         const message = useMessage();
+        const { t } = useI18n()
         return {
-            handlePositiveClick() {
+            answerSuccess() {
+                message.success(
+                    t('addNew.success')
+                );
+            },
+            answerFailed(error) {
+                message.error(
+                    t('addNew.error') + error
+                );
+            },
+            deleteMessage() {
                 message.info(t('terminal.deleted'));
             }
         };
     },
     methods: {
+        answerQuestion() {
+            api.post('/answer', { id: this.id, sensitive: this.sensitiveObj.sensitive, reply: this.answerObj.answer, session: md5(cookies.get('SID')) })
+                .then(response => {
+                    this.answerSuccess()
+                    this.$router.go(0)
+                })
+                .catch(error => {
+                    console.error(error)
+                });
+        },
+        handleDelete() {
+            api.post('/delete', { id: this.id, session: md5(cookies.get('SID')) })
+                .then(response => {
+                    this.deleteMessage()
+                    this.$router.go(0)
+                })
+                .catch(error => {
+                    console.error(error)
+                });
+        }
     }
 })
 </script>
@@ -114,7 +145,7 @@ export default defineComponent({
                         v-model:value="this.answerObj.answer" />
                 </n-space>
                 <n-space justify="space-between" align="center">
-                    <n-button type="primary" secondary>
+                    <n-button type="primary" secondary @click="answerQuestion()">
                         <template #icon>
                             <n-icon>
                                 <Checkmark />
@@ -130,7 +161,8 @@ export default defineComponent({
                             {{ $t('terminal.sensitiveFalse') }}
                         </template>
                     </n-switch>
-                    <n-popconfirm @positive-click="handlePositiveClick" :negative-text="$t('terminal.cancel')" :positive-text="$t('terminal.confirm')">
+                    <n-popconfirm @positive-click="handleDelete" :negative-text="$t('terminal.cancel')"
+                        :positive-text="$t('terminal.confirm')">
                         <template #trigger>
                             <n-button type="error" secondary>
                                 <template #icon>

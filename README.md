@@ -7,8 +7,6 @@
   <br>
 </h1>
 
-<h2>This project is not finished yet.</h2>
-
 <h4 align="center">A clean personal anonymous question box.</h4>
 
 <p align="center">
@@ -42,14 +40,7 @@ The word 匭(Gui) is a box that the emperor accepts submissions from his people 
 
 ## Project Setup
 
-```sh
-npm install
-```
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+The project has an official doc, see[📄CyberGui Docs](https://cybergui-docs.sleepingbed.top/).
 
 ## Credits
 

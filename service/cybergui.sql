@@ -11,7 +11,7 @@
  Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 03/11/2023 23:46:46
+ Date: 05/11/2023 17:48:40
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `answers`  (
   `time` datetime NULL DEFAULT NULL,
   `answer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for ban
@@ -55,7 +55,7 @@ CREATE TABLE `comment`  (
 DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes`  (
   `ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `question` int NULL DEFAULT NULL,
+  `question` int(8) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   `time` datetime NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
@@ -72,9 +72,20 @@ CREATE TABLE `questions`  (
   `dislike` int NOT NULL DEFAULT 0,
   `sensitive` tinyint NOT NULL DEFAULT 0,
   `answerid` int(8) UNSIGNED ZEROFILL NULL DEFAULT NULL,
+  `deleted` tinyint NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `answerid`(`answerid` ASC) USING BTREE,
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`answerid`) REFERENCES `answers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Table structure for sid
+-- ----------------------------
+DROP TABLE IF EXISTS `sid`;
+CREATE TABLE `sid`  (
+  `id` int NULL DEFAULT 1,
+  `session` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `time` datetime NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
