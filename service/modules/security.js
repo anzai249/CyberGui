@@ -2,9 +2,9 @@ const { getDate, getUTCTime, getUTCDate } = require('./date');
 
 async function ban(min, ip, mysql, reason = "Too many requests") {
     // insert to `ban` table
-    // ip, time, reason
+    // ip, time, event
     await    mysql.query(
-        "INSERT INTO `ban` (`ip`, `time`, `reason`) VALUES (?, ?, ?)",
+        "INSERT INTO `ban` (`ip`, `time`, `event`) VALUES (?, ?, ?)",
         [ip, getDate(getUTCTime() + min * 60 * 1000), reason]);
     return true;
 }

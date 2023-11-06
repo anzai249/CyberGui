@@ -12,8 +12,6 @@ async function Login(data, mysql) {
         const givenPassword = data.password;
         const savedSession = await mysql.query("SELECT `session` FROM `sid` WHERE `id` = 1");
 
-
-
         if (!givenPassword) {
             return reject("Password not given!");
         }

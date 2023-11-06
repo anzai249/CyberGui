@@ -107,8 +107,11 @@ io.on("connection", (socket) => {
     socket.emit("update", pack({ type: "swap_OK" }))
   })
   socket.on("request", (msg) => {
-    msg = solve(msg);
-
+    try {
+      msg = solve(msg);
+    } catch {
+      console.error(msg);
+    }
     if (!msg.url in pages) {
       socket.emit("request", pack({
         error: "404 Not Found",
