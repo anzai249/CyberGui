@@ -12,7 +12,8 @@ export default {
         sensitiveFalse: "No Sensitive Content",
         submit: "Submit",
         success: "Successfully asked.",
-        error: "Error: "
+        error: "Error: ",
+        needReview: "Your question needs to be reviewed before showing."
     },
     card: {
         showSensitive: "Show Sensitive Content"
@@ -36,6 +37,9 @@ export default {
         emptyPass: "Empty password",
         deleteConfirm: "Confirm Delete?",
         cancel: "Cancel",
-        deleted: "Deleted"
+        deleted: "Deleted",
+        answerquestion: "Answer",
+        review: "Review",
+        success: "Operation Succeed"
     }
 }

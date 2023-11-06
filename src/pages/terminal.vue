@@ -19,9 +19,10 @@
         <n-grid-item v-for="item in questionsData">
           <CardToEdit v-if="item.answerid" :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
             :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive"
-            :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer" />
+            :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer"
+            :reviewed="!!item.reviewed" />
           <CardToAnswer v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
-            :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive" />
+            :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive" :reviewed="!!item.reviewed" />
         </n-grid-item>
       </n-grid>
     </n-layout-content>
@@ -118,7 +119,7 @@ export default defineComponent({
       }
     },
     fetchQuestions() {
-      api.post('/getquestions')
+      api.post('/getquestionsterminal', { session: md5(cookies.get('SID')) })
         .then(response => {
           // this.questionsData = response.result;
           response.result.forEach(element => {

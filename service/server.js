@@ -7,16 +7,28 @@ const secret = require("./secret.json");
 
 const mysql = connect()
 
+let getQuestionIndex, getQuestionTerminal
+
+if (secret.review) {
+  getQuestionIndex = require('./pages/getquestions_review_index.js');
+  getQuestionTerminal = require('./pages/getquestions_review_terminal.js');
+} else {
+  getQuestionIndex = require('./pages/getquestions.js');
+  getQuestionTerminal = require('./pages/getquestions.js');
+}
+
 const pages = {
   "/ask": require('./pages/ask.js'),
   "/answer": require('./pages/answer.js'),
   "/like": require('./pages/like.js'),
   "/dislike": require('./pages/dislike.js'),
   "/delete": require('./pages/delete.js'),
-  "/getquestions": require('./pages/getquestions.js'),
+  "/getquestions": getQuestionIndex,
+  "/getquestionsterminal": getQuestionTerminal,
   "/getanswers": require('./pages/getanswers.js'),
   "/loginstate": require('./pages/loginstate.js'),
-  "/login": require('./pages/login.js')
+  "/login": require('./pages/login.js'),
+  "/review": require('./pages/review.js')
 }
 
 // const response = createServer(1107, async (req, res) => {
@@ -111,8 +123,9 @@ io.on("connection", (socket) => {
       msg = solve(msg);
     } catch {
       console.error(msg);
+      return;
     }
-    if (!msg.url in pages) {
+    if (!(msg.url in pages) || !msg.url) {
       socket.emit("request", pack({
         error: "404 Not Found",
         success: false,
@@ -126,7 +139,6 @@ io.on("connection", (socket) => {
         success: true,
         _request_id: msg._request_id
       }))
-
     }).catch(err => {
       socket.emit("request", pack({
         error: err,
