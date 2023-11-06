@@ -4,7 +4,6 @@
 // Path: /task
 // Data: { question }
 
-const { response } = require('../modules/http.js');
 const { getUTCDate } = require('../modules/date.js');
 
 async function ask(data, mysql) {
@@ -15,10 +14,14 @@ async function ask(data, mysql) {
 
             const title = data.title, content = data.content, sensitive = data.sensitive;
 
+            // at least 3 characters
+            if (title === 'undefined' || title === undefined || !title) return reject("Illegal Title!");
+            if (title.length < 3) return reject("Title at least 3 characters!");
+            if (title.length > 50) return reject("Title too long!");
             // at least 5 characters
-            if (title === 'undefined' || title === undefined || !title || title.length < 5 || content.length > 50) return reject("Illegal Title!");
-            // at least 5 characters
-            if (content === 'undefined' || content === undefined || !content || content.length < 5 || content.length > 150) return reject("Illegal Content!");
+            if (content === 'undefined' || content === undefined || !content) return reject("Illegal Content!");
+            if (content.length < 5) return reject("Content at least 5 characters!");
+            if (content.length > 150) return reject("Content too long!");
             // 1/0
             if (sensitive === 'undefined' || sensitive === undefined || (sensitive != 1 && sensitive != 0)) return reject("Illegal Sensitive!");
 

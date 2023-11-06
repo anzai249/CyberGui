@@ -1,13 +1,13 @@
 <script>
 import { defineComponent, ref } from 'vue'
-import { Person, Heart, HeartDislike, Checkmark, CloseOutline } from '@vicons/ionicons5'
+import { Person, Heart, HeartDislike, Checkmark, CloseOutline, ArrowUp } from '@vicons/ionicons5'
 import { useMessage } from 'naive-ui'
 import { useI18n } from 'vue-i18n'
 import api from "../api.js"
 import md5 from "blueimp-md5"
 import cookies from 'vue-cookies'
-const colors = require('../settings.json').others.colors
-const randomColor = Math.floor(Math.random() * colors.length + 1) - 1
+const settings = require('../settings.json')
+const randomColor = Math.floor(Math.random() * settings.others.colors.length + 1) - 1
 
 export default defineComponent({
     props: {
@@ -34,24 +34,28 @@ export default defineComponent({
         answer: {
             type: String,
             required: true,
+        },
+        reviewed: {
+            type: Boolean,
+            required: true
         }
     },
     components: {
-        Person, Heart, HeartDislike, Checkmark, CloseOutline
+        Person, Heart, HeartDislike, Checkmark, CloseOutline, ArrowUp
     },
     data() {
         if (this.sensitive) {
             return {
                 sensitiveObj: { sensitive: true },
                 answerObj: { answer: this.answer },
-                colors,
+                settings,
                 randomColor
             }
         } else {
             return {
                 sensitiveObj: { sensitive: false },
                 answerObj: { answer: this.answer },
-                colors,
+                settings,
                 randomColor
             }
         }
@@ -62,7 +66,7 @@ export default defineComponent({
         return {
             answerSuccess() {
                 message.success(
-                    t('addNew.success')
+                    t('terminal.success')
                 );
             },
             answerFailed(error) {
@@ -95,6 +99,16 @@ export default defineComponent({
                 .catch(error => {
                     console.error(error)
                 });
+        },
+        reviewQuestion() {
+            api.post('/review', { id: this.id, session: md5(cookies.get('SID')) })
+                .then(response => {
+                    this.answerSuccess()
+                    this.$router.go(0)
+                })
+                .catch(error => {
+                    console.error(error)
+                });
         }
     }
 })
@@ -120,7 +134,7 @@ export default defineComponent({
             <template #header>
                 <n-divider title-placement="left" style="top: -10px;">
                     <n-avatar round :style="{
-                        backgroundColor: colors[randomColor]
+                        backgroundColor: settings.others.colors[randomColor]
                     }">
                         <n-icon>
                             <person />
@@ -151,7 +165,15 @@ export default defineComponent({
                                 <Checkmark />
                             </n-icon>
                         </template>
-                        {{ $t('addNew.submit') }}
+                        {{ $t('terminal.answerquestion') }}
+                    </n-button>
+                    <n-button v-if="settings.others.review && !reviewed" type="info" secondary @click="reviewQuestion()">
+                        <template #icon>
+                            <n-icon>
+                                <ArrowUp />
+                            </n-icon>
+                        </template>
+                        {{ $t('terminal.review') }}
                     </n-button>
                     <n-switch v-model:value="this.sensitiveObj.sensitive" size="large">
                         <template #checked>

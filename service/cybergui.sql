@@ -11,7 +11,7 @@
  Target Server Version : 80028 (8.0.28)
  File Encoding         : 65001
 
- Date: 05/11/2023 17:48:40
+ Date: 07/11/2023 00:15:44
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `answers`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `ban`;
 CREATE TABLE `ban`  (
-  `ip` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ip` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `time` datetime NOT NULL,
   `event` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
@@ -73,6 +73,7 @@ CREATE TABLE `questions`  (
   `sensitive` tinyint NOT NULL DEFAULT 0,
   `answerid` int(8) UNSIGNED ZEROFILL NULL DEFAULT NULL,
   `deleted` tinyint NOT NULL DEFAULT 0,
+  `reviewed` tinyint NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `answerid`(`answerid` ASC) USING BTREE,
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`answerid`) REFERENCES `answers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT

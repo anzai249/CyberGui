@@ -1,13 +1,13 @@
 <template>
     <!-- Add New Drawer Menu -->
-    <n-drawer v-model:show="askActive" :width="getDrawerWidth()" :max-width="screenWidth" placement="right" >
+    <n-drawer v-model:show="askActive" :width="getDrawerWidth()" :max-width="screenWidth" placement="right">
         <n-drawer-content :title="$t('header.addNew')" closable>
             <n-form>
                 <n-form-item>
                     <div style="left: 50%; width: 100%;">
                         <n-space vertical align="center">
                             <n-input round v-model:value="title" :placeholder="$t('addNew.title')" show-count
-                                :maxlength="30" class="askInput"/>
+                                :maxlength="30" class="askInput" />
                             <n-input round v-model:value="detail" type="textarea" :placeholder="$t('addNew.detail')"
                                 show-count :maxlength="120" class="askInput" />
                             <n-switch v-model:value="sensitive">
@@ -18,6 +18,9 @@
                                     {{ $t('addNew.sensitiveFalse') }}
                                 </template>
                             </n-switch>
+                            <n-tag v-if="settings.others.review" type="info">
+                                {{ $t('addNew.needReview') }}
+                            </n-tag>
                             <n-button type="primary" ghost style="width: 150px;"
                                 @click="submitQuestion(title, detail, sensitive)">
                                 <template #icon>
@@ -39,7 +42,6 @@
 .askInput {
     width: 400px;
 }
-
 </style>
 
 <script>
@@ -48,6 +50,7 @@ import { useMessage } from "naive-ui";
 import { Add as addIcon, Checkmark } from "@vicons/ionicons5"
 import { useI18n } from 'vue-i18n'
 import api from "../api.js"
+const settings = require("../settings.json")
 
 export default defineComponent({
     props: {
@@ -65,7 +68,8 @@ export default defineComponent({
             askActive: ref(false),
             sensitive: ref(false),
             title: "",
-            detail: ""
+            detail: "",
+            settings
         }
     },
     watch: {
@@ -79,8 +83,8 @@ export default defineComponent({
         }
     },
     methods: {
-        getDrawerWidth(){
-            if (window.screen.width>=650){
+        getDrawerWidth() {
+            if (window.screen.width >= 650) {
                 return 450
             } else {
                 return window.screen.width * 0.95
