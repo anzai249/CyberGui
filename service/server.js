@@ -48,12 +48,6 @@ const pages = {
 //   }
 // })
 
-const httpServer = createServer({
-  key: readFileSync(secret.key),
-  cert: readFileSync(secret.cert)
-});
-
-
 process.on('uncaughtException', (err) => {
   serverCrash(err)
 })
@@ -67,6 +61,10 @@ const { z2t, t2z } = require('zero-width-lib')
 let io;
 
 if (secret.https) {
+  let httpServer = createServer({
+    key: readFileSync(secret.key),
+    cert: readFileSync(secret.cert)
+  });
   io = new Server(httpServer, {
     cors: {
       origin: "*",
