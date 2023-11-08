@@ -166,6 +166,8 @@ export default defineComponent({
     const osThemeRef = useOsTheme()
     let isDarkSwitched = ref(true)
     let osTheme = osThemeRef
+    let isDark = ref(null)
+    let invertRate = ref(0)
 
 
     if (cookies.isKey("cyberguiLang")) {
@@ -175,12 +177,24 @@ export default defineComponent({
     }
 
     if (cookies.isKey("cyberguiDark")) {
-      isDarkSwitched = ref(cookies.get("cyberguiDark"))
-    } else {
-      if (osTheme === 'dark') {
+      if(cookies.get("cyberguiDark")){
         isDarkSwitched = ref(true)
+        isDark = ref(darkTheme)
+        invertRate = ref(0.9)
       } else {
         isDarkSwitched = ref(false)
+        isDark = ref(null)
+        invertRate = ref(0)
+      }
+    } else {
+      if (osTheme._value === 'dark') {
+        isDarkSwitched = ref(true)
+        isDark = ref(darkTheme)
+        invertRate = ref(0.9)
+      } else {
+        isDarkSwitched = ref(false)
+        isDark = ref(null)
+        invertRate = ref(0)
       }
     }
 
@@ -259,9 +273,9 @@ export default defineComponent({
       menuActive,
       addDrawer,
       themeOverrides,
-      isDark: ref(null),
       isDarkSwitched,
       osTheme,
+      isDark,
       invertRate: ref(0),
       value,
       t,
@@ -330,9 +344,13 @@ export default defineComponent({
       if (isDarkSwitched) {
         this.isDark = darkTheme
         this.invertRate = 0.9
+        cookies.set('cyberguiDark', true)
+
       } else {
         this.isDark = null
         this.invertRate = 0
+        cookies.set('cyberguiDark', false)
+
       }
     },
     changeLangEvent(value) {
