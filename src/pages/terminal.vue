@@ -9,7 +9,7 @@
     <div class="adminLoginShadow"></div>
   </div>
   <n-layout>
-    <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
+    <n-layout-content :content-style="getContentWidth()" style="justify-content: center; display: flex;">
       <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="i in 6">
           <LoadingCard />
@@ -87,6 +87,13 @@ export default defineComponent({
     }
   },
   methods: {
+    getContentWidth() {
+      if (window.screen.width > 425) {
+        return 'padding: 20px; width: 80%'
+      } else {
+        return 'padding: 10px; width: 95%'
+      }
+    },
     checkLogin() {
       api.post('/loginstate', { session: md5(cookies.get('SID')) })
         .then(response => {
