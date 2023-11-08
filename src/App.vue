@@ -276,7 +276,7 @@ export default defineComponent({
       isDarkSwitched,
       osTheme,
       isDark,
-      invertRate: ref(0),
+      invertRate,
       value,
       t,
       options: [
