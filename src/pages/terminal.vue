@@ -91,8 +91,8 @@ export default defineComponent({
       api.post('/loginstate', { session: md5(cookies.get('SID')) })
         .then(response => {
           if (response.logined) {
-            this.fetchQuestions()
             this.fetchAnswers()
+            this.fetchQuestions()
             this.isLoginShow = 'none'
           } else {
             return
@@ -109,8 +109,8 @@ export default defineComponent({
         api.post('/login', { password: md5(terminalPass) })
           .then(response => {
             cookies.set('SID', response.session)
-            this.fetchQuestions()
             this.fetchAnswers()
+            this.fetchQuestions()
             this.isLoginShow = 'none'
           })
           .catch(error => {

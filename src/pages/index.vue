@@ -49,8 +49,8 @@ export default defineComponent({
   //   }
   // },
   mounted() {
-    this.fetchQuestions()
     this.fetchAnswers()
+    this.fetchQuestions()
     // this.loading = false
   },
   watch: {
