@@ -1,5 +1,4 @@
 <template>
-  <n-theme-editor>
     <n-config-provider :theme="isDark" :theme-overrides="themeOverrides">
       <n-layout position="absolute">
         <n-layout-header style="height: 53px;" bordered>
@@ -108,7 +107,6 @@
         <Ask ref="askDrawer" :active="this.addDrawer" @change-active="showAddDrawer" />
       </n-message-provider>
     </n-config-provider>
-  </n-theme-editor>
 </template>
 
 <style scoped>
@@ -136,7 +134,7 @@
 
 <script>
 import { defineComponent, h, ref } from "vue";
-import { NImage, darkTheme, useOsTheme, NThemeEditor } from "naive-ui";
+import { NImage, darkTheme, useOsTheme } from "naive-ui";
 import { useI18n } from 'vue-i18n'
 import cookies from 'vue-cookies'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
@@ -157,8 +155,7 @@ export default defineComponent({
     addIcon,
     ReorderThreeSharp,
     Checkmark,
-    Ask,
-    NThemeEditor
+    Ask
   },
   setup() {
     const router = useRouter()
