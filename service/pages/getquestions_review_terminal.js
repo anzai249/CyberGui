@@ -8,7 +8,7 @@ async function GetAllQuestionsReviewTerminal(data, mysql) {
     return new Promise(async (resolve, reject) => {
         const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
         const givenSession = data.session;
-        await sleep(50)
+        await sleep(100)
         if (await checkSession(givenSession, mysql)) {
             const result = await mysql.query("SELECT * FROM `questions` WHERE `deleted` != 1");
             return resolve({

@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
+  <n-config-provider :theme="isDark" :theme-overrides="themeOverrides">
     <n-layout position="absolute">
       <n-layout-header style="height: 53px;" bordered>
         <n-tabs :bar-width="35" type="line" animated size="large" @update:value="handleBeforeLeave"
@@ -14,6 +14,15 @@
           <n-tab-pane name="about" :tab="$t('header.about')">
           </n-tab-pane>
           <template #suffix>
+            <n-switch v-model:value="isDarkSwitched" @update:value="darkSwitch" size="large">
+              <template #checked-icon>
+                🌙
+              </template>
+              <template #unchecked-icon>
+                🔆
+              </template>
+            </n-switch>
+            <n-divider vertical />
             <n-button ghost color="#8a2be2" @click="showAddDrawer">
               <template #icon>
                 <n-icon>
@@ -109,7 +118,7 @@
 
 <script>
 import { defineComponent, h, ref } from "vue";
-import { NImage } from "naive-ui";
+import { NImage, darkTheme, useOsTheme } from "naive-ui";
 import { useI18n } from 'vue-i18n'
 import cookies from 'vue-cookies'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
@@ -136,11 +145,24 @@ export default defineComponent({
     const menuActive = ref(false)
     const addDrawer = ref(false)
     let value = ref()
+    const osThemeRef = useOsTheme()
+    let isDarkSwitched = ref(true)
+    let osTheme = osThemeRef
 
     if (cookies.isKey("cyberguiLang")) {
       value = ref(cookies.get("cyberguiLang"))
     } else {
       value = ref(defaultLang)
+    }
+
+    if (cookies.isKey("cyberguiDark")) {
+      isDarkSwitched = ref(cookies.get("cyberguiDark"))
+    } else {
+      if (osTheme === 'dark') {
+        isDarkSwitched = ref(true)
+      } else {
+        isDarkSwitched = ref(false)
+      }
     }
 
     const themeOverrides = {
@@ -216,6 +238,9 @@ export default defineComponent({
       menuActive,
       addDrawer,
       themeOverrides,
+      isDark: ref(null),
+      isDarkSwitched,
+      osTheme,
       value,
       t,
       options: [
@@ -278,6 +303,15 @@ export default defineComponent({
         return 350
       } else {
         return window.screen.width * 0.95
+      }
+    },
+    darkSwitch(isDarkSwitched) {
+      if (isDarkSwitched) {
+        this.isDark = darkTheme
+        console.log(isDarkSwitched)
+      } else {
+        this.isDark = null
+        console.log(isDarkSwitched)
       }
     },
     changeLangEvent(value) {

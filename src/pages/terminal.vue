@@ -108,10 +108,10 @@ export default defineComponent({
       } else {
         api.post('/login', { password: md5(terminalPass) })
           .then(response => {
+            cookies.set('SID', response.session)
             this.fetchQuestions()
             this.fetchAnswers()
             this.isLoginShow = 'none'
-            cookies.set('SID', response.session)
           })
           .catch(error => {
             this.wrongPass(error)
