@@ -177,14 +177,6 @@ body {
   z-index: 24;
 }
 
-.adminLogin {
-  position: absolute;
-  width: 25%;
-  min-width: 150px;
-  min-width: 100px;
-  z-index: 25;
-}
-
 .innerFooter {
   background: rgba(128, 128, 128, 0.2);
   padding: 24px;
@@ -194,11 +186,25 @@ body {
   .cardContainer {
     width: 100%;
   }
+
+  .adminLogin {
+    position: absolute;
+    width: 50%;
+    min-width: 150px;
+    z-index: 25;
+  }
 }
 
 @media (min-width: 650px) {
   .cardContainer {
     width: 80%;
+  }
+
+  .adminLogin {
+    position: absolute;
+    width: 25%;
+    min-width: 150px;
+    z-index: 25;
   }
 }
 </style>

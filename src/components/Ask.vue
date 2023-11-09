@@ -1,6 +1,6 @@
 <template>
     <!-- Add New Drawer Menu -->
-    <n-drawer v-model:show="askActive" :width="getDrawerWidth()" :max-width="screenWidth" placement="right">
+    <n-drawer v-model:show="askActive" :width="getDrawerWidth()" placement="right">
         <n-drawer-content :title="$t('header.addNew')" closable>
             <n-form>
                 <n-form-item>

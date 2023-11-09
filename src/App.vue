@@ -88,7 +88,7 @@
             </template>
           </n-switch>
           <n-divider />
-          <n-button ghost color="#8a2be2" @click="showAddDrawer" style="width: 150px;">
+          <n-button ghost color="#8a2be2" @click="showAddDrawer">
             <template #icon>
               <n-icon>
                 <add-icon />
@@ -164,7 +164,7 @@ export default defineComponent({
     const addDrawer = ref(false)
     let value = ref()
     const osThemeRef = useOsTheme()
-    let isDarkSwitched = ref(true)
+    let isDarkSwitched = ref(false)
     let osTheme = osThemeRef
     let isDark = ref(null)
     let invertRate = ref(0)
@@ -177,14 +177,18 @@ export default defineComponent({
     }
 
     if (cookies.isKey("cyberguiDark")) {
-      if(cookies.get("cyberguiDark")){
+      if(!!parseInt(cookies.get("cyberguiDark"))){
+        console.log(cookies.get("cyberguiDark"))
         isDarkSwitched = ref(true)
         isDark = ref(darkTheme)
         invertRate = ref(0.9)
+        console.log(isDark)
       } else {
+        console.log(false)
         isDarkSwitched = ref(false)
         isDark = ref(null)
         invertRate = ref(0)
+        console.log(isDark)
       }
     } else {
       if (osTheme._value === 'dark') {
@@ -340,16 +344,16 @@ export default defineComponent({
         return window.screen.width * 0.95
       }
     },
-    darkSwitch(isDarkSwitched) {
-      if (isDarkSwitched) {
+    darkSwitch() {
+      if (this.isDarkSwitched) {
         this.isDark = darkTheme
         this.invertRate = 0.9
-        cookies.set('cyberguiDark', true)
+        cookies.set('cyberguiDark', 1, "8h")
 
       } else {
         this.isDark = null
         this.invertRate = 0
-        cookies.set('cyberguiDark', false)
+        cookies.set('cyberguiDark', 0, "8h")
 
       }
     },
