@@ -13,7 +13,7 @@ export default {
         submit: "提交",
         success: "提問成功！",
         error: "錯誤：",
-        needReview: "您的問題需要網站所有者稽核之後才可以展示。"
+        needReview: "您的問題需要網站所有者審核之後才可以展示。"
     },
     card: {
         showSensitive: "顯示敏感内容"

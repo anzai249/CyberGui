@@ -1,6 +1,7 @@
 <template>
   <n-layout>
-    <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
+    <n-layout-content :content-style="getContentWidth()"
+      style="justify-content: center; display: flex;">
       <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="i in 6">
           <LoadingCard />
@@ -11,8 +12,8 @@
           <AnsweredCard v-if="item.answerid" :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
             :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive"
             :answer="(answersData.find(function (answerItem) { return answerItem.id === item.answerid; }) || []).answer" />
-          <UnansweredCard v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like" :dislikes="item.dislike"
-            :time="item.time" :sensitive="!!item.sensitive" />
+          <UnansweredCard v-else :id="item.id" :title="item.title" :msg="item.content" :likes="item.like"
+            :dislikes="item.dislike" :time="item.time" :sensitive="!!item.sensitive" />
         </n-grid-item>
       </n-grid>
     </n-layout-content>
@@ -49,8 +50,8 @@ export default defineComponent({
   //   }
   // },
   mounted() {
-    this.fetchQuestions()
     this.fetchAnswers()
+    this.fetchQuestions()
     // this.loading = false
   },
   watch: {
@@ -60,6 +61,13 @@ export default defineComponent({
     }
   },
   methods: {
+    getContentWidth() {
+      if (window.screen.width > 425) {
+        return 'padding: 20px; width: 80%'
+      } else {
+        return 'padding: 10px; width: 95%'
+      }
+    },
     fetchQuestions() {
       api.post('/getquestions')
         .then(response => {

@@ -1,12 +1,12 @@
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
+  <n-config-provider :theme="isDark" :theme-overrides="themeOverrides">
     <n-layout position="absolute">
       <n-layout-header style="height: 53px;" bordered>
         <n-tabs :bar-width="35" type="line" animated size="large" @update:value="handleBeforeLeave"
           default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
-            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" :src="logoBig" /></a>
+            <a class="logo" @click="$router.push('/')"><img height="53" :src="logoBig" /></a>
             <n-divider vertical />
           </template>
           <n-tab-pane name="archive" :tab="$t('header.archive')">
@@ -14,6 +14,15 @@
           <n-tab-pane name="about" :tab="$t('header.about')">
           </n-tab-pane>
           <template #suffix>
+            <n-switch v-model:value="isDarkSwitched" @update:value="darkSwitch" size="large">
+              <template #checked-icon>
+                🌙
+              </template>
+              <template #unchecked-icon>
+                🔆
+              </template>
+            </n-switch>
+            <n-divider vertical />
             <n-button ghost color="#8a2be2" @click="showAddDrawer">
               <template #icon>
                 <n-icon>
@@ -33,7 +42,7 @@
         <n-tabs class="mobile">
           <template #prefix>
             <n-divider vertical />
-            <a style="cursor:pointer" @click="$router.push('/')"><img height="53" :src="logoSmall" /></a>
+            <a class="logo" @click="$router.push('/')"><img height="53" :src="logoSmall" /></a>
             <n-divider vertical />
           </template>
           <template #suffix>
@@ -60,15 +69,26 @@
         <!-- Mobile Header Menu Content Here -->
         <n-space vertical align="center">
           <n-button-group size="large">
-            <n-button type="default" round @click="$router.push('/')">
+            <n-button type="default" round @click="$router.push('/');
+            menuActive = false;">
               {{ $t('header.archive') }}
             </n-button>
-            <n-button type="default" round @click="$router.push('/about')">
+            <n-button type="default" round @click="$router.push('/about');
+            menuActive = false;">
               {{ $t('header.about') }}
             </n-button>
           </n-button-group>
           <n-divider />
-          <n-button ghost color="#8a2be2" @click="showAddDrawer" style="width: 150px;">
+          <n-switch v-model:value="isDarkSwitched" @update:value="darkSwitch" size="large">
+            <template #checked-icon>
+              🌙
+            </template>
+            <template #unchecked-icon>
+              🔆
+            </template>
+          </n-switch>
+          <n-divider />
+          <n-button ghost color="#8a2be2" @click="showAddDrawer">
             <template #icon>
               <n-icon>
                 <add-icon />
@@ -105,11 +125,16 @@
     display: none;
   }
 }
+
+.logo {
+  cursor: pointer;
+  filter: invert(v-bind(invertRate));
+}
 </style>
 
 <script>
 import { defineComponent, h, ref } from "vue";
-import { NImage } from "naive-ui";
+import { NImage, darkTheme, useOsTheme } from "naive-ui";
 import { useI18n } from 'vue-i18n'
 import cookies from 'vue-cookies'
 import { Add as addIcon, ReorderThreeSharp, Checkmark } from "@vicons/ionicons5"
@@ -121,6 +146,8 @@ const logoSmall = (globalSettings.images.logo_small || "./assets/logoMobile.png"
 const defaultLang = (globalSettings.others.defaultLanguage || 'enus')
 const primaryColor = (globalSettings.theme.primaryColor || "#8a2be2")
 const primaryColorHover = (globalSettings.theme.primaryColorHover || "#8a2be2")
+const primaryColorPressed = (globalSettings.theme.primaryColorPressed || "#610AB3")
+const primaryColorSuppl = (globalSettings.theme.primaryColorPressed || "#8a2be2")
 const languageFlags = (globalSettings.images.language_flags)
 
 export default defineComponent({
@@ -128,7 +155,7 @@ export default defineComponent({
     addIcon,
     ReorderThreeSharp,
     Checkmark,
-    Ask,
+    Ask
   },
   setup() {
     const router = useRouter()
@@ -136,6 +163,12 @@ export default defineComponent({
     const menuActive = ref(false)
     const addDrawer = ref(false)
     let value = ref()
+    const osThemeRef = useOsTheme()
+    let isDarkSwitched = ref(false)
+    let osTheme = osThemeRef
+    let isDark = ref(null)
+    let invertRate = ref(0)
+
 
     if (cookies.isKey("cyberguiLang")) {
       value = ref(cookies.get("cyberguiLang"))
@@ -143,10 +176,38 @@ export default defineComponent({
       value = ref(defaultLang)
     }
 
+    if (cookies.isKey("cyberguiDark")) {
+      if(!!parseInt(cookies.get("cyberguiDark"))){
+        console.log(cookies.get("cyberguiDark"))
+        isDarkSwitched = ref(true)
+        isDark = ref(darkTheme)
+        invertRate = ref(0.9)
+        console.log(isDark)
+      } else {
+        console.log(false)
+        isDarkSwitched = ref(false)
+        isDark = ref(null)
+        invertRate = ref(0)
+        console.log(isDark)
+      }
+    } else {
+      if (osTheme._value === 'dark') {
+        isDarkSwitched = ref(true)
+        isDark = ref(darkTheme)
+        invertRate = ref(0.9)
+      } else {
+        isDarkSwitched = ref(false)
+        isDark = ref(null)
+        invertRate = ref(0)
+      }
+    }
+
     const themeOverrides = {
       common: {
         primaryColor: primaryColor,
-        primaryColorHover: primaryColorHover
+        primaryColorHover: primaryColorHover,
+        primaryColorPressed: primaryColorPressed,
+        primaryColorSuppl: primaryColorSuppl
       }
     }
     const { t } = useI18n()
@@ -216,6 +277,10 @@ export default defineComponent({
       menuActive,
       addDrawer,
       themeOverrides,
+      isDarkSwitched,
+      osTheme,
+      isDark,
+      invertRate,
       value,
       t,
       options: [
@@ -232,7 +297,6 @@ export default defineComponent({
         {
           label: "Русский",
           value: "ru",
-          disabled: true,
           img: (languageFlags.ru || "./assets/flags/ru.png")
         },
         {
@@ -278,6 +342,19 @@ export default defineComponent({
         return 350
       } else {
         return window.screen.width * 0.95
+      }
+    },
+    darkSwitch() {
+      if (this.isDarkSwitched) {
+        this.isDark = darkTheme
+        this.invertRate = 0.9
+        cookies.set('cyberguiDark', 1, "8h")
+
+      } else {
+        this.isDark = null
+        this.invertRate = 0
+        cookies.set('cyberguiDark', 0, "8h")
+
       }
     },
     changeLangEvent(value) {

@@ -9,7 +9,7 @@
     <div class="adminLoginShadow"></div>
   </div>
   <n-layout>
-    <n-layout-content content-style="padding: 30px; width: 80%" style="justify-content: center; display: flex;">
+    <n-layout-content :content-style="getContentWidth()" style="justify-content: center; display: flex;">
       <n-grid v-if="loading" cols="s:1 m:2 l:2 xl:3 xxl:3" responsive="screen" x-gap="12" y-gap="12">
         <n-grid-item v-for="i in 6">
           <LoadingCard />
@@ -87,12 +87,19 @@ export default defineComponent({
     }
   },
   methods: {
+    getContentWidth() {
+      if (window.screen.width > 425) {
+        return 'padding: 20px; width: 80%'
+      } else {
+        return 'padding: 10px; width: 95%'
+      }
+    },
     checkLogin() {
       api.post('/loginstate', { session: md5(cookies.get('SID')) })
         .then(response => {
           if (response.logined) {
-            this.fetchQuestions()
             this.fetchAnswers()
+            this.fetchQuestions()
             this.isLoginShow = 'none'
           } else {
             return
@@ -108,10 +115,10 @@ export default defineComponent({
       } else {
         api.post('/login', { password: md5(terminalPass) })
           .then(response => {
-            this.fetchQuestions()
-            this.fetchAnswers()
-            this.isLoginShow = 'none'
             cookies.set('SID', response.session)
+            this.fetchAnswers()
+            this.fetchQuestions()
+            this.isLoginShow = 'none'
           })
           .catch(error => {
             this.wrongPass(error)
@@ -170,14 +177,6 @@ body {
   z-index: 24;
 }
 
-.adminLogin {
-  position: absolute;
-  width: 25%;
-  min-width: 150px;
-  min-width: 100px;
-  z-index: 25;
-}
-
 .innerFooter {
   background: rgba(128, 128, 128, 0.2);
   padding: 24px;
@@ -187,11 +186,25 @@ body {
   .cardContainer {
     width: 100%;
   }
+
+  .adminLogin {
+    position: absolute;
+    width: 50%;
+    min-width: 150px;
+    z-index: 25;
+  }
 }
 
 @media (min-width: 650px) {
   .cardContainer {
     width: 80%;
+  }
+
+  .adminLogin {
+    position: absolute;
+    width: 25%;
+    min-width: 150px;
+    z-index: 25;
   }
 }
 </style>

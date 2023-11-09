@@ -63,7 +63,7 @@ export default defineComponent({
         return {
             answerSuccess() {
                 message.success(
-                    t('addNew.success')
+                    t('terminal.success')
                 );
             },
             answerFailed(error) {
