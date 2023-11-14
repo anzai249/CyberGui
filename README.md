@@ -46,10 +46,14 @@ The project has an official doc, see📄[CyberGui Docs](https://cybergui-docs.sl
 
 Thanks to:
 
-- [anzai249](https://github.com/anzai249)
+- [anzai249](https://github.com/anzai249) 
 (It's me.)
-- [DY_XiaoDong](https://github.com/dy-xiaodong2022)
+- [DY_XiaoDong](https://github.com/dy-xiaodong2022) 
 (Backend.)
+- Harriel Everise 
+(German, Russian translation.)
+- Carl Wolff 
+(Dutch translation.)
 
 This software uses the following open source packages:
 
@@ -67,6 +71,7 @@ And thanks to:
   - [x] Traditional Chinese
   - [x] English
   - [x] German
+  - [x] Dutch
   - [ ] Japanese
   - [ ] Russian
 

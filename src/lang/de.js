@@ -12,7 +12,8 @@ export default {
         sensitiveFalse: "Keine empfindliche Inhalte",
         submit: "Absenden",
         success: "Erfolgreich abgefragt.",
-        error: "Error: "
+        error: "Error: ",
+        needReview: "Your question needs to be reviewed before showing."
     },
     card: {
         showSensitive: "Empfindliche Inhalte anzeigen"
@@ -21,7 +22,7 @@ export default {
         description: "CyberGui ist eine Open-Source-Box für persönliche anonyme Fragen mit sauberer und einfach zu implementierender Software. Andere können Ihnen anonyme Fragen stellen, um Sie kennenzulernen. ",
         guiCharacter: "Das Wort 匭 (gui) bedeutet ein Kästchen, das von den alten chinesischen Kaisern verwendet wurde. Auf diese Weise holte er den Rat des Volkes ein und korrigierte seine Fehler.",
         author: "Autor: ",
-        github: "Github: ",
+        github: "GitHub: ",
         email: "E-mail-Adresse: "
     },
     terminal: {
@@ -36,6 +37,9 @@ export default {
         emptyPass: "Leeres Passwort",
         deleteConfirm: "Bestätigen Sie das Löschen?",
         cancel: "Abbrechen",
-        deleted: "Gelöscht"
+        deleted: "Gelöscht",
+        answerquestion: "Answer",
+        review: "Review",
+        success: "Operation Succeed"
     }
 }

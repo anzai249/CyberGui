@@ -2,8 +2,8 @@
   <n-config-provider :theme="isDark" :theme-overrides="themeOverrides">
     <n-layout position="absolute">
       <n-layout-header style="height: 53px;" bordered>
-        <n-tabs :bar-width="35" type="line" animated size="large" @update:value="handleBeforeLeave"
-          default-value="archive" class="notMobile">
+        <n-tabs v-model:value="valueTab" :bar-width="35" type="line" animated size="large"
+          @update:value="handleBeforeLeave" default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
             <a class="logo" @click="$router.push('/')"><img height="53" :src="logoBig" /></a>
@@ -147,7 +147,7 @@ const defaultLang = (globalSettings.others.defaultLanguage || 'enus')
 const primaryColor = (globalSettings.theme.primaryColor || "#8a2be2")
 const primaryColorHover = (globalSettings.theme.primaryColorHover || "#8a2be2")
 const primaryColorPressed = (globalSettings.theme.primaryColorPressed || "#610AB3")
-const primaryColorSuppl = (globalSettings.theme.primaryColorPressed || "#8a2be2")
+const primaryColorSuppl = (globalSettings.theme.primaryColorSuppl || "#8a2be2")
 const languageFlags = (globalSettings.images.language_flags)
 
 export default defineComponent({
@@ -168,7 +168,14 @@ export default defineComponent({
     let osTheme = osThemeRef
     let isDark = ref(null)
     let invertRate = ref(0)
-
+    let valueTab = ref('archive')
+    if (router.currentRoute.value.path === '/') {
+      valueTab = ref('archive')
+    } else if (router.currentRoute.value.path === '/about') {
+      valueTab = ref('about')
+    } else {
+      valueTab = ref('archive')
+    }
 
     if (cookies.isKey("cyberguiLang")) {
       value = ref(cookies.get("cyberguiLang"))
@@ -177,7 +184,7 @@ export default defineComponent({
     }
 
     if (cookies.isKey("cyberguiDark")) {
-      if(!!parseInt(cookies.get("cyberguiDark"))){
+      if (!!parseInt(cookies.get("cyberguiDark"))) {
         console.log(cookies.get("cyberguiDark"))
         isDarkSwitched = ref(true)
         isDark = ref(darkTheme)
@@ -283,6 +290,7 @@ export default defineComponent({
       invertRate,
       value,
       t,
+      valueTab,
       options: [
         {
           label: "English",
@@ -303,6 +311,11 @@ export default defineComponent({
           label: "日本語",
           value: "ja",
           img: (languageFlags.ja || "./assets/flags/jp.png")
+        },
+        {
+          label: "Nederlands",
+          value: "nl",
+          img: (languageFlags.nl || "./assets/flags/nl.png")
         },
         {
           label: "简体中文",
@@ -373,6 +386,10 @@ export default defineComponent({
           this.$i18n.locale = this.lang;
           break;
         case 'ja':
+          this.lang = value;
+          this.$i18n.locale = this.lang;
+          break;
+        case 'nl':
           this.lang = value;
           this.$i18n.locale = this.lang;
           break;
