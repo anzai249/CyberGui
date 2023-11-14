@@ -3,7 +3,7 @@
   <br>
   <a href="https://github.com/anzai249/CyberGui/"><img src="./public/favicon.svg" alt="CyberGui" width="150"></a>
   <br>
-  Cyber Gui
+  CyberGui
   <br>
 </h1>
 
