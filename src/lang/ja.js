@@ -21,7 +21,7 @@ export default {
         description: "CyberGuiはオープンソースの匿名の個人質問箱であり、クリーンで簡単に展開でき、匿名の質問を通じてあなたを理解する手段を提供します。",
         guiCharacter: "匦は古代中国の政府が人々からの投書を収集するために使用した箱です。",
         author: "作者：",
-        github: "Github：",
+        github: "GitHub：",
         email: "Eメール："
     },
     terminal: {

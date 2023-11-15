@@ -12,7 +12,8 @@ export default {
         sensitiveFalse: "Не содержит конфиденциальной информации",
         submit: "Отправить",
         success: "Вопрос успешно добавлен!",
-        error: "Ошибка:"
+        error: "Ошибка:",
+        needReview: "Your question needs to be reviewed before showing."
     },
     card: {
         showSensitive: "Показать конфиденциальную информацию"
@@ -36,6 +37,9 @@ export default {
         emptyPass: "Пустой пароль",
         deleteConfirm: "Вы уверены, что хотите удалить?",
         cancel: "Отмена",
-        deleted: "Удалено"
+        deleted: "Удалено",
+        answerquestion: "Answer",
+        review: "Review",
+        success: "Operation Succeed"
     }
 }
