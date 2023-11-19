@@ -73,7 +73,7 @@ And thanks to:
   - [x] German
   - [x] Dutch
   - [ ] Japanese
-  - [ ] Russian
+  - [x] Russian
 
 * Database
   - [x] MySQL
