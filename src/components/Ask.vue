@@ -18,7 +18,7 @@
                                     {{ $t('addNew.sensitiveFalse') }}
                                 </template>
                             </n-switch>
-                            <n-tag v-if="settings.others.review" type="info">
+                            <n-tag v-if="settings.others.review" type="info" class="needReviewTag">
                                 {{ $t('addNew.needReview') }}
                             </n-tag>
                             <n-button type="primary" ghost style="width: 150px;"
@@ -41,6 +41,12 @@
 <style scoped>
 .askInput {
     width: 400px;
+}
+
+.needReviewTag {
+    max-width: 400px;
+    word-wrap: break-word;
+    white-space: normal;
 }
 </style>
 

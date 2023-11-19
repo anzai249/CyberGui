@@ -13,7 +13,7 @@ export default {
         submit: "Absenden",
         success: "Erfolgreich abgefragt.",
         error: "Error: ",
-        needReview: "Ihre Frage muss vom Websitebesitzer überprüft werden, bevor es angezeigt werden kann."
+        needReview: "Bevor Anzeige muss ihre Frage überprüft werden."
     },
     card: {
         showSensitive: "Empfindliche Inhalte anzeigen"
