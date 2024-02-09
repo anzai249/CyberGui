@@ -13,7 +13,7 @@ export default {
         submit: "Absenden",
         success: "Erfolgreich abgefragt.",
         error: "Error: ",
-        needReview: "Your question needs to be reviewed before showing."
+        needReview: "Bevor Anzeige muss ihre Frage überprüft werden."
     },
     card: {
         showSensitive: "Empfindliche Inhalte anzeigen"
@@ -38,8 +38,8 @@ export default {
         deleteConfirm: "Bestätigen Sie das Löschen?",
         cancel: "Abbrechen",
         deleted: "Gelöscht",
-        answerquestion: "Answer",
-        review: "Review",
-        success: "Operation Succeed"
+        answerquestion: "Antworten",
+        review: "Überprüfung",
+        success: "Erfolgreiche Operation"
     }
 }

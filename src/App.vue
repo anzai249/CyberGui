@@ -1,12 +1,12 @@
 <template>
   <n-config-provider :theme="isDark" :theme-overrides="themeOverrides">
-    <n-layout position="absolute">
-      <n-layout-header style="height: 53px;" bordered>
+    <n-layout>
+      <n-layout-header class="main-header" bordered>
         <n-tabs v-model:value="valueTab" :bar-width="35" type="line" animated size="large"
           @update:value="handleBeforeLeave" default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
-            <a class="logo" @click="$router.push('/')"><img height="53" :src="logoBig" /></a>
+            <a class="logo" @click="$router.push('/')"><img height="45" :src="logoBig" /></a>
             <n-divider vertical />
           </template>
           <n-tab-pane name="archive" :tab="$t('header.archive')">
@@ -57,7 +57,7 @@
           </template>
         </n-tabs>
       </n-layout-header>
-      <n-layout position="absolute" style="top: 53px; bottom: 0px">
+      <n-layout class="questions-content">
         <n-message-provider>
           <RouterView />
         </n-message-provider>
@@ -129,6 +129,20 @@
 .logo {
   cursor: pointer;
   filter: invert(v-bind(invertRate));
+}
+
+.main-header {
+  height: 53px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  padding: 0;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.questions-content {
+  /* padding: 24px; */
+  margin-top: 53px;
 }
 </style>
 
