@@ -6,7 +6,7 @@
           @update:value="handleBeforeLeave" default-value="archive" class="notMobile">
           <template #prefix>
             <n-divider vertical />
-            <a class="logo" @click="$router.push('/')"><img height="53" :src="logoBig" /></a>
+            <a class="logo" @click="$router.push('/')"><img height="45" :src="logoBig" /></a>
             <n-divider vertical />
           </template>
           <n-tab-pane name="archive" :tab="$t('header.archive')">
@@ -137,12 +137,11 @@
   z-index: 100;
   width: 100%;
   padding: 0;
-  background-color: #fff;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 .questions-content {
-  padding: 24px;
+  /* padding: 24px; */
   margin-top: 53px;
 }
 </style>
