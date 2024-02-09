@@ -17,10 +17,6 @@
         </n-grid-item>
       </n-grid>
     </n-layout-content>
-    <n-layout-footer class="innerFooter">
-
-    </n-layout-footer>
-
   </n-layout>
 </template>
   
@@ -101,11 +97,6 @@ export default defineComponent({
 <style>
 body {
   background-color: snow;
-}
-
-.innerFooter {
-  background: rgba(128, 128, 128, 0.2);
-  padding: 24px;
 }
 
 @media (max-width: 650px) {
