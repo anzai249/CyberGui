@@ -54,7 +54,7 @@ Thanks to:
 (German, Russian translation.)
 - Carl Wolff 
 (Dutch translation.)
-- Boundary
+- [Boundary](https://github.com/Eternity-boundary)
 (Japanese translation.)
 
 This software uses the following open source packages:
