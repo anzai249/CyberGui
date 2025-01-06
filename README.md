@@ -54,6 +54,8 @@ Thanks to:
 (German, Russian translation.)
 - Carl Wolff 
 (Dutch translation.)
+- Boundary
+(Japanese translation.)
 
 This software uses the following open source packages:
 
